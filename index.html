@@ -1,332 +1,336 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeloxSites | Soluções Digitais e Planilhas</title>
+    <title>VeloxSites - Soluções Digitais e Administrativas</title>
     <style>
         :root {
-            --bg-dark: #111827;
+            --bg-color: #0f172a;
             --card-bg: #1e293b;
-            --text-main: #f1f5f9;
-            --text-dim: #94a3b8;
-            --accent-blue: #3b82f6;
-            --highlight-blue: #60a5fa;
-            --highlight-yellow: #facc15;
-            --pill-bg: #0f172a;
-            --whatsapp-green: #22c55e;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary-green: #10b981; /* O seu verde profissional */
+            --primary-green-hover: #059669;
+            --border-color: #334155;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         body {
-            color: var(--text-main);
-            background-color: var(--bg-dark);
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
-            padding-bottom: 80px;
+            overflow-x: hidden;
         }
 
-        /* --- Header --- */
+        /* Header & Menu Lateral */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            background-color: var(--bg-dark);
+            padding: 20px 30px;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #374151;
         }
-        .logo-container {
+
+        .logo-area {
             display: flex;
             align-items: center;
-            gap: 8px;
-            text-decoration: none;
+            gap: 12px;
         }
+
         .logo-icon {
-            width: 28px;
-            height: 28px;
-            background: linear-gradient(135deg, #60a5fa, #2563eb);
-            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary-green);
+            border-radius: 6px;
         }
+
         .logo-text {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-        }
-        .btn-pill-light {
-            background-color: var(--accent-blue);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-        }
-        .btn-pill-light:hover {
-            background-color: var(--highlight-blue);
+            font-size: 1.25rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
         }
 
-        /* --- Faixa Animada (Ticker de Serviços) --- */
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            background-color: var(--accent-blue);
-            color: white;
-            padding: 12px 0;
-            font-weight: 600;
-            font-size: 0.95rem;
-            white-space: nowrap;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .ticker {
-            display: inline-block;
-            white-space: nowrap;
-            animation: ticker 25s linear infinite;
-        }
-        .ticker-item {
-            display: inline-block;
-            padding: 0 30px;
-        }
-        @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-50%, 0, 0); }
+        .menu-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 5px;
         }
 
-        /* --- Hero Section --- */
-        .hero {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: var(--bg-dark);
-            color: #fff;
-        }
-        .guarantee-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--pill-bg);
-            color: var(--text-main);
-            padding: 6px 12px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            margin-bottom: 25px;
-            border: 1px solid #374151;
-        }
-        .dot-blue {
-            width: 10px;
-            height: 10px;
-            background-color: var(--accent-blue);
-            border-radius: 50%;
-            box-shadow: 0 0 6px var(--accent-blue);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: #ffffff;
-            font-weight: 800;
-            line-height: 1.1;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .highlight-blue-text {
-            color: var(--highlight-blue);
-        }
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            max-width: 650px;
-            margin: 0 auto 40px auto;
-        }
-
-        /* --- Cards de Serviços (Grid) --- */
-        .services-section {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px 20px 60px 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .service-card {
+        /* Sidebar (Menu Lateral) */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
             background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 30px;
+            border-left: 1px solid var(--border-color);
+            box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+            transition: right 0.3s ease-in-out;
+            z-index: 1000;
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             gap: 20px;
-            border: 1px solid #374151;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        .service-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #fff;
-        }
-        .price-display {
-            display: flex;
-            align-items: baseline;
-            gap: 4px;
-            border-bottom: 1px solid #374151;
-            padding-bottom: 15px;
-        }
-        .currency { font-size: 1.2rem; color: var(--text-main); font-weight: 600; }
-        .price-main { font-size: 3rem; color: var(--text-main); font-weight: bold; line-height: 1; }
-        .price-cents { font-size: 1.2rem; color: var(--text-main); font-weight: 600; }
 
-        .features-list {
+        .sidebar.active {
+            right: 0;
+        }
+
+        .close-btn {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .sidebar h3 {
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar ul {
             list-style: none;
-            color: var(--text-dim);
-            font-size: 1rem;
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            flex-grow: 1;
-        }
-        .features-list li::before {
-            content: '✓';
-            color: var(--highlight-blue);
-            font-weight: bold;
-            display: inline-block;
-            width: 1.2em;
+            gap: 15px;
         }
 
-        .cta-button {
-            display: block;
-            text-align: center;
-            background-color: var(--whatsapp-green);
-            color: white;
-            padding: 14px;
-            border-radius: 8px;
+        .sidebar ul li a {
+            color: var(--text-color);
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: background 0.3s;
+            font-size: 1.05rem;
+            transition: color 0.2s;
         }
-        .cta-button:hover { background-color: #16a34a; }
 
-        /* --- Footer --- */
+        .sidebar ul li a:hover {
+            color: var(--primary-green);
+        }
+
+        /* Overlay para o Menu */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 999;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary-green);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: var(--primary-green);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-green-hover);
+        }
+
+        /* Seção de Serviços / Trabalhos Adm */
+        .services {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-green);
+        }
+
+        .service-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
         footer {
             text-align: center;
             padding: 30px;
-            background: var(--card-bg);
-            color: var(--text-dim);
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
             font-size: 0.9rem;
-            margin-top: 40px;
-            border-top: 1px solid #374151;
         }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--whatsapp-green);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            z-index: 1000;
-            text-decoration: none;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <a href="#" class="logo-container">
+        <div class="logo-area">
             <div class="logo-icon"></div>
-            <span class="logo-text">VELOXSITES</span>
-        </a>
-        <a href="https://wa.me/5521999999999?text=Olá!%20Quero%20um%20orçamento." class="btn-pill-light">Contato Direto</a>
+            <div class="logo-text">VELOXSITES</div>
+        </div>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </header>
 
-    <!-- Faixa Passando com os Serviços -->
-    <div class="ticker-wrap">
-        <div class="ticker">
-            <div class="ticker-item">🚀 Criação de Sites Profissionais</div>
-            <div class="ticker-item">•</div>
-            <div class="ticker-item">📊 Planilhas Excel Sob Medida</div>
-            <div class="ticker-item">•</div>
-            <div class="ticker-item">🛠️ Manutenção e Atualização de Sites</div>
-            <div class="ticker-item">•</div>
-            <div class="ticker-item">📍 Configuração Google Meu Negócio</div>
-            <div class="ticker-item">•</div>
-            <!-- Repetido para loop infinito suave -->
-            <div class="ticker-item">🚀 Criação de Sites Profissionais</div>
-            <div class="ticker-item">•</div>
-            <div class="ticker-item">📊 Planilhas Excel Sob Medida</div>
-            <div class="ticker-item">•</div>
-            <div class="ticker-item">🛠️ Manutenção e Atualização de Sites</div>
-            <div class="ticker-item">•</div>
-            <div class="ticker-item">📍 Configuração Google Meu Negócio</div>
-        </div>
-    </div>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
+    <!-- Sidebar / Menu Lateral -->
+    <nav class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleMenu()">✕</button>
+        <h3>Navegação</h3>
+        <ul>
+            <li><a href="#" onclick="toggleMenu()">Início</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">Trabalhos e Serviços</a></li>
+            <li><a href="https://wa.me/" target="_blank" onclick="toggleMenu()">Contato Direto</a></li>
+        </ul>
+        <h3>Serviços Adm</h3>
+        <ul>
+            <li><a href="#servicos" onclick="toggleMenu()">Planilhas Excel Sob Medida</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">Dashboards Power BI</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">Gestão de Ativos & Estoque</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">Automação de Processos</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">Sites Profissionais</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="guarantee-tag">
-            <span class="dot-blue"></span> Soluções Digitais Completas
-        </div>
-        <h1>Tudo o que o seu negócio precisa para <span class="highlight-blue-text">crescer online</span></h1>
-        <p>Desenvolvemos sites profissionais de alta conversão e planilhas automatizadas sob medida para organizar a sua rotina.</p>
+        <span class="badge">Soluções Digitais e Administrativas</span>
+        <h1>Tudo o que o seu negócio precisa para <span>crescer online</span></h1>
+        <p>Desenvolvemos sites profissionais de alta conversão, planilhas automatizadas sob medida e painéis gerenciais para organizar e otimizar a sua rotina.</p>
+        <a href="https://wa.me/" class="btn-primary" target="_blank">Contato Direto</a>
     </section>
 
-    <!-- Seção com os Dois Principais Serviços -->
-    <section class="services-section">
-        <!-- Card 1: Sites -->
-        <div class="service-card">
-            <div class="service-title">Criação de Sites</div>
-            <div class="price-display">
-                <span class="currency">R$</span>
-                <span class="price-main">679</span>
-                <span class="price-cents">,90</span>
+    <!-- Seção Detalhada de Trabalhos e Serviços Administrativos -->
+    <section class="services" id="servicos">
+        <h2>Nossos Trabalhos e Soluções</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Planilhas Excel Sob Medida</h3>
+                <p>Criação de ferramentas inteligentes em Excel e VBA com fórmulas avançadas, automatizações e relatórios financeiros e operacionais personalizados.</p>
             </div>
-            <ul class="features-list">
-                <li>Site profissional completo e moderno</li>
-                <li>Otimizado para celulares e computadores</li>
-                <li>Pronto para atrair clientes pelo WhatsApp</li>
-                <li>Entrega rápida e sem taxas ocultas</li>
-            </ul>
-            <a href="https://wa.me/5521999999999?text=Olá!%20Quero%20encomendar%20um%20site." class="cta-button">Pedir Site no WhatsApp</a>
-        </div>
-
-        <!-- Card 2: Planilhas -->
-        <div class="service-card">
-            <div class="service-title">Planilhas Excel Sob Medida</div>
-            <div class="price-display">
-                <span class="currency">R$</span>
-                <span class="price-main">679</span>
-                <span class="price-cents">,90</span>
+            <div class="service-card">
+                <h3>Dashboards e Power BI</h3>
+                <p>Construção de painéis interativos de indicadores e visualização de dados para apoiar a tomada de decisão gerencial e estratégica.</p>
             </div>
-            <ul class="features-list">
-                <li>Desenvolvido exatamente para a sua necessidade</li>
-                <li>Automações inteligentes e fórmulas avançadas</li>
-                <li>Dashboards e gráficos gerenciais fáceis</li>
-                <li>Pronto para uso com suporte inicial</li>
-            </ul>
-            <a href="https://wa.me/5521999999999?text=Olá!%20Quero%20encomendar%20uma%20planilha." class="cta-button">Pedir Planilha no WhatsApp</a>
+            <div class="service-card">
+                <h3>Gestão de Inventário e Ativos</h3>
+                <p>Sistemas de controle de estoque, almoxarifado e inventário estruturados para garantir eficiência na gestão de materiais e equipamentos.</p>
+            </div>
+            <div class="service-card">
+                <h3>Automação de Processos Adm</h3>
+                <p>Otimização de fluxos de trabalho administrativos, padronização de relatórios e redução de retrabalho nas rotinas diárias da empresa.</p>
+            </div>
+            <div class="service-card">
+                <h3>Sites Profissionais</h3>
+                <p>Desenvolvimento de páginas modernas, responsivas e otimizadas para destacar sua marca e atrair novos clientes na internet.</p>
+            </div>
+            <div class="service-card">
+                <h3>Suporte Operacional & Consultoria</h3>
+                <p>Assistência técnica especializada em organização de dados, planilhas corporativas e melhoria contínua de processos.</p>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 VeloxSites. Soluções em tecnologia e dados.</p>
+        &copy; 2026 VeloxSites. Todos os direitos reservados.
     </footer>
 
-    <a href="https://wa.me/5521999999999?text=Olá!%20Gostaria%20de%20um%20orçamento." class="whatsapp-float" target="_blank">💬</a>
+    <script>
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
