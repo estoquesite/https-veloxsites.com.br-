@@ -10,7 +10,7 @@
             --card-bg: #1e293b;
             --text-color: #f8fafc;
             --text-muted: #94a3b8;
-            --primary-green: #10b981; /* O seu verde profissional */
+            --primary-green: #10b981;
             --primary-green-hover: #059669;
             --border-color: #334155;
         }
@@ -29,7 +29,6 @@
             overflow-x: hidden;
         }
 
-        /* Header & Menu Lateral */
         header {
             display: flex;
             justify-content: space-between;
@@ -70,7 +69,6 @@
             padding: 5px;
         }
 
-        /* Sidebar (Menu Lateral) */
         .sidebar {
             position: fixed;
             top: 0;
@@ -127,7 +125,6 @@
             color: var(--primary-green);
         }
 
-        /* Overlay para o Menu */
         .overlay {
             position: fixed;
             top: 0;
@@ -143,7 +140,6 @@
             display: block;
         }
 
-        /* Hero Section */
         .hero {
             text-align: center;
             padding: 60px 20px;
@@ -194,7 +190,6 @@
             background-color: var(--primary-green-hover);
         }
 
-        /* Seção de Serviços / Trabalhos Adm */
         .services {
             max-width: 1100px;
             margin: 40px auto;
@@ -249,7 +244,6 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header>
         <div class="logo-area">
             <div class="logo-icon"></div>
@@ -258,10 +252,8 @@
         <button class="menu-btn" onclick="toggleMenu()">☰</button>
     </header>
 
-    <!-- Overlay -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
-    <!-- Sidebar / Menu Lateral -->
     <nav class="sidebar" id="sidebar">
         <button class="close-btn" onclick="toggleMenu()">✕</button>
         <h3>Navegação</h3>
@@ -280,7 +272,6 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <span class="badge">Soluções Digitais e Administrativas</span>
         <h1>Tudo o que o seu negócio precisa para <span>crescer online</span></h1>
@@ -288,7 +279,6 @@
         <a href="https://wa.me/" class="btn-primary" target="_blank">Contato Direto</a>
     </section>
 
-    <!-- Seção Detalhada de Trabalhos e Serviços Administrativos -->
     <section class="services" id="servicos">
         <h2>Nossos Trabalhos e Soluções</h2>
         <div class="services-grid">
