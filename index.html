@@ -143,7 +143,7 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
+        /* Hero Section com Tipografia sem quebras esquisitas */
         .hero {
             text-align: left;
             padding: 10px 0 40px 0;
@@ -163,10 +163,10 @@
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
             margin-bottom: 20px;
             font-weight: 800;
-            line-height: 1.2;
+            line-height: 1.25;
             letter-spacing: -0.5px;
         }
 
@@ -252,7 +252,7 @@
             line-height: 1.6;
         }
 
-        /* Simulador de Orçamento (IA Interativa) */
+        /* Simulador de Orçamento Dinâmico */
         .simulator-section {
             background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
             border: 1px solid var(--primary-green);
@@ -409,6 +409,52 @@
             background-color: var(--primary-green-hover);
         }
 
+        /* Seção de Percepção dos Clientes (Depoimentos) */
+        .testimonials-section {
+            margin-bottom: 50px;
+        }
+
+        .testimonials-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary-green);
+        }
+
+        .testimonial-card p {
+            color: var(--text-muted);
+            font-size: 0.95srem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-project {
+            color: var(--primary-green);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         /* Seção de Serviços Interativos Completos */
         .services-section {
             margin-bottom: 50px;
@@ -559,12 +605,13 @@
             <li><a href="#quemsomos" onclick="toggleSidebar()">Quem Somos</a></li>
             <li><a href="#simulador" onclick="toggleSidebar()">Simulador de Orçamento</a></li>
             <li><a href="#video" onclick="toggleSidebar()">Apresentação em Vídeo</a></li>
+            <li><a href="#depoimentos" onclick="toggleSidebar()">Percepção dos Clientes</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Serviços Administrativos</a></li>
             <li><a href="https://wa.me/" target="_blank" onclick="toggleSidebar()">Contato WhatsApp</a></li>
         </ul>
 
         <ul class="sidebar-menu">
-            <h4>Demandas Atendidas</h4>
+            <h4>Áreas Atendidas</h4>
             <li><a href="#servicos" onclick="toggleSidebar()">Gestão de Documentação</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Contas a Pagar e Receber</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Bases de Dados e Cadastros</a></li>
@@ -579,8 +626,8 @@
         <!-- Hero Section -->
         <section class="hero">
             <span class="badge">Excelência em Organização, Dados e Back-Office</span>
-            <h1>Soluções estruturadas para sua <span>operação crescer</span></h1>
-            <p>Atuação profissional e rigor técnico em organização de documentação de projetos (como Davi e Alana buscavam), suporte administrativo remoto, controle financeiro de contas a pagar e receber (como Valentina), planilhas e atendimento executivo.</p>
+            <h1>Soluções estruturadas para a sua operação crescer</h1>
+            <p>Atuação profissional e rigor técnico em organização de documentação de projetos, suporte administrativo remoto, controle financeiro de contas a pagar e receber, planilhas avançadas e atendimento executivo.</p>
             <a href="https://wa.me/" class="btn-primary" target="_blank">Fale Comigo no WhatsApp</a>
         </section>
 
@@ -605,32 +652,32 @@
             </div>
         </section>
 
-        <!-- Simulador de Orçamento Interativo (Assistente / IA de Valores) -->
+        <!-- Simulador de Orçamento Dinâmico (Atualiza em tempo real) -->
         <section class="simulator-section" id="simulador">
             <h2>Simulador de Orçamento Instantâneo</h2>
-            <p>Selecione a necessidade da sua empresa para calcular uma estimativa personalizada em tempo real:</p>
+            <p>Selecione o serviço e ajuste a quantidade estimada para calcular o investimento na hora:</p>
             
             <div class="sim-form-group">
                 <label for="servicoSelect">Tipo de Serviço:</label>
                 <select id="servicoSelect" class="sim-select" onchange="calcularOrcamento()">
-                    <option value="150">Gestão de Documentação de Projetos</option>
-                    <option value="120">Assistência Administrativa / Back-Office</option>
-                    <option value="180">Contas a Pagar, Receber e Conciliação</option>
-                    <option value="200">Bases de Dados e Cadastros Corporativos</option>
-                    <option value="250">Gestão de Ativos, Estoque e Inventário</option>
-                    <option value="220">Planilhas Sob Medida e Dashboards Power BI</option>
+                    <option value="120">Gestão de Documentação de Projetos (R$ 120/h)</option>
+                    <option value="100">Assistência Administrativa / Back-Office (R$ 100/h)</option>
+                    <option value="150">Contas a Pagar, Receber e Conciliação (R$ 150/h)</option>
+                    <option value="110">Bases de Dados e Cadastros Corporativos (R$ 110/h)</option>
+                    <option value="160">Gestão de Ativos, Estoque e Inventário (R$ 160/h)</option>
+                    <option value="180">Planilhas Sob Medida e Dashboards Power BI (R$ 180/h)</option>
                 </select>
             </div>
 
             <div class="sim-form-group">
-                <label for="volumeInput">Volume / Complexidade (Horas ou Lotes estimados):</label>
-                <input type="number" id="volumeInput" class="sim-input" value="10" min="1" max="100" oninput="calcularOrcamento()">
+                <label for="volumeInput">Quantidade estimada (Horas / Demandas):</label>
+                <input type="number" id="volumeInput" class="sim-input" value="10" min="1" max="200" oninput="calcularOrcamento()">
             </div>
 
             <div class="sim-result">
                 <div>
-                    <span style="font-size: 0.9rem; color: var(--text-muted); display: block;">Estimativa de Investimento:</span>
-                    <span class="sim-price" id="precoEstimado">R$ 1.500,00</span>
+                    <span style="font-size: 0.9rem; color: var(--text-muted); display: block;">Estimativa Calculada:</span>
+                    <span class="sim-price" id="precoEstimado">R$ 1.000,00</span>
                 </div>
                 <a href="https://wa.me/" class="btn-primary" target="_blank" id="btnContratarSimulacao">Contratar via WhatsApp</a>
             </div>
@@ -652,7 +699,39 @@
             </div>
         </section>
 
-        <!-- Seção de Serviços Completos e Interativos (Baseados nos pedidos reais) -->
+        <!-- Seção de Percepção dos Clientes (Depoimentos) -->
+        <section class="testimonials-section" id="depoimentos">
+            <h2>Percepção dos Clientes</h2>
+            <p class="section-subtitle">O que gestores e contratantes dizem sobre o padrão de organização e suporte prestado:</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Precisávamos de um profissional para organizar e categorizar a documentação de um projeto com início e fim definidos. A entrega foi impecável e com total rastreabilidade."</p>
+                    <div class="testimonial-author">Davi M.</div>
+                    <div class="testimonial-project">Gestão de Documentação de Projetos</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>"Excelente suporte no back-office financeiro. Organizou nosso contas a pagar e receber, lançamentos e compras com muita atenção aos detalhes."</p>
+                    <div class="testimonial-author">Valentina S.</div>
+                    <div class="testimonial-project">Contas a Pagar e Receber</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>"Criou bases de dados limpas e estruturadas apenas com nomes, endereços e contatos de empresas. Agilizou absurdamente a nossa rotina comercial."</p>
+                    <div class="testimonial-author">João Lucas R.</div>
+                    <div class="testimonial-project">Bases de Dados e Cadastros</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>"Seguiu cronogramas diários à risca, realizou ligações e cadastros com extrema responsabilidade. Uma assistente virtual de altíssimo nível."</p>
+                    <div class="testimonial-author">Alana P.</div>
+                    <div class="testimonial-project">Assistência Remota e Cronogramas</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Serviços Completos e Interativos -->
         <section class="services-section" id="servicos">
             <h2>Serviços Administrativos e Especializados</h2>
             <p class="section-subtitle">Clique em qualquer serviço abaixo para abrir e ler o escopo completo de atuação:</p>
@@ -661,9 +740,9 @@
                 <!-- 1 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Gestão de Documentação de Projetos <span class="icon">+</span></h3>
-                    <p class="summary">Abordagem estruturada para projetos com início, meio e fim bem definidos (Demanda estilo Davi/Alana).</p>
+                    <p class="summary">Abordagem estruturada para projetos com início, meio e fim bem definidos.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Categorização, arquivamento rigoroso e recuperação ágil de todos os documentos relevantes. Garantimos que a documentação esteja completa, organizada e pronta para futuras referências, auditorias e rastreabilidade total.</p>
+                        <p><strong>Escopo completo:</strong> Categorização, arquivamento rigoroso e recuperação ágil de todos os documentos relevantes. Garantimos que a documentação esteja completa, organizada e pronta para futuras referências e auditorias.</p>
                     </div>
                 </div>
 
@@ -672,34 +751,34 @@
                     <h3>Assistência Administrativa Remota (Back-Office) <span class="icon">+</span></h3>
                     <p class="summary">Suporte responsável para digitação, conferência de dados e controle rotineiro.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Execução de tarefas essenciais de back-office, incluindo entrada de dados, preenchimento e estruturação de planilhas, cadastros em sistemas corporativos e organização documental com atenção rigorosa a prazos.</p>
+                        <p><strong>Escopo completo:</strong> Execução de tarefas essenciais de back-office, incluindo entrada de dados, preenchimento e estruturação de planilhas, cadastros em sistemas e organização documental com rigor em prazos.</p>
                     </div>
                 </div>
 
                 <!-- 3 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Contas a Pagar, Receber e Conciliação <span class="icon">+</span></h3>
-                    <p class="summary">Organização financeira rigorosa e controle de fluxo de caixa (Demanda estilo Valentina).</p>
+                    <p class="summary">Organização financeira rigorosa e controle de fluxo de caixa.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Gestão de pagamentos, cobranças, lançamento de extratos, conciliação bancária diária e relatórios financeiros precisos para assegurar saúde financeira e previsibilidade ao seu negócio.</p>
+                        <p><strong>Escopo completo:</strong> Gestão de pagamentos, cobranças, lançamento de extratos, conciliação bancária diária e relatórios financeiros para assegurar saúde e previsibilidade ao seu negócio.</p>
                     </div>
                 </div>
 
                 <!-- 4 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Bases de Dados e Cadastros Corporativos <span class="icon">+</span></h3>
-                    <p class="summary">Criação de diretórios estruturados com nomes, endereços e contatos (Demanda estilo João Lucas).</p>
+                    <p class="summary">Criação de diretórios estruturados com nomes, endereços e contatos.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Unificação e limpeza de cadastros de clientes, fornecedores e parceiros em planilhas inteligentes, garantindo padronização, buscas rápidas e informações precisas.</p>
+                        <p><strong>Escopo completo:</strong> Unificação e limpeza de cadastros de clientes, fornecedores e parceiros em planilhas inteligentes, garantindo padronização e buscas rápidas.</p>
                     </div>
                 </div>
 
                 <!-- 5 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Atendimento e Gestão de Chamadas <span class="icon">+</span></h3>
-                    <p class="summary">Comunicação profissional dedicada para clientes, suporte e rotinas diárias.</p>
+                    <p class="summary">Comunicação profissional dedicada para clientes, suporte e rotinas.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Atendimento telefônico e digital, resposta rápida a consultas de clientes, suporte geral e garantia de comunicação cortês, clara e eficaz para manter o fluxo de atendimento impecável.</p>
+                        <p><strong>Escopo completo:</strong> Atendimento telefônico e digital, resposta rápida a consultas de clientes, suporte geral e garantia de comunicação cortês e eficaz.</p>
                     </div>
                 </div>
 
@@ -708,7 +787,7 @@
                     <h3>Gestão de Ativos, Estoque e Almoxarifado <span class="icon">+</span></h3>
                     <p class="summary">Controle técnico de materiais, inventário físico e rotatividade.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Estruturação de inventários físicos, controle de entradas/saídas, otimização de almoxarifado e aplicação de conceitos de confiabilidade para evitar perdas e assegurar disponibilidade operacional.</p>
+                        <p><strong>Escopo completo:</strong> Estruturação de inventários físicos, controle de entradas/saídas, otimização de almoxarifado e aplicação de conceitos de confiabilidade para evitar perdas.</p>
                     </div>
                 </div>
 
@@ -717,16 +796,16 @@
                     <h3>Planilhas Sob Medida e Dashboards Power BI <span class="icon">+</span></h3>
                     <p class="summary">Ferramentas inteligentes e painéis gerenciais personalizados.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Desenvolvimento de planilhas avançadas em Excel/VBA com automações e criação de dashboards visuais em Power BI para monitoramento de indicadores de desempenho (KPIs).</p>
+                        <p><strong>Escopo completo:</strong> Desenvolvimento de planilhas avançadas em Excel/VBA com automações e criação de dashboards visuais em Power BI para monitoramento de KPIs.</p>
                     </div>
                 </div>
 
                 <!-- 8 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Faturamento e Cronograma de Atividades <span class="icon">+</span></h3>
-                    <p class="summary">Organização de rotinas diárias, notas fiscais e pendências (Demanda estilo Alana).</p>
+                    <p class="summary">Organização de rotinas diárias, notas fiscais e pendências.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Acompanhamento de cronogramas diários, emissão de notas fiscais, controle de tarefas pendentes e relatórios de produtividade para manter a gestão da empresa em dia.</p>
+                        <p><strong>Escopo completo:</strong> Acompanhamento de cronogramas diários, emissão de notas fiscais, controle de tarefas pendentes e relatórios de produtividade.</p>
                     </div>
                 </div>
             </div>
@@ -751,17 +830,30 @@
             card.classList.toggle('active');
         }
 
-        // Função do Simulador de Orçamento
+        // Função do Simulador de Orçamento Dinâmico (Atualiza em tempo real)
         function calcularOrcamento() {
-            const taxaBase = parseFloat(document.getElementById('servicoSelect').value);
-            const volume = parseInt(document.getElementById('volumeInput').value) || 1;
-            const total = taxaBase * volume;
-            
-            document.getElementById('precoEstimado').innerText = 'R$ ' + total.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-            
-            const msg = encodeURIComponent(Olá! Fiz uma simulação no site da VeloxSites no valor de R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits: 2})} para um volume de ${volume} unidades/horas. Gostaria de fechar esse serviço.);
-            document.getElementById('btnContratarSimulacao').href = https://wa.me/?text=${msg};
+            const select = document.getElementById('servicoSelect');
+            const volumeInput = document.getElementById('volumeInput');
+            const precoElement = document.getElementById('precoEstimado');
+            const btnContratar = document.getElementById('btnContratarSimulacao');
+
+            if (!select || !volumeInput || !precoElement) return;
+
+            const taxaHora = parseFloat(select.value) || 100;
+            const volume = parseInt(volumeInput.value) || 1;
+            const total = taxaHora * volume;
+
+            precoElement.innerText = 'R$ ' + total.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+            const servicoNome = select.options[select.selectedIndex].text;
+            const msg = encodeURIComponent(Olá! Fiz uma simulação no site da VeloxSites:\nServiço: ${servicoNome}\nVolume: ${volume} horas/demandas\nEstimativa: R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits: 2})}\nGostaria de avançar com a contratação.);
+            btnContratar.href = https://wa.me/?text=${msg};
         }
+
+        // Executa ao carregar a página para inicializar os valores
+        window.onload = function() {
+            calcularOrcamento();
+        };
 
         // Script para a Apresentação em Vídeo Animada
         function startVideoPresentation() {
@@ -773,9 +865,9 @@
             const text = document.getElementById('vidText');
 
             const steps = [
-                { t: "1. Gestão de Projetos e Documentação", desc: "Estruturamos projetos do início ao fim com arquivamento rigoroso, atendendo demandas como as do Davi e da Alana." },
-                { t: "2. Back-Office e Financeiro", desc: "Contas a pagar/receber, conciliação e faturamento executados com precisão (estilo Valentina)." },
-                { t: "3. Organização de Bases de Dados", desc: "Criação de diretórios estruturados com contatos, cadastros e informações limpas (estilo João Lucas)." },
+                { t: "1. Gestão de Projetos e Documentação", desc: "Estruturamos projetos do início ao fim com arquivamento rigoroso, atendendo demandas exigentes." },
+                { t: "2. Back-Office e Financeiro", desc: "Contas a pagar/receber, conciliação e faturamento executados com precisão absoluta." },
+                { t: "3. Organização de Bases de Dados", desc: "Criação de diretórios estruturados com contatos, cadastros e informações limpas." },
                 { t: "4. Gestão de Ativos e Inventário", desc: "Controle técnico de almoxarifado e inventário para eliminar perdas e otimizar recursos." },
                 { t: "VeloxSites: Sua Retaguarda Estratégica", desc: "Fale conosco agora pelo WhatsApp e profissionalize a gestão da sua empresa!" }
             ];
