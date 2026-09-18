@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeloxSites - Soluções em Gestão, Dados e Assistência Administrativa</title>
+    <title>VeloxSites - Criação de Sites, Gestão, Dados e Assistência Administrativa</title>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -113,6 +113,36 @@
             padding-left: 14px;
         }
 
+        /* Bolinha do WhatsApp no Topo (Canto Superior Direito) */
+        .top-whatsapp-badge {
+            position: fixed;
+            top: 25px;
+            right: 35px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 10000;
+            transition: transform 0.2s, background-color 0.2s;
+            text-decoration: none;
+        }
+
+        .top-whatsapp-badge:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+        }
+
+        .top-whatsapp-badge svg {
+            width: 26px;
+            height: 26px;
+            fill: white;
+        }
+
         /* Conteúdo Principal */
         main.main-content {
             margin-left: 280px;
@@ -147,7 +177,7 @@
         /* Hero Section */
         .hero {
             text-align: left;
-            padding: 10px 0 40px 0;
+            padding: 10px 0 30px 0;
             max-width: 900px;
         }
 
@@ -184,40 +214,169 @@
         .hero p {
             color: var(--text-muted);
             font-size: 1.15rem;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             line-height: 1.7;
-        }
-
-        /* Botão WhatsApp */
-        .btn-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background-color: var(--whatsapp-green);
-            color: white;
-            padding: 14px 28px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.05rem;
-            transition: background-color 0.2s, transform 0.2s;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #20ba5a;
-            transform: translateY(-2px);
-        }
-
-        .whatsapp-icon {
-            width: 22px;
-            height: 22px;
-            fill: white;
         }
 
         /* Seções Genéricas */
         .about-section, .process-section, .video-section, .portfolio-section, .testimonials-section, .services-section {
             margin-bottom: 50px;
+        }
+
+        /* Seção de Serviços (Movida para o Topo) */
+        .services-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-green);
+            background-color: var(--card-hover);
+        }
+
+        .service-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-card h3 span.icon {
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .service-card p.summary {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .service-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .service-card.active {
+            border-color: var(--primary-green);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background-color: var(--card-hover);
+        }
+
+        .service-card.active .service-details {
+            max-height: 400px;
+            opacity: 1;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .service-card.active h3 span.icon {
+            transform: rotate(45deg);
+        }
+
+        /* Seção de Portfólio / Exemplos com a Frase Customizada */
+        .portfolio-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .portfolio-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .portfolio-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-green);
+            padding: 25px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-green);
+            background-color: rgba(30, 41, 59, 0.8);
+        }
+
+        .portfolio-card h3 {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .portfolio-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-portfolio {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            align-self: flex-start;
+        }
+
+        .btn-portfolio:hover {
+            background-color: var(--primary-green-hover);
         }
 
         /* Seção Quem Somos */
@@ -427,74 +586,7 @@
             transition: width 0.1s linear;
         }
 
-        /* Seção de Portfólio & Demonstrações */
-        .portfolio-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-
-        .portfolio-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--primary-green);
-            padding: 25px;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary-green);
-            background-color: var(--card-hover);
-        }
-
-        .portfolio-card h3 {
-            color: var(--text-color);
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .portfolio-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .btn-portfolio {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--primary-green);
-            color: white;
-            text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: background-color 0.2s;
-            align-self: flex-start;
-        }
-
-        .btn-portfolio:hover {
-            background-color: var(--primary-green-hover);
-        }
-
-        /* Seção de Depoimentos */
+        /* Seção de Percepção dos Clientes (Agora a ÚLTIMA seção) */
         .testimonials-section h2 {
             font-size: 2.2rem;
             margin-bottom: 10px;
@@ -534,88 +626,6 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-        }
-
-        /* Seção de Serviços */
-        .services-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .section-subtitle {
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            font-size: 1.05rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .service-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-green);
-            background-color: var(--card-hover);
-        }
-
-        .service-card h3 {
-            color: var(--primary-green);
-            margin-bottom: 10px;
-            font-size: 1.25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .service-card h3 span.icon {
-            font-size: 1.1rem;
-            transition: transform 0.3s;
-        }
-
-        .service-card p.summary {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .service-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, opacity 0.3s ease;
-            opacity: 0;
-            color: #cbd5e1;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .service-card.active {
-            border-color: var(--primary-green);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            background-color: var(--card-hover);
-        }
-
-        .service-card.active .service-details {
-            max-height: 400px;
-            opacity: 1;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .service-card.active h3 span.icon {
-            transform: rotate(45deg);
         }
 
         /* Widget da Assistente Mari */
@@ -771,10 +781,27 @@
             .hero h1 {
                 font-size: 2.2rem;
             }
+            .top-whatsapp-badge {
+                top: 15px;
+                right: 70px;
+                width: 40px;
+                height: 40px;
+            }
+            .top-whatsapp-badge svg {
+                width: 22px;
+                height: 22px;
+            }
         }
     </style>
 </head>
 <body>
+
+    <!-- Bolinha do WhatsApp no Topo (Canto Superior Direito) -->
+    <a href="https://wa.me/5521967860665" target="_blank" class="top-whatsapp-badge" title="Fale pelo WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+    </a>
 
     <!-- Header Mobile -->
     <div class="mobile-header">
@@ -805,24 +832,22 @@
         <ul class="sidebar-menu">
             <h4>Navegação</h4>
             <li><a href="#" onclick="toggleSidebar()">Início</a></li>
+            <li><a href="#servicos" onclick="toggleSidebar()">Serviços & Criação de Sites</a></li>
+            <li><a href="#portfolio" onclick="toggleSidebar()">Agendas & Demonstrações</a></li>
             <li><a href="#quemsomos" onclick="toggleSidebar()">Quem Somos</a></li>
             <li><a href="#comofunciona" onclick="toggleSidebar()">Como Funciona</a></li>
             <li><a href="#video" onclick="toggleSidebar()">Apresentação</a></li>
-            <li><a href="#portfolio" onclick="toggleSidebar()">Quer Criar Seu Site?</a></li>
             <li><a href="#depoimentos" onclick="toggleSidebar()">Depoimentos</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Serviços</a></li>
-            <li><a href="https://wa.me/5521967860665" target="_blank" onclick="toggleSidebar()">WhatsApp Direto</a></li>
         </ul>
 
         <ul class="sidebar-menu">
             <h4>Áreas de Atuação</h4>
+            <li><a href="#servicos" onclick="toggleSidebar()">Criação de Sites e Portais</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Gestão de Documentação</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Contas a Pagar e Receber</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Bases de Dados e Cadastros</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Atendimento e Chamadas</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Gestão de Ativos & Estoque</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Planilhas e Power BI</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Sites e Agendas Customizadas</a></li>
         </ul>
     </aside>
 
@@ -834,19 +859,122 @@
                 <span class="badge">Campo Grande, Rio de Janeiro - RJ</span>
                 <span class="badge">Atendimento para Empresas e Pessoas em Todo o Brasil</span>
             </div>
-            <h1>Precisa contratar suporte ou gestão online? É <span>fácil, rápido e seguro</span></h1>
-            <p>Serviços profissionais de retaguarda administrativa, organização de documentos, controle financeiro, criação de sites e planilhas sob medida. Entregas no prazo e qualidade garantida para você ou sua empresa.</p>
+            <h1>Precisa criar seu site ou suporte online? É <span>fácil, rápido e seguro</span></h1>
+            <p>Serviços profissionais de retaguarda administrativa, criação de sites sob medida, controle financeiro e planilhas inteligentes. Entregas no prazo e qualidade garantida para você ou sua empresa.</p>
+        </section>
+
+        <!-- Seção de Serviços e Criação de Sites (Movida para o Topo) -->
+        <section class="services-section" id="servicos">
+            <h2>Serviços Profissionais e Criação de Sites</h2>
+            <p class="section-subtitle">Clique em qualquer serviço abaixo para abrir e ler o escopo completo de atuação:</p>
             
-            <a href="https://wa.me/5521967860665" class="btn-whatsapp" target="_blank">
-                <svg class="whatsapp-icon" viewBox="0 0 24 24">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                </svg>
-                Fale Comigo no WhatsApp
-            </a>
+            <div class="services-grid">
+                <!-- 1. Criação de Sites -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Criação de Sites e Páginas Personalizadas <span class="icon">+</span></h3>
+                    <p class="summary">Desenvolvimento de portais sob medida para agendas, projetos e negócios.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Criação de qualquer tipo de site ou página que você precise (como portais de guarda compartilhada, cronogramas de programação, páginas institucionais ou landing pages) com foco em organização e elegância.</p>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Gestão de Documentação de Projetos <span class="icon">+</span></h3>
+                    <p class="summary">Abordagem estruturada para projetos com início, meio e fim bem definidos.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Categorização, arquivamento rigoroso e recuperação ágil de todos os documentos relevantes. Garantimos que a documentação esteja completa, organizada e pronta para futuras referências e auditorias.</p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Assistência Administrativa Remota (Back-Office) <span class="icon">+</span></h3>
+                    <p class="summary">Suporte responsável para digitação, conferência de dados e controle rotineiro.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Execução de tarefas essenciais de back-office, incluindo entrada de dados, preenchimento e estruturação de planilhas, cadastros em sistemas e organização documental com rigor em prazos.</p>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Contas a Pagar, Receber e Conciliação <span class="icon">+</span></h3>
+                    <p class="summary">Organização financeira rigorosa e controle de fluxo de caixa.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Gestão de pagamentos, cobranças, lançamento de extratos, conciliação bancária diária e relatórios financeiros para assegurar saúde e previsibilidade ao seu negócio.</p>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Bases de Dados e Cadastros Corporativos <span class="icon">+</span></h3>
+                    <p class="summary">Criação de diretórios estruturados com nomes, endereços e contatos.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Unificação e limpeza de cadastros de clientes, fornecedores e parceiros em planilhas inteligentes, garantindo padronização e buscas rápidas.</p>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Gestão de Ativos, Estoque e Almoxarifado <span class="icon">+</span></h3>
+                    <p class="summary">Controle técnico de materiais, inventário físico e rotatividade.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Estruturação de inventários físicos, planilhas de guarda e controle de entradas/saídas, otimização de almoxarifado e aplicação de conceitos de confiabilidade para evitar perdas.</p>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Planilhas Sob Medida e Dashboards Power BI <span class="icon">+</span></h3>
+                    <p class="summary">Ferramentas inteligentes e painéis gerenciais personalizados.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Desenvolvimento de planilhas avançadas em Excel/VBA com automações e criação de dashboards visuais em Power BI para monitoramento de KPIs.</p>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Faturamento e Cronograma de Atividades <span class="icon">+</span></h3>
+                    <p class="summary">Organização de rotinas diárias, notas fiscais e pendências.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Acompanhamento de cronogramas diários, emissão de notas fiscais, controle de tarefas pendentes e relatórios de produtividade.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Projetos e Portfólio (Com a sua frase exata) -->
+        <section class="portfolio-section" id="portfolio">
+            <h2>Quer criar uma agenda de guarda compartilhada?</h2>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">Tem alguma programação que deseja fazer? Estamos aqui para atender, para criar a sua. Conheça os exemplos reais abaixo:</p>
+            
+            <div class="portfolio-grid">
+                <!-- Exemplo 1: Guarda Compartilhada -->
+                <div class="portfolio-card">
+                    <div>
+                        <h3>Agenda de Guarda Compartilhada <span>👨‍👩‍👧‍👦</span></h3>
+                        <p>Exemplo prático de site e portal dedicado à organização parental, datas, feriados e rotinas familiares sem atritos:</p>
+                    </div>
+                    <a href="https://sites.google.com/view/agenda-sophia-2027/in%C3%ADcio" target="_blank" class="btn-portfolio">
+                        Ver Exemplo (Agenda Sophia) ↗
+                    </a>
+                </div>
+
+                <!-- Exemplo 2: Programação -->
+                <div class="portfolio-card">
+                    <div>
+                        <h3>Programação & Cronograma <span>📊</span></h3>
+                        <p>Exemplo prático de página estruturada para gestão temporal, marcos de projetos e acompanhamento sequencial de etapas:</p>
+                    </div>
+                    <a href="https://sites.google.com/view/programacao-2027/in%C3%ADcio" target="_blank" class="btn-portfolio">
+                        Ver Exemplo (Programação) ↗
+                    </a>
+                </div>
+            </div>
         </section>
 
         <!-- Seção Quem Somos Detalhada -->
-        <section class="about-section" id="quemsomos">
+        <section class="about-section" id="quemsomos" style="margin-top: 50px;">
             <h2>Quem Somos & Nossa Essência</h2>
             <p>A <strong>VeloxSites</strong> opera a partir do Rio de Janeiro (Campo Grande) fornecendo retaguarda administrativa de elite tanto para empresas quanto para pessoas físicas em todo o Brasil.</p>
             
@@ -905,37 +1033,7 @@
             </div>
         </section>
 
-        <!-- Seção de Projetos e Portfólio (Quer criar seu site?) -->
-        <section class="portfolio-section" id="portfolio">
-            <h2>Quer criar seu site?</h2>
-            <p class="section-subtitle">Exemplos abaixo: guarda compartilhada, programação. Fazemos qualquer tipo de site ou página personalizada que você precise.</p>
-            
-            <div class="portfolio-grid">
-                <!-- Projeto 1: Guarda Compartilhada -->
-                <div class="portfolio-card">
-                    <div>
-                        <h3>Agenda de Guarda Compartilhada <span>👨‍👩‍👧‍👦</span></h3>
-                        <p>Exemplo prático de site e portal dedicado à organização parental, datas, feriados e rotinas familiares sem atritos:</p>
-                    </div>
-                    <a href="https://sites.google.com/view/agenda-sophia-2027/in%C3%ADcio" target="_blank" class="btn-portfolio">
-                        Ver Exemplo (Agenda Sophia) ↗
-                    </a>
-                </div>
-
-                <!-- Projeto 2: Programação -->
-                <div class="portfolio-card">
-                    <div>
-                        <h3>Programação & Cronograma <span>📊</span></h3>
-                        <p>Exemplo prático de página estruturada para gestão temporal, marcos de projetos e acompanhamento sequencial de etapas:</p>
-                    </div>
-                    <a href="https://sites.google.com/view/programacao-2027/in%C3%ADcio" target="_blank" class="btn-portfolio">
-                        Ver Exemplo (Programação) ↗
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Percepção dos Clientes (Depoimentos) -->
+        <!-- Seção de Percepção dos Clientes (Agora a ÚLTIMA seção) -->
         <section class="testimonials-section" id="depoimentos">
             <h2>Percepção dos Clientes</h2>
             <p class="section-subtitle">O que gestores e contratantes dizem sobre o padrão de organização e suporte prestado:</p>
@@ -963,95 +1061,6 @@
                     <p>"Seguiu cronogramas diários à risca, realizou ligações e cadastros com extrema responsabilidade. Uma assistente virtual de altíssimo nível."</p>
                     <div class="testimonial-author">Alana P.</div>
                     <div class="testimonial-project">Assistência Remota e Cronogramas</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seção de Serviços Interativos Completos -->
-        <section class="services-section" id="servicos">
-            <h2>Serviços Administrativos e Especializados</h2>
-            <p class="section-subtitle">Clique em qualquer serviço abaixo para abrir e ler o escopo completo de atuação:</p>
-            
-            <div class="services-grid">
-                <!-- 1 -->
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Gestão de Documentação de Projetos <span class="icon">+</span></h3>
-                    <p class="summary">Abordagem estruturada para projetos com início, meio e fim bem definidos.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Categorização, arquivamento rigoroso e recuperação ágil de todos os documentos relevantes. Garantimos que a documentação esteja completa, organizada e pronta para futuras referências e auditorias.</p>
-                    </div>
-                </div>
-
-                <!-- 2 -->
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Assistência Administrativa Remota (Back-Office) <span class="icon">+</span></h3>
-                    <p class="summary">Suporte responsável para digitação, conferência de dados e controle rotineiro.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Execução de tarefas essenciais de back-office, incluindo entrada de dados, preenchimento e estruturação de planilhas, cadastros em sistemas e organização documental com rigor em prazos.</p>
-                    </div>
-                </div>
-
-                <!-- 3 -->
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Contas a Pagar, Receber e Conciliação <span class="icon">+</span></h3>
-                    <p class="summary">Organização financeira rigorosa e controle de fluxo de caixa.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Gestão de pagamentos, cobranças, lançamento de extratos, conciliação bancária diária e relatórios financeiros para assegurar saúde e previsibilidade ao seu negócio.</p>
-                    </div>
-                </div>
-
-                <!-- 4 -->
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Bases de Dados e Cadastros Corporativos <span class="icon">+</span></h3>
-                    <p class="summary">Criação de diretórios estruturados com nomes, endereços e contatos.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Unificação e limpeza de cadastros de clientes, fornecedores e parceiros em planilhas inteligentes, garantindo padronização e buscas rápidas.</p>
-                    </div>
-                </div>
-
-                <!-- 5 -->
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Atendimento e Gestão de Chamadas <span class="icon">+</span></h3>
-                    <p class="summary">Comunicação profissional dedicada para clientes, suporte e rotinas.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Atendimento telefônico e digital, resposta rápida a consultas de clientes, suporte geral e garantia de comunicação cortês e eficaz.</p>
-                    </div>
-                </div>
-
-                <!-- 6 -->
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Gestão de Ativos, Estoque e Almoxarifado <span class="icon">+</span></h3>
-                    <p class="summary">Controle técnico de materiais, inventário físico e rotatividade.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Estruturação de inventários físicos, planilhas de guarda e controle de entradas/saídas, otimização de almoxarifado e aplicação de conceitos de confiabilidade para evitar perdas.</p>
-                    </div>
-                </div>
-
-                <!-- 7 -->
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Planilhas Sob Medida e Dashboards Power BI <span class="icon">+</span></h3>
-                    <p class="summary">Ferramentas inteligentes e painéis gerenciais personalizados.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Desenvolvimento de planilhas avançadas em Excel/VBA com automações e criação de dashboards visuais em Power BI para monitoramento de KPIs.</p>
-                    </div>
-                </div>
-
-                <!-- 8 -->
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Faturamento e Cronograma de Atividades <span class="icon">+</span></h3>
-                    <p class="summary">Organização de rotinas diárias, notas fiscais e pendências.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Acompanhamento de cronogramas diários, emissão de notas fiscais, controle de tarefas pendentes e relatórios de produtividade.</p>
-                    </div>
-                </div>
-
-                <!-- 9 -->
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Criação de Sites e Páginas Personalizadas <span class="icon">+</span></h3>
-                    <p class="summary">Desenvolvimento de portais sob medida para agendas, projetos e negócios.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Criação de qualquer tipo de site ou página que você precise (como portais de guarda compartilhada, cronogramas de programação, páginas institucionais ou landing pages) com foco em organização e elegância.</p>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1180,11 +1189,11 @@
             const progressBar = document.getElementById('videoProgressBar');
 
             const steps = [
-                { t: "1. Organização de Documentação de Projetos", desc: "Categorização, arquivamento rigoroso e total rastreabilidade para projetos de início ao fim." },
-                { t: "2. Suporte Administrativo e Back-Office", desc: "Entrada de dados, controle de planilhas e rotinas diárias executadas com precisão milimétrica." },
-                { t: "3. Gestão Financeira e Conciliação", desc: "Contas a pagar, receber, faturamento e controle de fluxo de caixa garantindo saúde financeira." },
-                { t: "4. Criação de Sites e Agendas Customizadas", desc: "Desenvolvimento de portais sob medida para guarda compartilhada, programações e projetos." },
-                { t: "VeloxSites: Sua Retaguarda Estratégica", desc: "Fale com a Mari ou clique no WhatsApp para criar o seu site ou serviço de gestão agora!" }
+                { t: "1. Criação de Sites e Portais", desc: "Desenvolvimento de páginas customizadas para agendas, projetos e negócios." },
+                { t: "2. Organização de Documentação de Projetos", desc: "Categorização, arquivamento rigoroso e total rastreabilidade para projetos de início ao fim." },
+                { t: "3. Suporte Administrativo e Back-Office", desc: "Entrada de dados, controle de planilhas e rotinas diárias executadas com precisão milimétrica." },
+                { t: "4. Gestão Financeira e Conciliação", desc: "Contas a pagar, receber, faturamento e controle de fluxo de caixa garantindo saúde financeira." },
+                { t: "VeloxSites: Sua Retaguarda Estratégica", desc: "Fale com a Mari ou clique no WhatsApp lá em cima para criar o seu site ou serviço de gestão agora!" }
             ];
 
             let index = 0;
