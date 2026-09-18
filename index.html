@@ -14,6 +14,7 @@
             --text-muted: #94a3b8;
             --primary-green: #10b981;
             --primary-green-hover: #059669;
+            --whatsapp-green: #25d366;
             --border-color: #334155;
             --accent-glow: rgba(16, 185, 129, 0.2);
         }
@@ -143,7 +144,7 @@
             cursor: pointer;
         }
 
-        /* Hero Section com Tipografia sem quebras esquisitas */
+        /* Hero Section */
         .hero {
             text-align: left;
             padding: 10px 0 40px 0;
@@ -181,22 +182,31 @@
             line-height: 1.7;
         }
 
-        .btn-primary {
-            display: inline-block;
-            background-color: var(--primary-green);
+        /* Botão WhatsApp com ícone */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--whatsapp-green);
             color: white;
-            padding: 14px 32px;
+            padding: 14px 28px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.05rem;
             transition: background-color 0.2s, transform 0.2s;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
-        .btn-primary:hover {
-            background-color: var(--primary-green-hover);
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
             transform: translateY(-2px);
+        }
+
+        .whatsapp-icon {
+            width: 22px;
+            height: 22px;
+            fill: white;
         }
 
         /* Seção Quem Somos Detalhada */
@@ -313,7 +323,7 @@
             color: var(--primary-green);
         }
 
-        /* Seção de Vídeo Institucional (Motion Player) */
+        /* Seção de Vídeo Institucional com Player Aprimorado */
         .video-section {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -371,6 +381,16 @@
             max-width: 600px;
             margin-bottom: 25px;
             transition: opacity 0.4s;
+        }
+
+        .video-progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background-color: var(--primary-green);
+            width: 0%;
+            transition: width 0.1s linear;
         }
 
         .play-overlay {
@@ -437,7 +457,7 @@
 
         .testimonial-card p {
             color: var(--text-muted);
-            font-size: 0.95srem;
+            font-size: 0.95rem;
             font-style: italic;
             margin-bottom: 15px;
         }
@@ -628,7 +648,13 @@
             <span class="badge">Excelência em Organização, Dados e Back-Office</span>
             <h1>Soluções estruturadas para a sua operação crescer</h1>
             <p>Atuação profissional e rigor técnico em organização de documentação de projetos, suporte administrativo remoto, controle financeiro de contas a pagar e receber, planilhas avançadas e atendimento executivo.</p>
-            <a href="https://wa.me/" class="btn-primary" target="_blank">Fale Comigo no WhatsApp</a>
+            
+            <a href="https://wa.me/" class="btn-whatsapp" target="_blank">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                Fale Comigo no WhatsApp
+            </a>
         </section>
 
         <!-- Seção Quem Somos Detalhada -->
@@ -652,7 +678,7 @@
             </div>
         </section>
 
-        <!-- Simulador de Orçamento Dinâmico (Atualiza em tempo real) -->
+        <!-- Simulador de Orçamento Dinâmico com Botão de Enviar -->
         <section class="simulator-section" id="simulador">
             <h2>Simulador de Orçamento Instantâneo</h2>
             <p>Selecione o serviço e ajuste a quantidade estimada para calcular o investimento na hora:</p>
@@ -660,11 +686,11 @@
             <div class="sim-form-group">
                 <label for="servicoSelect">Tipo de Serviço:</label>
                 <select id="servicoSelect" class="sim-select" onchange="calcularOrcamento()">
-                    <option value="120">Gestão de Documentação de Projetos (R$ 120/h)</option>
-                    <option value="100">Assistência Administrativa / Back-Office (R$ 100/h)</option>
-                    <option value="150">Contas a Pagar, Receber e Conciliação (R$ 150/h)</option>
-                    <option value="110">Bases de Dados e Cadastros Corporativos (R$ 110/h)</option>
-                    <option value="160">Gestão de Ativos, Estoque e Inventário (R$ 160/h)</option>
+                    <option value="110">Gestão de Documentação de Projetos (R$ 110/h)</option>
+                    <option value="90">Assistência Administrativa / Back-Office (R$ 90/h)</option>
+                    <option value="130">Contas a Pagar, Receber e Conciliação (R$ 130/h)</option>
+                    <option value="100">Bases de Dados e Cadastros Corporativos (R$ 100/h)</option>
+                    <option value="150">Gestão de Ativos, Estoque e Inventário (R$ 150/h)</option>
                     <option value="180">Planilhas Sob Medida e Dashboards Power BI (R$ 180/h)</option>
                 </select>
             </div>
@@ -677,13 +703,18 @@
             <div class="sim-result">
                 <div>
                     <span style="font-size: 0.9rem; color: var(--text-muted); display: block;">Estimativa Calculada:</span>
-                    <span class="sim-price" id="precoEstimado">R$ 1.000,00</span>
+                    <span class="sim-price" id="precoEstimado">R$ 900,00</span>
                 </div>
-                <a href="https://wa.me/" class="btn-primary" target="_blank" id="btnContratarSimulacao">Contratar via WhatsApp</a>
+                <a href="https://wa.me/" class="btn-whatsapp" target="_blank" id="btnContratarSimulacao">
+                    <svg class="whatsapp-icon" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
+                    Enviar Orçamento
+                </a>
             </div>
         </section>
 
-        <!-- Seção de Vídeo Institucional (Motion Player) -->
+        <!-- Seção de Vídeo Institucional (Com Barra de Progresso Real) -->
         <section class="video-section" id="video">
             <h3>Apresentação Institucional</h3>
             <p>Conheça nossa metodologia de trabalho e a precisão das nossas entregas administrativas.</p>
@@ -696,6 +727,7 @@
                     <h4 id="vidTitle">VeloxSites: Excelência Operacional</h4>
                     <p id="vidText">Clique no botão play acima para iniciar a apresentação interativa dos nossos serviços de gestão e suporte administrativo.</p>
                 </div>
+                <div class="video-progress-bar" id="videoProgressBar"></div>
             </div>
         </section>
 
@@ -830,7 +862,7 @@
             card.classList.toggle('active');
         }
 
-        // Função do Simulador de Orçamento Dinâmico (Atualiza em tempo real)
+        // Função do Simulador de Orçamento Dinâmico
         function calcularOrcamento() {
             const select = document.getElementById('servicoSelect');
             const volumeInput = document.getElementById('volumeInput');
@@ -850,12 +882,12 @@
             btnContratar.href = https://wa.me/?text=${msg};
         }
 
-        // Executa ao carregar a página para inicializar os valores
+        // Inicializa o simulador ao carregar a página
         window.onload = function() {
             calcularOrcamento();
         };
 
-        // Script para a Apresentação em Vídeo Animada
+        // Script para a Apresentação em Vídeo Animada com Barra de Progresso
         function startVideoPresentation() {
             const overlay = document.getElementById('playOverlay');
             overlay.style.opacity = '0';
@@ -863,6 +895,7 @@
 
             const title = document.getElementById('vidTitle');
             const text = document.getElementById('vidText');
+            const progressBar = document.getElementById('videoProgressBar');
 
             const steps = [
                 { t: "1. Gestão de Projetos e Documentação", desc: "Estruturamos projetos do início ao fim com arquivamento rigoroso, atendendo demandas exigentes." },
@@ -873,6 +906,15 @@
             ];
 
             let index = 0;
+            let progress = 0;
+            
+            // Animação da barra de progresso
+            const progressInterval = setInterval(() => {
+                progress += 0.5;
+                if (progress > 100) progress = 100;
+                progressBar.style.width = progress + '%';
+            }, 100);
+
             function nextStep() {
                 if (index < steps.length) {
                     title.style.opacity = '0';
@@ -883,7 +925,14 @@
                         title.style.opacity = '1';
                         text.style.opacity = '1';
                         index++;
-                        setTimeout(nextStep, 4000);
+                        if (index < steps.length) {
+                            setTimeout(nextStep, 4000);
+                        } else {
+                            setTimeout(() => {
+                                clearInterval(progressInterval);
+                                progressBar.style.width = '100%';
+                            }, 4000);
+                        }
                     }, 400);
                 }
             }
