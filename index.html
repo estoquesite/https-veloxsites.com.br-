@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeloxSites - Soluções em Gestão, Dados e Assistência Administrativa</title>
+    <title>VeloxSites - Assistência Administrativa, Gestão e Dados</title>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -161,7 +161,7 @@
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             margin-bottom: 20px;
             font-weight: 800;
             letter-spacing: -0.5px;
@@ -173,8 +173,9 @@
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-bottom: 35px;
+            line-height: 1.7;
         }
 
         .btn-primary {
@@ -237,54 +238,6 @@
             font-size: 1rem;
         }
 
-        .dashboard-preview {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 35px;
-            margin-top: 50px;
-        }
-
-        .dashboard-preview h3 {
-            color: var(--primary-green);
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .dashboard-preview p {
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            font-size: 1.05rem;
-        }
-
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .kpi-card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .kpi-card .kpi-value {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-green);
-            margin-bottom: 5px;
-        }
-
-        .kpi-card .kpi-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
         footer {
             text-align: center;
             padding: 40px;
@@ -312,78 +265,58 @@
         <h3>Navegação</h3>
         <ul>
             <li><a href="#" onclick="toggleMenu()">Início</a></li>
-            <li><a href="#servicos" onclick="toggleMenu()">Serviços Especializados</a></li>
-            <li><a href="#portfolio" onclick="toggleMenu()">Indicadores e Métricas</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">Serviços Principais</a></li>
             <li><a href="https://wa.me/" target="_blank" onclick="toggleMenu()">Contato Direto</a></li>
         </ul>
-        <h3>Áreas de Atuação</h3>
+        <h3>Serviços Especializados</h3>
         <ul>
-            <li><a href="#servicos" onclick="toggleMenu()">Gestão de Documentação</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">Gestão de Documentação de Projetos</a></li>
             <li><a href="#servicos" onclick="toggleMenu()">Assistência Remota & Back-Office</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">Atendimento e Chamadas Telefônicas</a></li>
             <li><a href="#servicos" onclick="toggleMenu()">Gestão de Ativos & Estoque</a></li>
-            <li><a href="#servicos" onclick="toggleMenu()">Dashboards Power BI</a></li>
             <li><a href="#servicos" onclick="toggleMenu()">Planilhas e Automação</a></li>
         </ul>
     </nav>
 
     <section class="hero">
-        <span class="badge">Excelência em Organização, Dados e Back-Office</span>
-        <h1>Soluções estruturadas para a <span>sua operação crescer</span></h1>
-        <p>Atuação especializada em organização e gestão de documentação de projetos, assistência administrativa remota, planilhas avançadas e painéis gerenciais.</p>
+        <span class="badge">Assistência Administrativa e Gestão de Projetos</span>
+        <h1>Soluções especializadas em <span>organização, back-office e dados</span></h1>
+        <p>Ofereço suporte administrativo remoto de alta precisão para a sua empresa: desde a organização e gestão completa de documentação de projetos com início, meio e fim, até o atendimento a clientes, entrada de dados e controle de planilhas.</p>
         <a href="https://wa.me/" class="btn-primary" target="_blank">Fale Comigo no WhatsApp</a>
     </section>
 
     <section class="services" id="servicos">
-        <h2>Serviços Especializados</h2>
+        <h2>Serviços e Soluções Administrativas</h2>
         <div class="services-grid">
             <div class="service-card">
                 <h3>Gestão de Documentação de Projetos</h3>
-                <p>Abordagem estruturada para projetos com início, meio e fim bem definidos. Categorização, arquivamento rigoroso e recuperação ágil de todos os documentos relevantes para garantir total rastreabilidade.</p>
+                <p>Abordagem estruturada para projetos com início, meio e fim bem definidos. Trabalho na categorização, arquivamento rigoroso e na garantia de que todos os documentos estejam completos e facilmente recuperáveis para consultas futuras.</p>
             </div>
             <div class="service-card">
-                <h3>Assistência Administrativa Remota</h3>
-                <p>Suporte de back-office altamente organizado para digitação, entrada e conferência de dados, preenchimento e estruturação de planilhas, cadastros em sistemas e controle documental com atenção excepcional aos detalhes.</p>
+                <h3>Assistência Administrativa Remota (Back-Office)</h3>
+                <p>Suporte responsável e altamente organizado para digitação, entrada e conferência de dados, preenchimento e estruturação de planilhas, cadastros em sistemas e organização documental com atenção excepcional aos detalhes e prazos.</p>
+            </div>
+            <div class="service-card">
+                <h3>Atendimento e Gestão de Chamadas</h3>
+                <p>Serviço dedicado de assistente virtual para gerenciar o atendimento telefônico, responder a consultas de clientes, fornecer suporte geral e garantir uma comunicação eficaz e profissional para o seu negócio.</p>
             </div>
             <div class="service-card">
                 <h3>Gestão de Ativos e Inventário</h3>
-                <p>Controle de almoxarifado, inventário físico e rotatividade de materiais e equipamentos para assegurar eficiência operacional máxima e evitar perdas.</p>
+                <p>Controle técnico de almoxarifado, inventário físico e rotatividade de materiais e equipamentos para garantir eficiência na gestão de recursos corporativos.</p>
             </div>
             <div class="service-card">
-                <h3>Dashboards e Power BI</h3>
-                <p>Construção de painéis interativos de indicadores de desempenho (KPIs) e relatórios gerenciais para apoiar a tomada de decisão estratégica.</p>
+                <h3>Planilhas Sob Medida e Dashboards</h3>
+                <p>Desenvolvimento de ferramentas inteligentes em Excel e Power BI com fórmulas avançadas, relatórios automatizados e painéis executivos para tomada de decisão.</p>
             </div>
             <div class="service-card">
-                <h3>Planilhas Sob Medida e VBA</h3>
-                <p>Desenvolvimento de ferramentas inteligentes em Excel com fórmulas avançadas, validação rigorosa e automação de rotinas repetitivas.</p>
-            </div>
-            <div class="service-card">
-                <h3>Atendimento e Suporte Executivo</h3>
-                <p>Gerenciamento de consultas e chamadas com excelentes habilidades de comunicação e organização para manter o fluxo de trabalho diário impecável.</p>
-            </div>
-        </div>
-
-        <div class="dashboard-preview" id="portfolio">
-            <h3>Padrão de Qualidade e Confiabilidade</h3>
-            <p>Indicadores de desempenho e controle aplicados para assegurar eficiência e precisão em todas as entregas:</p>
-            <div class="kpi-grid">
-                <div class="kpi-card">
-                    <div class="kpi-value">98.4%</div>
-                    <div class="kpi-label">Disponibilidade de Ativos</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-value">-24%</div>
-                    <div class="kpi-label">Redução de Custos Operacionais</div>
-                </div>
-                <div class="kpi-card">
-                    <div class="kpi-value">100%</div>
-                    <div class="kpi-label">Conformidade Documental</div>
-                </div>
+                <h3>Sites e Landing Pages Profissionais</h3>
+                <p>Criação de páginas web modernas, rápidas e responsivas para destacar sua marca e captar clientes na internet de forma sólida.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 VeloxSites. Soluções Profissionais em Gestão, Dados e Documentação.
+        &copy; 2026 VeloxSites. Excelência em Organização e Suporte Administrativo.
     </footer>
 
     <script>
