@@ -262,7 +262,7 @@
             line-height: 1.6;
         }
 
-        /* Seção de Vídeo Institucional (Limpa e Funcional) */
+        /* Seção de Vídeo Institucional */
         .video-section {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -320,7 +320,7 @@
             margin-bottom: 25px;
         }
 
-        /* Widget de IA / Assistente Virtual Flutuante (Cantinho) */
+        /* Widget da Assistente Mari Flutuante */
         .ai-widget-btn {
             position: fixed;
             bottom: 30px;
@@ -329,7 +329,7 @@
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 12px 20px;
+            padding: 10px 18px 10px 10px;
             font-weight: 600;
             font-size: 0.95rem;
             cursor: pointer;
@@ -347,16 +347,17 @@
         }
 
         .ai-avatar {
-            width: 32px;
-            height: 32px;
-            background: white;
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #059669, #10b981);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-green);
+            color: white;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            border: 2px solid white;
         }
 
         .ai-chat-box {
@@ -364,6 +365,7 @@
             bottom: 95px;
             right: 30px;
             width: 350px;
+            max-width: calc(100vw - 40px);
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
@@ -372,6 +374,10 @@
             display: none;
             flex-direction: column;
             overflow: hidden;
+        }
+
+        .ai-chat-box.active {
+            display: flex !important;
         }
 
         .ai-chat-header {
@@ -383,7 +389,13 @@
             border-bottom: 1px solid var(--border-color);
         }
 
-        .ai-chat-header span {
+        .ai-chat-header-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ai-chat-header-info span {
             font-weight: bold;
             color: var(--primary-green);
             font-size: 0.95rem;
@@ -692,7 +704,7 @@
             </div>
         </section>
 
-        <!-- Seção de Vídeo Institucional (Limpa e Funcional) -->
+        <!-- Seção de Vídeo Institucional -->
         <section class="video-section" id="video">
             <h3>Apresentação Institucional</h3>
             <p>Conheça nossa metodologia de trabalho e a precisão das nossas entregas administrativas.</p>
@@ -824,19 +836,22 @@
         </footer>
     </main>
 
-    <!-- Widget de Inteligência Artificial Flutuante (Assistente Virtual no Cantinho) -->
+    <!-- Botão Flutuante e Caixa de Chat da Assistente Mari -->
     <button class="ai-widget-btn" onclick="toggleAiChat()">
-        <div class="ai-avatar">IA</div>
-        <span>Fale com a Assistente</span>
+        <div class="ai-avatar">M</div>
+        <span>Fale com a Mari</span>
     </button>
 
     <div class="ai-chat-box" id="aiChatBox">
         <div class="ai-chat-header">
-            <span>Assistente Virtual VeloxSites</span>
+            <div class="ai-chat-header-info">
+                <div class="ai-avatar" style="width: 28px; height: 28px; font-size: 0.8rem;">M</div>
+                <span>Mari (Assistente Virtual)</span>
+            </div>
             <button class="ai-chat-close" onclick="toggleAiChat()">✕</button>
         </div>
         <div class="ai-chat-body" id="aiChatBody">
-            <div class="ai-msg">Olá! Sou a assistente virtual da VeloxSites. Qual serviço administrativo ou de gestão você precisa para a sua empresa hoje?</div>
+            <div class="ai-msg">Olá! Sou a <strong>Mari</strong>, assistente virtual da VeloxSites. Qual serviço administrativo ou de gestão você precisa hoje?</div>
         </div>
         <div class="ai-chat-footer">
             <input type="text" id="aiChatInput" class="ai-chat-input" placeholder="Digite sua necessidade..." onkeypress="handleChatKey(event)">
@@ -858,14 +873,15 @@
             card.classList.toggle('active');
         }
 
-        // Lógica do Widget de Inteligência Artificial (Chat)
+        // Lógica do Chat da Mari
         function toggleAiChat() {
             const box = document.getElementById('aiChatBox');
-            if (box.style.display === 'flex') {
-                box.style.display = 'none';
-            } else {
-                box.style.display = 'flex';
-                document.getElementById('aiChatInput').focus();
+            box.classList.toggle('active');
+            if (box.classList.contains('active')) {
+                setTimeout(() => {
+                    const input = document.getElementById('aiChatInput');
+                    if (input) input.focus();
+                }, 100);
             }
         }
 
@@ -893,16 +909,16 @@
             input.value = '';
             body.scrollTop = body.scrollHeight;
 
-            // Resposta da IA e redirecionamento para o WhatsApp
+            // Resposta da Mari
             setTimeout(() => {
                 const aiMsg = document.createElement('div');
                 aiMsg.className = 'ai-msg';
-                aiMsg.innerHTML = Perfeito! Anotei sua solicitação: "<em>${text}</em>". Vou te conectar diretamente com a Mariana no WhatsApp para fecharmos os detalhes.;
+                aiMsg.innerHTML = Entendido! Anotei sua necessidade: "<em>${text}</em>". Vou te direcionar direto para o WhatsApp para conversarmos os detalhes.;
                 body.appendChild(aiMsg);
                 body.scrollTop = body.scrollHeight;
 
                 setTimeout(() => {
-                    const encodedMsg = encodeURIComponent(Olá! Vi pelo chat do site da VeloxSites e preciso do seguinte serviço: ${text});
+                    const encodedMsg = encodeURIComponent(Olá! Falei com a Mari no chat do site e preciso do seguinte serviço: ${text});
                     window.open(https://wa.me/?text=${encodedMsg}, '_blank');
                 }, 1500);
             }, 800);
