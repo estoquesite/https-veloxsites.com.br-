@@ -215,13 +215,17 @@
             fill: white;
         }
 
+        /* Seções Genéricas */
+        .about-section, .process-section, .video-section, .portfolio-section, .testimonials-section, .services-section {
+            margin-bottom: 50px;
+        }
+
         /* Seção Quem Somos */
         .about-section {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 40px;
-            margin-bottom: 50px;
             position: relative;
             overflow: hidden;
         }
@@ -274,7 +278,6 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 40px;
-            margin-bottom: 50px;
         }
 
         .process-section h2 {
@@ -326,7 +329,6 @@
             border-radius: 12px;
             padding: 35px;
             text-align: center;
-            margin-bottom: 50px;
         }
 
         .video-section h3 {
@@ -423,6 +425,197 @@
             background-color: var(--primary-green);
             width: 0%;
             transition: width 0.1s linear;
+        }
+
+        /* Seção de Portfólio & Demonstrações */
+        .portfolio-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .portfolio-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-green);
+            padding: 25px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-green);
+            background-color: var(--card-hover);
+        }
+
+        .portfolio-card h3 {
+            color: var(--text-color);
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .portfolio-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-portfolio {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            align-self: flex-start;
+        }
+
+        .btn-portfolio:hover {
+            background-color: var(--primary-green-hover);
+        }
+
+        /* Seção de Depoimentos */
+        .testimonials-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary-green);
+        }
+
+        .testimonial-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-project {
+            color: var(--primary-green);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Seção de Serviços */
+        .services-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-green);
+            background-color: var(--card-hover);
+        }
+
+        .service-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-card h3 span.icon {
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .service-card p.summary {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .service-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .service-card.active {
+            border-color: var(--primary-green);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background-color: var(--card-hover);
+        }
+
+        .service-card.active .service-details {
+            max-height: 400px;
+            opacity: 1;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .service-card.active h3 span.icon {
+            transform: rotate(45deg);
         }
 
         /* Widget da Assistente Mari */
@@ -551,138 +744,6 @@
             font-weight: 600;
         }
 
-        /* Seção de Depoimentos */
-        .testimonials-section {
-            margin-bottom: 50px;
-        }
-
-        .testimonials-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 25px;
-        }
-
-        .testimonial-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 3px solid var(--primary-green);
-        }
-
-        .testimonial-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--text-color);
-            font-size: 0.9rem;
-        }
-
-        .testimonial-project {
-            color: var(--primary-green);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Seção de Serviços */
-        .services-section {
-            margin-bottom: 50px;
-        }
-
-        .services-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .section-subtitle {
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            font-size: 1.05rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .service-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 25px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-green);
-            background-color: var(--card-hover);
-        }
-
-        .service-card h3 {
-            color: var(--primary-green);
-            margin-bottom: 10px;
-            font-size: 1.25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .service-card h3 span.icon {
-            font-size: 1.1rem;
-            transition: transform 0.3s;
-        }
-
-        .service-card p.summary {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .service-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, opacity 0.3s ease;
-            opacity: 0;
-            color: #cbd5e1;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .service-card.active {
-            border-color: var(--primary-green);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            background-color: var(--card-hover);
-        }
-
-        .service-card.active .service-details {
-            max-height: 400px;
-            opacity: 1;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .service-card.active h3 span.icon {
-            transform: rotate(45deg);
-        }
-
         footer {
             margin-top: 60px;
             padding: 30px 0;
@@ -747,6 +808,7 @@
             <li><a href="#quemsomos" onclick="toggleSidebar()">Quem Somos</a></li>
             <li><a href="#comofunciona" onclick="toggleSidebar()">Como Funciona</a></li>
             <li><a href="#video" onclick="toggleSidebar()">Apresentação</a></li>
+            <li><a href="#portfolio" onclick="toggleSidebar()">Demonstrações & Portfólio</a></li>
             <li><a href="#depoimentos" onclick="toggleSidebar()">Depoimentos</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Serviços</a></li>
             <li><a href="https://wa.me/5521967860665" target="_blank" onclick="toggleSidebar()">WhatsApp Direto</a></li>
@@ -760,6 +822,7 @@
             <li><a href="#servicos" onclick="toggleSidebar()">Atendimento e Chamadas</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Gestão de Ativos & Estoque</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Planilhas e Power BI</a></li>
+            <li><a href="#servicos" onclick="toggleSidebar()">Agendas & Programações</a></li>
         </ul>
     </aside>
 
@@ -772,7 +835,7 @@
                 <span class="badge">Atendimento para Empresas e Pessoas em Todo o Brasil</span>
             </div>
             <h1>Precisa contratar suporte ou gestão online? É <span>fácil, rápido e seguro</span></h1>
-            <p>Serviços profissionais de retaguarda administrativa, organização de documentos, controle financeiro e planilhas sob medida. Entregas no prazo e qualidade garantida para você ou sua empresa.</p>
+            <p>Serviços profissionais de retaguarda administrativa, organização de documentos, controle financeiro, planejamento anual e planilhas sob medida. Entregas no prazo e qualidade garantida para você ou sua empresa.</p>
             
             <a href="https://wa.me/5521967860665" class="btn-whatsapp" target="_blank">
                 <svg class="whatsapp-icon" viewBox="0 0 24 24">
@@ -815,7 +878,7 @@
                 <div class="process-step">
                     <div class="step-number">2</div>
                     <h4>Execução Online Ágil</h4>
-                    <p>Cuidamos de todo o back-office, planilhas ou documentos com rapidez e rigor nos prazos.</p>
+                    <p>Cuidamos de todo o back-office, planilhas, programações ou documentos com rapidez e rigor nos prazos.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">3</div>
@@ -839,6 +902,36 @@
                     <p id="vidText">Transformando processos burocráticos em gestão estruturada, organizada e de alto desempenho.</p>
                 </div>
                 <div class="video-progress-bar" id="videoProgressBar"></div>
+            </div>
+        </section>
+
+        <!-- Seção de Projetos e Portfólio em Destaque -->
+        <section class="portfolio-section" id="portfolio">
+            <h2>Demonstrações & Projetos Práticos</h2>
+            <p class="section-subtitle">Acesse modelos reais de plataformas e programações criadas sob medida para clientes e projetos:</p>
+            
+            <div class="portfolio-grid">
+                <!-- Projeto 1: Agenda Sophia 2027 -->
+                <div class="portfolio-card">
+                    <div>
+                        <h3>Agenda & Planejamento Sophia 2027 <span>📅</span></h3>
+                        <p>Plataforma dedicada à organização de rotinas, controle de compromissos anuais e planejamento detalhado com foco em máxima clareza e previsibilidade.</p>
+                    </div>
+                    <a href="https://sites.google.com/view/agenda-sophia-2027/in%C3%ADcio" target="_blank" class="btn-portfolio">
+                        Ver Projeto Ao Vivo ↗
+                    </a>
+                </div>
+
+                <!-- Projeto 2: Programação 2027 -->
+                <div class="portfolio-card">
+                    <div>
+                        <h3>Programação & Cronograma 2027 <span>📊</span></h3>
+                        <p>Estrutura completa de gestão temporal, marcos de projetos e acompanhamento sequencial de etapas para metas de médio e longo prazo.</p>
+                    </div>
+                    <a href="https://sites.google.com/view/programacao-2027/in%C3%ADcio" target="_blank" class="btn-portfolio">
+                        Ver Projeto Ao Vivo ↗
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -930,7 +1023,7 @@
                     <h3>Gestão de Ativos, Estoque e Almoxarifado <span class="icon">+</span></h3>
                     <p class="summary">Controle técnico de materiais, inventário físico e rotatividade.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Estruturação de inventários físicos, controle de entradas/saídas, otimização de almoxarifado e aplicação de conceitos de confiabilidade para evitar perdas.</p>
+                        <p><strong>Escopo completo:</strong> Estruturação de inventários físicos, planilhas de guarda e controle de entradas/saídas, otimização de almoxarifado e aplicação de conceitos de confiabilidade para evitar perdas.</p>
                     </div>
                 </div>
 
@@ -949,6 +1042,15 @@
                     <p class="summary">Organização de rotinas diárias, notas fiscais e pendências.</p>
                     <div class="service-details">
                         <p><strong>Escopo completo:</strong> Acompanhamento de cronogramas diários, emissão de notas fiscais, controle de tarefas pendentes e relatórios de produtividade.</p>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Planejamento, Agendas & Programações <span class="icon">+</span></h3>
+                    <p class="summary">Criação de páginas, portais e cronogramas customizados de rotinas e metas.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Estruturação de agendas completas (como agendas pessoais ou corporativas de 2027) e quadros de programação temporal para viagens, projetos ou rotinas familiares/profissionais com máxima organização.</p>
                     </div>
                 </div>
             </div>
@@ -987,14 +1089,13 @@
     </div>
 
     <script>
-        // Contador inteligente iniciando em 947
+        // Contador iniciando em 947
         document.addEventListener("DOMContentLoaded", function() {
             let visits = localStorage.getItem('velox_site_visits');
             if (!visits) {
                 visits = 947;
                 localStorage.setItem('velox_site_visits', visits);
             } else {
-                // Incrementa sutilmente a cada nova sessão limpa do usuário
                 visits = parseInt(visits) + 1;
                 localStorage.setItem('velox_site_visits', visits);
             }
@@ -1068,7 +1169,7 @@
             }, 800);
         }
 
-        // Lógica do Vídeo Motion Player Interativo
+        // Apresentação Interativa
         function startVideo() {
             const overlay = document.getElementById('playOverlay');
             overlay.style.opacity = '0';
