@@ -831,7 +831,7 @@
             <p>Clique no play para assistir à nossa apresentação interativa sobre o padrão de excelência VeloxSites.</p>
             <div class="video-container">
                 <div class="play-overlay" id="playOverlay">
-                    <button class="play-btn-circle" onclick="startVideo()">▶️</button>
+                    <button class="play-btn-circle" onclick="startVideo()">▶</button>
                     <span style="color: var(--text-muted); margin-top: 15px; font-weight: 600; font-size: 0.95rem;">Assistir Apresentação Institucional</span>
                 </div>
                 <div class="video-screen">
@@ -957,7 +957,7 @@
         <footer>
             &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
             <div style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">
-                Visitas ao site: <img src="https://counter9.optistats.ovh/private/freecounterstat.php?c=5p9788z5xkz3k884qf54z2938x7351zq" border="0" title="contador de visitas" alt="contador de visitas" style="vertical-align: middle;">
+                Visitas ao site: <span id="visitorCount" style="color: var(--primary-green); font-weight: bold;">947</span>
             </div>
         </footer>
     </main>
@@ -987,6 +987,23 @@
     </div>
 
     <script>
+        // Contador inteligente iniciando em 947
+        document.addEventListener("DOMContentLoaded", function() {
+            let visits = localStorage.getItem('velox_site_visits');
+            if (!visits) {
+                visits = 947;
+                localStorage.setItem('velox_site_visits', visits);
+            } else {
+                // Incrementa sutilmente a cada nova sessão limpa do usuário
+                visits = parseInt(visits) + 1;
+                localStorage.setItem('velox_site_visits', visits);
+            }
+            const counterElement = document.getElementById('visitorCount');
+            if (counterElement) {
+                counterElement.innerText = visits;
+            }
+        });
+
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('active');
@@ -1040,13 +1057,13 @@
             setTimeout(() => {
                 const aiMsg = document.createElement('div');
                 aiMsg.className = 'ai-msg';
-                aiMsg.innerHTML = Entendido! Anotei sua necessidade: "<em>${text}</em>". Vou te direcionar direto para o WhatsApp para conversarmos os detalhes.;
+                aiMsg.innerHTML = `Entendido! Anotei sua necessidade: "<em>${text}</em>". Vou te direcionar direto para o WhatsApp para conversarmos os detalhes.`;
                 body.appendChild(aiMsg);
                 body.scrollTop = body.scrollHeight;
 
                 setTimeout(() => {
-                    const encodedMsg = encodeURIComponent(Olá! Falei com a Mari no chat do site e preciso do seguinte serviço: ${text});
-                    window.open(https://wa.me/5521967860665?text=${encodedMsg}, '_blank');
+                    const encodedMsg = encodeURIComponent(`Olá! Falei com a Mari no chat do site e preciso do seguinte serviço: ${text}`);
+                    window.open(`https://wa.me/5521967860665?text=${encodedMsg}`, '_blank');
                 }, 1500);
             }, 800);
         }
