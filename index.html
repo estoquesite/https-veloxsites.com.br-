@@ -151,6 +151,13 @@
             max-width: 900px;
         }
 
+        .badge-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
         .badge {
             display: inline-block;
             background: var(--accent-glow);
@@ -159,7 +166,6 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
-            margin-bottom: 20px;
             border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
@@ -262,7 +268,58 @@
             line-height: 1.6;
         }
 
-        /* Seção de Vídeo */
+        /* Seção Como Funciona */
+        .process-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+        }
+
+        .process-section h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .process-step {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .process-step .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-green);
+            color: white;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px auto;
+        }
+
+        .process-step h4 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .process-step p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Seção de Vídeo Motion Player */
         .video-section {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -311,6 +368,7 @@
             font-size: 1.8rem;
             color: var(--primary-green);
             margin-bottom: 15px;
+            transition: opacity 0.4s ease;
         }
 
         .video-screen p {
@@ -318,6 +376,53 @@
             color: var(--text-color);
             max-width: 600px;
             margin-bottom: 25px;
+            transition: opacity 0.4s ease;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 15, 25, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+
+        .play-btn-circle {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+            transition: transform 0.2s, background-color 0.2s;
+            border: none;
+        }
+
+        .play-btn-circle:hover {
+            transform: scale(1.1);
+            background-color: var(--primary-green-hover);
+        }
+
+        .video-progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background-color: var(--primary-green);
+            width: 0%;
+            transition: width 0.1s linear;
         }
 
         /* Widget da Assistente Mari */
@@ -640,14 +745,15 @@
             <h4>Navegação</h4>
             <li><a href="#" onclick="toggleSidebar()">Início</a></li>
             <li><a href="#quemsomos" onclick="toggleSidebar()">Quem Somos</a></li>
+            <li><a href="#comofunciona" onclick="toggleSidebar()">Como Funciona</a></li>
             <li><a href="#video" onclick="toggleSidebar()">Apresentação</a></li>
-            <li><a href="#depoimentos" onclick="toggleSidebar()">Percepção dos Clientes</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Serviços Administrativos</a></li>
-            <li><a href="https://wa.me/5521967860665" target="_blank" onclick="toggleSidebar()">Contato WhatsApp</a></li>
+            <li><a href="#depoimentos" onclick="toggleSidebar()">Depoimentos</a></li>
+            <li><a href="#servicos" onclick="toggleSidebar()">Serviços</a></li>
+            <li><a href="https://wa.me/5521967860665" target="_blank" onclick="toggleSidebar()">WhatsApp Direto</a></li>
         </ul>
 
         <ul class="sidebar-menu">
-            <h4>Áreas Atendidas</h4>
+            <h4>Áreas de Atuação</h4>
             <li><a href="#servicos" onclick="toggleSidebar()">Gestão de Documentação</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Contas a Pagar e Receber</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Bases de Dados e Cadastros</a></li>
@@ -659,11 +765,14 @@
 
     <!-- Conteúdo Principal -->
     <main class="main-content">
-        <!-- Hero Section -->
+        <!-- Hero Section com pegada direta e segura -->
         <section class="hero">
-            <span class="badge">Excelência em Organização, Dados e Back-Office</span>
-            <h1>Soluções estruturadas para a sua operação crescer</h1>
-            <p>Atuação profissional e rigor técnico em organização de documentação de projetos, suporte administrativo remoto, controle financeiro de contas a pagar e receber, planilhas avançadas e atendimento executivo.</p>
+            <div class="badge-container">
+                <span class="badge">Campo Grande, Rio de Janeiro - RJ</span>
+                <span class="badge">Atendimento para Empresas e Pessoas em Todo o Brasil</span>
+            </div>
+            <h1>Precisa contratar suporte ou gestão online? É <span>fácil, rápido e seguro</span></h1>
+            <p>Serviços profissionais de retaguarda administrativa, organização de documentos, controle financeiro e planilhas sob medida. Entregas no prazo e qualidade garantida para você ou sua empresa.</p>
             
             <a href="https://wa.me/5521967860665" class="btn-whatsapp" target="_blank">
                 <svg class="whatsapp-icon" viewBox="0 0 24 24">
@@ -676,36 +785,60 @@
         <!-- Seção Quem Somos Detalhada -->
         <section class="about-section" id="quemsomos">
             <h2>Quem Somos & Nossa Essência</h2>
-            <p>A <strong>VeloxSites</strong> nasceu para preencher uma lacuna crítica nas empresas e projetos: a necessidade de retaguarda administrativa impecável, organizada e orientada a dados.</p>
+            <p>A <strong>VeloxSites</strong> opera a partir do Rio de Janeiro (Campo Grande) fornecendo retaguarda administrativa de elite tanto para empresas quanto para pessoas físicas em todo o Brasil.</p>
             
             <div class="about-grid">
                 <div class="about-card">
-                    <h4>Quem Somos</h4>
-                    <p>Profissionais especializados em engenharia de processos, gestão de ativos e suporte administrativo de alta performance, focados em eliminar gargalos operacionais.</p>
+                    <h4>Nossa Raiz no RJ</h4>
+                    <p>Baseados no Rio de Janeiro, unimos o rigor analítico da engenharia e gestão de processos para organizar operações corporativas e individuais.</p>
                 </div>
                 <div class="about-card">
-                    <h4>Nossa Origem</h4>
-                    <p>Surgimos da demanda real do mercado por parceiros estratégicos que entendam tanto de rigor técnico documental quanto de agilidade nas rotinas diárias de back-office.</p>
+                    <h4>Atendimento Amplo</h4>
+                    <p>Atendemos tanto corporações quanto pessoas que precisam de suporte pontual ou contínuo em suas demandas diárias.</p>
                 </div>
                 <div class="about-card">
-                    <h4>Por Que Existimos</h4>
-                    <p>Existimos para devolver o controle e o tempo aos gestores, transformando fluxos desorganizados em sistemas limpos, automatizados e 100% confiáveis.</p>
+                    <h4>Sigilo e Segurança</h4>
+                    <p>Trabalhamos com total confidencialidade e conformidade no manuseio de dados, planilhas e documentações.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Seção de Vídeo Institucional -->
-        <section class="video-section" id="video">
-            <h3>Apresentação Institucional</h3>
-            <p>Conheça nossa metodologia de trabalho e a precisão das nossas entregas administrativas.</p>
-            <div class="video-container">
-                <div class="video-screen">
-                    <h4>VeloxSites: Excelência Operacional</h4>
-                    <p>Transformando processos burocráticos em gestão estruturada, organizada e de alto desempenho.</p>
-                    <a href="https://wa.me/5521967860665" class="btn-whatsapp" target="_blank" style="font-size: 0.95rem; padding: 10px 20px;">
-                        Saiba Mais pelo WhatsApp
-                    </a>
+        <!-- Seção Como Funciona -->
+        <section class="process-section" id="comofunciona">
+            <h2>Como Funciona a Contratação</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Fale com a Mari ou WhatsApp</h4>
+                    <p>Você nos conta qual é a sua necessidade (seja para sua empresa ou projeto pessoal).</p>
                 </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Execução Online Ágil</h4>
+                    <p>Cuidamos de todo o back-office, planilhas ou documentos com rapidez e rigor nos prazos.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Entrega com Qualidade</h4>
+                    <p>Você recebe seu projeto pronto, organizado e seguro, sem burocracia ou intermediários.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Vídeo Motion Player Interativo -->
+        <section class="video-section" id="video">
+            <h3>Apresentação em Vídeo</h3>
+            <p>Clique no play para assistir à nossa apresentação interativa sobre o padrão de excelência VeloxSites.</p>
+            <div class="video-container">
+                <div class="play-overlay" id="playOverlay">
+                    <button class="play-btn-circle" onclick="startVideo()">▶</button>
+                    <span style="color: var(--text-muted); margin-top: 15px; font-weight: 600; font-size: 0.95rem;">Assistir Apresentação Institucional</span>
+                </div>
+                <div class="video-screen">
+                    <h4 id="vidTitle">VeloxSites: Excelência Operacional</h4>
+                    <p id="vidText">Transformando processos burocráticos em gestão estruturada, organizada e de alto desempenho.</p>
+                </div>
+                <div class="video-progress-bar" id="videoProgressBar"></div>
             </div>
         </section>
 
@@ -822,7 +955,7 @@
         </section>
 
         <footer>
-            &copy; 2026 VeloxSites. Excelência em Organização, Dados e Suporte Administrativo.
+            &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
         </footer>
     </main>
 
@@ -864,7 +997,7 @@
             card.classList.toggle('active');
         }
 
-        // Função ultra-direta para abrir e fechar o chat da Mari
+        // Controle do Chat da Mari
         function toggleAiChat() {
             const box = document.getElementById('aiChatBox');
             if (box) {
@@ -891,7 +1024,6 @@
 
             if (!text) return;
 
-            // Mensagem do usuário
             const userMsg = document.createElement('div');
             userMsg.className = 'ai-msg';
             userMsg.style.background = 'rgba(16, 185, 129, 0.15)';
@@ -899,10 +1031,9 @@
             userMsg.innerText = text;
             body.appendChild(userMsg);
 
-            input.value = ``;
+            input.value = '';
             body.scrollTop = body.scrollHeight;
 
-            // Resposta da Mari direcionando para o seu WhatsApp correto
             setTimeout(() => {
                 const aiMsg = document.createElement('div');
                 aiMsg.className = 'ai-msg';
@@ -915,6 +1046,57 @@
                     window.open(`https://wa.me/5521967860665?text=${encodedMsg}`, '_blank');
                 }, 1500);
             }, 800);
+        }
+
+        // Lógica do Vídeo Motion Player Interativo
+        function startVideo() {
+            const overlay = document.getElementById('playOverlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => { overlay.style.display = 'none'; }, 300);
+
+            const title = document.getElementById('vidTitle');
+            const text = document.getElementById('vidText');
+            const progressBar = document.getElementById('videoProgressBar');
+
+            const steps = [
+                { t: "1. Organização de Documentação de Projetos", desc: "Categorização, arquivamento rigoroso e total rastreabilidade para projetos de início ao fim." },
+                { t: "2. Suporte Administrativo e Back-Office", desc: "Entrada de dados, controle de planilhas e rotinas diárias executadas com precisão milimétrica." },
+                { t: "3. Gestão Financeira e Conciliação", desc: "Contas a pagar, receber, faturamento e controle de fluxo de caixa garantindo saúde financeira." },
+                { t: "4. Dashboards em Power BI & Ativos", desc: "Painéis executivos e controle rigoroso de inventário para otimizar a tomada de decisão." },
+                { t: "VeloxSites: Sua Retaguarda Estratégica", desc: "Fale com a Mari ou clique no WhatsApp para profissionalizar a gestão da sua empresa agora!" }
+            ];
+
+            let index = 0;
+            let progress = 0;
+            
+            const progressInterval = setInterval(() => {
+                progress += 0.4;
+                if (progress > 100) progress = 100;
+                progressBar.style.width = progress + '%';
+            }, 100);
+
+            function nextStep() {
+                if (index < steps.length) {
+                    title.style.opacity = '0';
+                    text.style.opacity = '0';
+                    setTimeout(() => {
+                        title.innerText = steps[index].t;
+                        text.innerText = steps[index].desc;
+                        title.style.opacity = '1';
+                        text.style.opacity = '1';
+                        index++;
+                        if (index < steps.length) {
+                            setTimeout(nextStep, 4000);
+                        } else {
+                            setTimeout(() => {
+                                clearInterval(progressInterval);
+                                progressBar.style.width = '100%';
+                            }, 4000);
+                        }
+                    }, 400);
+                }
+            }
+            nextStep();
         }
     </script>
 
