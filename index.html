@@ -320,7 +320,7 @@
             margin-bottom: 25px;
         }
 
-        /* Widget da Assistente Mari Flutuante */
+        /* Widget da Assistente Mari com Foto Real */
         .ai-widget-btn {
             position: fixed;
             bottom: 30px;
@@ -329,7 +329,7 @@
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 10px 18px 10px 10px;
+            padding: 8px 18px 8px 8px;
             font-weight: 600;
             font-size: 0.95rem;
             cursor: pointer;
@@ -346,17 +346,11 @@
             background-color: var(--primary-green-hover);
         }
 
-        .ai-avatar {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(135deg, #059669, #10b981);
+        .ai-avatar-img {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1rem;
+            object-fit: cover;
             border: 2px solid white;
         }
 
@@ -371,13 +365,9 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             z-index: 2001;
-            display: none;
+            display: none; /* Controlado diretamente via JS */
             flex-direction: column;
             overflow: hidden;
-        }
-
-        .ai-chat-box.active {
-            display: flex !important;
         }
 
         .ai-chat-header {
@@ -836,16 +826,17 @@
         </footer>
     </main>
 
-    <!-- Botão Flutuante e Caixa de Chat da Assistente Mari -->
+    <!-- Botão Flutuante com a Fotinha da Mari -->
     <button class="ai-widget-btn" onclick="toggleAiChat()">
-        <div class="ai-avatar">M</div>
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces" alt="Mari" class="ai-avatar-img">
         <span>Fale com a Mari</span>
     </button>
 
+    <!-- Caixa de Chat da Mari -->
     <div class="ai-chat-box" id="aiChatBox">
         <div class="ai-chat-header">
             <div class="ai-chat-header-info">
-                <div class="ai-avatar" style="width: 28px; height: 28px; font-size: 0.8rem;">M</div>
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces" alt="Mari" class="ai-avatar-img" style="width: 28px; height: 28px;">
                 <span>Mari (Assistente Virtual)</span>
             </div>
             <button class="ai-chat-close" onclick="toggleAiChat()">✕</button>
@@ -873,15 +864,17 @@
             card.classList.toggle('active');
         }
 
-        // Lógica do Chat da Mari
+        // Lógica 100% Funcional e Direta do Chat da Mari
         function toggleAiChat() {
             const box = document.getElementById('aiChatBox');
-            box.classList.toggle('active');
-            if (box.classList.contains('active')) {
-                setTimeout(() => {
-                    const input = document.getElementById('aiChatInput');
-                    if (input) input.focus();
-                }, 100);
+            if (box.style.display === 'flex') {
+                box.style.display = 'none';
+            } else {
+                box.style.display = 'flex';
+                const input = document.getElementById('aiChatInput');
+                if (input) {
+                    setTimeout(() => input.focus(), 100);
+                }
             }
         }
 
@@ -909,7 +902,7 @@
             input.value = '';
             body.scrollTop = body.scrollHeight;
 
-            // Resposta da Mari
+            // Resposta da Mari e redirecionamento para o WhatsApp
             setTimeout(() => {
                 const aiMsg = document.createElement('div');
                 aiMsg.className = 'ai-msg';
