@@ -337,7 +337,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            z-index: 2000;
+            z-index: 9999;
             transition: transform 0.2s;
         }
 
@@ -364,10 +364,14 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            z-index: 2001;
-            display: none; /* Controlado diretamente via JS */
+            z-index: 10000;
+            display: none; /* Controlado via classe .show */
             flex-direction: column;
             overflow: hidden;
+        }
+
+        .ai-chat-box.show {
+            display: flex !important;
         }
 
         .ai-chat-header {
@@ -864,16 +868,16 @@
             card.classList.toggle('active');
         }
 
-        // Lógica 100% Funcional e Direta do Chat da Mari
+        // Lógica de abertura do Chat usando classe 'show' e verificação robusta
         function toggleAiChat() {
             const box = document.getElementById('aiChatBox');
-            if (box.style.display === 'flex') {
-                box.style.display = 'none';
-            } else {
-                box.style.display = 'flex';
-                const input = document.getElementById('aiChatInput');
-                if (input) {
-                    setTimeout(() => input.focus(), 100);
+            if (box) {
+                box.classList.toggle('show');
+                if (box.classList.contains('show')) {
+                    const input = document.getElementById('aiChatInput');
+                    if (input) {
+                        setTimeout(() => input.focus(), 100);
+                    }
                 }
             }
         }
@@ -902,7 +906,7 @@
             input.value = '';
             body.scrollTop = body.scrollHeight;
 
-            // Resposta da Mari e redirecionamento para o WhatsApp
+            // Resposta da Mari
             setTimeout(() => {
                 const aiMsg = document.createElement('div');
                 aiMsg.className = 'ai-msg';
