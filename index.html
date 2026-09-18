@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeloxSites - Assistência Administrativa, Gestão e Dados</title>
+    <title>VeloxSites - Soluções em Gestão, Dados e Assistência Administrativa</title>
     <style>
         :root {
             --bg-color: #0b0f19;
             --sidebar-bg: #111827;
             --card-bg: #1e293b;
+            --card-hover: #26334d;
             --text-color: #f8fafc;
             --text-muted: #94a3b8;
             --primary-green: #10b981;
             --primary-green-hover: #059669;
             --border-color: #334155;
-            --accent-glow: rgba(16, 185, 129, 0.15);
+            --accent-glow: rgba(16, 185, 129, 0.2);
         }
 
         * {
@@ -32,7 +33,7 @@
             min-height: 100vh;
         }
 
-        /* Menu Lateral Esquerdo (Fixo em telas grandes) */
+        /* Menu Lateral Esquerdo Fixo */
         aside.sidebar {
             width: 280px;
             background-color: var(--sidebar-bg);
@@ -55,17 +56,29 @@
             margin-bottom: 40px;
         }
 
-        .brand-icon {
-            width: 36px;
-            height: 36px;
-            background-color: var(--primary-green);
-            border-radius: 8px;
+        /* Logo Moderno Exclusivo */
+        .custom-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
         }
 
-        .brand-name {
-            font-size: 1.3rem;
+        .logo-svg {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4));
+        }
+
+        .brand-text {
+            font-size: 1.35rem;
             font-weight: 800;
+            color: var(--text-color);
             letter-spacing: 0.5px;
+        }
+
+        .brand-text span {
+            color: var(--primary-green);
         }
 
         .sidebar-menu {
@@ -100,15 +113,15 @@
             padding-left: 16px;
         }
 
-        /* Conteúdo Principal (Ajustado para o menu à esquerda) */
+        /* Conteúdo Principal */
         main.main-content {
             margin-left: 280px;
             flex: 1;
-            padding: 40px;
-            max-width: 1200px;
+            padding: 50px;
+            max-width: 1250px;
         }
 
-        /* Botão do Menu Mobile */
+        /* Header Mobile */
         .mobile-header {
             display: none;
             align-items: center;
@@ -134,8 +147,8 @@
         /* Hero Section */
         .hero {
             text-align: left;
-            padding: 40px 0 60px 0;
-            max-width: 850px;
+            padding: 20px 0 50px 0;
+            max-width: 900px;
         }
 
         .badge {
@@ -147,7 +160,7 @@
             font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 20px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
         }
 
         .hero h1 {
@@ -167,19 +180,19 @@
             font-size: 1.15rem;
             margin-bottom: 30px;
             line-height: 1.7;
-            max-width: 750px;
         }
 
         .btn-primary {
             display: inline-block;
             background-color: var(--primary-green);
             color: white;
-            padding: 14px 30px;
+            padding: 14px 32px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.05rem;
             transition: background-color 0.2s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
         }
 
         .btn-primary:hover {
@@ -187,15 +200,55 @@
             transform: translateY(-2px);
         }
 
-        /* Seção de Serviços */
+        /* Seção Quem Somos */
+        .about-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary-green);
+        }
+
+        .about-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .about-section p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        /* Seção de Serviços Interativos (Acordeon / Clique) */
         .services-section {
-            margin-top: 40px;
+            margin-bottom: 60px;
         }
 
         .services-section h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
             font-weight: 700;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 1.05rem;
         }
 
         .services-grid {
@@ -208,33 +261,138 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             padding: 30px;
-            border-radius: 10px;
-            transition: transform 0.2s, border-color 0.2s;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary-green);
+            background-color: var(--card-hover);
         }
 
         .service-card h3 {
             color: var(--primary-green);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-size: 1.35rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .service-card p {
+        .service-card h3 span.icon {
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .service-card p.summary {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1rem;
             line-height: 1.6;
         }
 
+        /* Texto detalhado que aparece ao clicar */
+        .service-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            border-top: 1px solid transparent;
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .service-card.active {
+            border-color: var(--primary-green);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .service-card.active .service-details {
+            max-height: 300px;
+            opacity: 1;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .service-card.active h3 span.icon {
+            transform: rotate(45deg);
+        }
+
+        /* Seção de Vídeo / Apresentação */
+        .video-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .video-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .video-section p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* Proporção 16:9 */
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: var(--text-muted);
+        }
+
+        .play-btn {
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+            transition: transform 0.2s;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+
         footer {
-            margin-top: 80px;
+            margin-top: 60px;
             padding: 30px 0;
             color: var(--text-muted);
             border-top: 1px solid var(--border-color);
             font-size: 0.9rem;
+            text-align: center;
         }
 
         /* Responsividade para Celulares */
@@ -262,72 +420,136 @@
 
     <!-- Header Mobile -->
     <div class="mobile-header">
-        <div style="display: flex; align-items: center; gap: 10px;">
-            <div class="brand-icon" style="width: 28px; height: 28px;"></div>
-            <span style="font-weight: bold; font-size: 1.1rem;">VELOXSITES</span>
-        </div>
+        <a href="#" class="custom-logo">
+            <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="8" fill="#10B981" fill-opacity="0.15"/>
+                <path d="M10 28L18 14L24 22L30 12" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="30" cy="12" r="3" fill="#10B981"/>
+            </svg>
+            <span class="brand-text">VELOX<span>SITES</span></span>
+        </a>
         <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
     </div>
 
-    <!-- Menu Lateral Esquerdo -->
+    <!-- Menu Lateral Esquerdo Fixo -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">
-            <div class="brand-icon"></div>
-            <div class="brand-name">VELOXSITES</div>
+            <a href="#" class="custom-logo" onclick="toggleSidebar()">
+                <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="#10B981" fill-opacity="0.15"/>
+                    <path d="M10 28L18 14L24 22L30 12" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="30" cy="12" r="3" fill="#10B981"/>
+                </svg>
+                <span class="brand-text">VELOX<span>SITES</span></span>
+            </a>
         </div>
 
         <ul class="sidebar-menu">
             <h4>Navegação</h4>
             <li><a href="#" onclick="toggleSidebar()">Início</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Serviços Principais</a></li>
-            <li><a href="https://wa.me/" target="_blank" onclick="toggleSidebar()">Contato WhatsApp</a></li>
+            <li><a href="#quemsomos" onclick="toggleSidebar()">Quem Somos</a></li>
+            <li><a href="#servicos" onclick="toggleSidebar()">Serviços Detalhados</a></li>
+            <li><a href="#video" onclick="toggleSidebar()">Apresentação</a></li>
+            <li><a href="https://wa.me/" target="_blank" onclick="toggleSidebar()">Contato Direto</a></li>
         </ul>
 
         <ul class="sidebar-menu">
-            <h4>Especialidades</h4>
+            <h4>Frentes de Atuação</h4>
             <li><a href="#servicos" onclick="toggleSidebar()">Gestão de Documentação</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Assistência Remota & Back-Office</a></li>
+            <li><a href="#servicos" onclick="toggleSidebar()">Back-Office & Assistência</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Atendimento Telefônico</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Gestão de Ativos & Estoque</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Planilhas e Power BI</a></li>
+            <li><a href="#servicos" onclick="toggleSidebar()">Planilhas e Dashboards</a></li>
         </ul>
     </aside>
 
     <!-- Conteúdo Principal -->
     <main class="main-content">
+        <!-- Hero Section -->
         <section class="hero">
-            <span class="badge">Assistência Administrativa e Gestão Estratégica</span>
+            <span class="badge">Excelência em Organização, Dados e Back-Office</span>
             <h1>Soluções estruturadas para sua <span>operação crescer</span></h1>
-            <p>Atuação profissional em organização e gestão de documentação de projetos, suporte administrativo remoto de alta precisão, planilhas avançadas, automação de processos e atendimento executivo.</p>
+            <p>Atuação profissional e rigor técnico em organização de documentação de projetos, suporte administrativo remoto, planilhas avançadas, automação de processos e atendimento executivo.</p>
             <a href="https://wa.me/" class="btn-primary" target="_blank">Fale Comigo no WhatsApp</a>
         </section>
 
+        <!-- Seção Quem Somos -->
+        <section class="about-section" id="quemsomos">
+            <h2>Quem Somos</h2>
+            <p>A <strong>VeloxSites</strong> nasce da união entre a engenharia de processos, o rigor analítico e a eficiência administrativa. Nosso compromisso é estruturar a retaguarda do seu negócio com alto padrão de qualidade.</p>
+            <p>Especialistas em transformar desorganização operacional em fluxos limpos, controlados e rastreáveis, garantindo que cada documento, inventário ou planilha funcione com precisão milimétrica para apoiar o seu crescimento.</p>
+        </section>
+
+        <!-- Seção de Serviços Interativos -->
         <section class="services-section" id="servicos">
-            <h2>Serviços Especializados</h2>
+            <h2>Nossos Serviços</h2>
+            <p class="section-subtitle">Clique em qualquer serviço abaixo para expandir e ver os detalhes completos do escopo de atuação:</p>
+            
             <div class="services-grid">
-                <div class="service-card">
-                    <h3>Gestão de Documentação de Projetos</h3>
-                    <p>Abordagem estruturada para projetos com início, meio e fim bem definidos. Categoriação, arquivamento rigoroso e recuperação ágil de toda a documentação relevante para consultas futuras.</p>
+                <!-- Card 1 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Gestão de Documentação <span class="icon">+</span></h3>
+                    <p class="summary">Abordagem estruturada para projetos com início, meio e fim bem definidos.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo detalhado:</strong> Categorização, arquivamento rigoroso e recuperação ágil de todos os documentos relevantes de um projeto. Garantimos que a documentação esteja completa, organizada e pronta para futuras referências e auditorias com total rastreabilidade.</p>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>Assistência Administrativa Remota (Back-Office)</h3>
-                    <p>Suporte responsável e altamente organizado para digitação, entrada e conferência de dados, preenchimento e estruturação de planilhas, cadastros em sistemas e controle documental com atenção rigorosa a prazos.</p>
+
+                <!-- Card 2 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Assistência Remota & Back-Office <span class="icon">+</span></h3>
+                    <p class="summary">Suporte administrativo altamente organizado para tarefas do dia a dia.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo detalhado:</strong> Digitação, entrada e conferência de dados, preenchimento e estruturação de planilhas complexas, cadastros em sistemas corporativos e organização documental com atenção excepcional aos detalhes e cumprimento rigoroso de prazos.</p>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>Atendimento e Gestão de Chamadas</h3>
-                    <p>Serviço dedicado para gerenciar atendimentos telefônicos, responder a consultas de clientes, fornecer suporte geral e garantir uma comunicação eficaz e profissional para o seu negócio.</p>
+
+                <!-- Card 3 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Atendimento e Chamadas <span class="icon">+</span></h3>
+                    <p class="summary">Gestão dedicada de canais de atendimento e comunicação com clientes.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo detalhado:</strong> Atendimento telefônico e digital profissional, resposta rápida a consultas de clientes, suporte geral e garantia de comunicação fluida, cortês e eficaz para manter a reputação e o fluxo de trabalho diário impecáveis.</p>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>Gestão de Ativos e Inventário</h3>
-                    <p>Controle técnico de almoxarifado, inventário físico e rotatividade de materiais e equipamentos para assegurar eficiência operacional máxima e evitar perdas corporativas.</p>
+
+                <!-- Card 4 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Gestão de Ativos e Inventário <span class="icon">+</span></h3>
+                    <p class="summary">Controle técnico de almoxarifado, estoque e rotatividade de materiais.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo detalhado:</strong> Estruturação de inventários físicos, controle de entradas e saídas, otimização de almoxarifado e aplicação de conceitos de confiabilidade para evitar perdas, reduzir custos e assegurar máxima disponibilidade operacional.</p>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>Planilhas Sob Medida e Dashboards</h3>
-                    <p>Desenvolvimento de ferramentas inteligentes em Excel e Power BI com fórmulas avançadas, relatórios automatizados e painéis executivos para tomada de decisão.</p>
+
+                <!-- Card 5 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Planilhas e Dashboards Power BI <span class="icon">+</span></h3>
+                    <p class="summary">Ferramentas inteligentes e painéis gerenciais sob medida.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo detalhado:</strong> Desenvolvimento de planilhas avançadas em Excel/VBA e criação de dashboards visuais em Power BI, unificando bases de dados para indicadores de desempenho (KPIs) claros e tomadas de decisão ágeis.</p>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <h3>Sites e Landing Pages Profissionais</h3>
-                    <p>Criação de páginas web modernas, rápidas e responsivas para destacar sua marca e captar clientes na internet de forma sólida.</p>
+
+                <!-- Card 6 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Sites e Presença Digital <span class="icon">+</span></h3>
+                    <p class="summary">Criação de páginas web modernas, responsivas e profissionais.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo detalhado:</strong> Desenvolvimento de landing pages e sites institucionais otimizados para conversão, garantindo que sua marca tenha uma vitrine digital moderna, rápida e de alta credibilidade no mercado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Vídeo Institucional -->
+        <section class="video-section" id="video">
+            <h3>Apresentação em Vídeo</h3>
+            <p>Conheça nossa metodologia de trabalho e como estruturamos soluções para sua empresa.</p>
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <div class="play-btn">▶️</div>
+                    <span>Vídeo Institucional VeloxSites (Espaço Reservado)</span>
                 </div>
             </div>
         </section>
@@ -342,7 +564,17 @@
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('active');
         }
+
+        function toggleCard(card) {
+            // Fecha os outros cards abertos (opcional, se quiser apenas um aberto por vez)
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach(c => {
+                if (c !== card) c.classList.remove('active');
+            });
+            // Alterna o estado do card clicado
+            card.classList.toggle('active');
+        }
     </script>
 
 </body>
-</htm
+</html>
