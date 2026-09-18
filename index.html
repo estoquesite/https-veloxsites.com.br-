@@ -337,7 +337,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            z-index: 9999;
+            z-index: 99999;
             transition: transform 0.2s;
         }
 
@@ -363,15 +363,11 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            z-index: 10000;
-            display: none; /* Controlado via classe .show */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            z-index: 100000;
+            display: none; /* Controlado via JS inline style */
             flex-direction: column;
             overflow: hidden;
-        }
-
-        .ai-chat-box.show {
-            display: flex !important;
         }
 
         .ai-chat-header {
@@ -836,8 +832,8 @@
         <span>Fale com a Mari</span>
     </button>
 
-    <!-- Caixa de Chat da Mari -->
-    <div class="ai-chat-box" id="aiChatBox">
+    <!-- Caixa de Chat da Mari (Inicia oculta via estilo direto) -->
+    <div class="ai-chat-box" id="aiChatBox" style="display: none;">
         <div class="ai-chat-header">
             <div class="ai-chat-header-info">
                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces" alt="Mari" class="ai-avatar-img" style="width: 28px; height: 28px;">
@@ -868,16 +864,18 @@
             card.classList.toggle('active');
         }
 
-        // Lógica de abertura do Chat usando classe 'show' e verificação robusta
+        // Controle direto por JavaScript (Ignora qualquer cache de CSS)
         function toggleAiChat() {
             const box = document.getElementById('aiChatBox');
             if (box) {
-                box.classList.toggle('show');
-                if (box.classList.contains('show')) {
+                if (box.style.display === 'none' || box.style.display === '') {
+                    box.style.display = 'flex';
                     const input = document.getElementById('aiChatInput');
                     if (input) {
                         setTimeout(() => input.focus(), 100);
                     }
+                } else {
+                    box.style.display = 'none';
                 }
             }
         }
