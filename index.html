@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeloxSites - Criação de Sites, Gestão, Dados e Assistência Administrativa</title>
+    <title>VeloxSites - Criação de Sites, Estoques, Gestão e Assistência Administrativa</title>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -839,8 +838,8 @@
     <main class="main-content">
         <!-- Hero Section -->
         <section class="hero">
-            <h1>Precisa criar seu site ou suporte online? É <span>fácil, rápido e seguro</span></h1>
-            <p>Serviços profissionais de retaguarda administrativa, criação de sites sob medida, controle financeiro e planilhas inteligentes. Entregas no prazo e qualidade garantida para você ou sua empresa.</p>
+            <h1>Precisa estruturar seu estoque ou criar seu site com a <span>Velox</span>? É <span>fácil, rápido e seguro</span></h1>
+            <p>Serviços profissionais de retaguarda administrativa, criação de sites sob medida, estruturação de almoxarifados e planilhas inteligentes. Entregas no prazo e qualidade garantida para você ou sua empresa.</p>
         </section>
 
         <!-- Seção de Serviços e Criação de Sites -->
@@ -860,6 +859,15 @@
 
                 <!-- 2 -->
                 <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Gestão de Estoque, Almoxarifado e Ativos <span class="icon">+</span></h3>
+                    <p class="summary">Controle técnico de materiais, inventário físico, planilhas de guarda e rotatividade.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Estruturação completa de estoques para terceiros, inventários físicos, controle rigoroso de entradas/saídas e aplicação de conceitos de confiabilidade para otimizar almoxarifados e evitar perdas.</p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="service-card" onclick="toggleCard(this)">
                     <h3>Gestão de Documentação de Projetos <span class="icon">+</span></h3>
                     <p class="summary">Abordagem estruturada para projetos com início, meio e fim bem definidos.</p>
                     <div class="service-details">
@@ -867,7 +875,7 @@
                     </div>
                 </div>
 
-                <!-- 3 -->
+                <!-- 4 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Assistência Administrativa Remota (Back-Office) <span class="icon">+</span></h3>
                     <p class="summary">Suporte responsável para digitação, conferência de dados e controle rotineiro.</p>
@@ -876,7 +884,7 @@
                     </div>
                 </div>
 
-                <!-- 4 -->
+                <!-- 5 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Contas a Pagar, Receber e Conciliação <span class="icon">+</span></h3>
                     <p class="summary">Organização financeira rigorosa e controle de fluxo de caixa.</p>
@@ -885,21 +893,12 @@
                     </div>
                 </div>
 
-                <!-- 5 -->
+                <!-- 6 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Bases de Dados e Cadastros Corporativos <span class="icon">+</span></h3>
                     <p class="summary">Criação de diretórios estruturados com nomes, endereços e contatos.</p>
                     <div class="service-details">
                         <p><strong>Escopo completo:</strong> Unificação e limpeza de cadastros de clientes, fornecedores e parceiros em planilhas inteligentes, garantindo padronização e buscas rápidas.</p>
-                    </div>
-                </div>
-
-                <!-- 6 -->
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Gestão de Ativos, Estoque e Almoxarifado <span class="icon">+</span></h3>
-                    <p class="summary">Controle técnico de materiais, inventário físico e rotatividade.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Estruturação de inventários físicos, planilhas de guarda e controle de entradas/saídas, otimização de almoxarifado e aplicação de conceitos de confiabilidade para evitar perdas.</p>
                     </div>
                 </div>
 
@@ -1027,7 +1026,7 @@
         <!-- Seção "Nossa História" & Localização em Destaque Verde -->
         <section class="story-section" id="quemsomos">
             <h2>Nossa História & Essência</h2>
-            <p>A <strong>VeloxSites</strong> nasceu da percepção real das necessidades de empresas e pessoas que hoje precisam buscar e marcar presença de forma ágil na internet. Unindo o rigor analítico da engenharia e a gestão de processos, transformamos demandas complexas e rotinas diárias em ferramentas digitais, planilhas e portais de alto desempenho, operando a partir do Rio de Janeiro para todo o Brasil.</p>
+            <p>A <strong>VeloxSites</strong> nasceu da percepção real das necessidades de empresas e pessoas que hoje precisam buscar e marcar presença de forma ágil na internet. Unindo o rigor analítico da engenharia e a gestão de processos, transformamos demandas complexas, controle de estoques e rotinas diárias em ferramentas digitais e portais de alto desempenho, operando a partir do Rio de Janeiro para todo o Brasil.</p>
             
             <div class="green-badges-grid">
                 <div class="green-badge">
@@ -1063,7 +1062,7 @@
             <button class="ai-chat-close" onclick="toggleAiChat()">✕</button>
         </div>
         <div class="ai-chat-body" id="aiChatBody">
-            <div class="ai-msg">Olá! Sou a <strong>Mari</strong>, assistente virtual da VeloxSites. Gostaria de criar um site ou agenda personalizada hoje?</div>
+            <div class="ai-msg">Olá! Sou a <strong>Mari</strong>, assistente virtual da VeloxSites. Gostaria de estruturar seu estoque ou criar um site personalizado hoje?</div>
         </div>
         <div class="ai-chat-footer">
             <input type="text" id="aiChatInput" class="ai-chat-input" placeholder="Digite sua necessidade..." onkeypress="handleChatKey(event)">
@@ -1141,12 +1140,12 @@
             setTimeout(() => {
                 const aiMsg = document.createElement('div');
                 aiMsg.className = 'ai-msg';
-                aiMsg.innerHTML = `Entendido! Anotei sua necessidade: "<em>${text}</em>". Vou te direcionar direto para o WhatsApp para conversarmos os detalhes do seu site.`;
+                aiMsg.innerHTML = `Entendido! Anotei sua necessidade: "<em>${text}</em>". Vou te direcionar direto para o WhatsApp para conversarmos os detalhes do seu projeto.`;
                 body.appendChild(aiMsg);
                 body.scrollTop = body.scrollHeight;
 
                 setTimeout(() => {
-                    const encodedMsg = encodeURIComponent(`Olá! Falei com a Mari no site e gostaria de criar um site / serviço: ${text}`);
+                    const encodedMsg = encodeURIComponent(`Olá! Falei com a Mari no site e gostaria de solicitar: ${text}`);
                     window.open(`https://wa.me/5521967860665?text=${encodedMsg}`, '_blank');
                 }, 1500);
             }, 800);
@@ -1164,10 +1163,10 @@
 
             const steps = [
                 { t: "1. Criação de Sites e Portais", desc: "Desenvolvimento de páginas customizadas para agendas, projetos e negócios." },
-                { t: "2. Organização de Documentação de Projetos", desc: "Categorização, arquivamento rigoroso e total rastreabilidade para projetos de início ao fim." },
-                { t: "3. Suporte Administrativo e Back-Office", desc: "Entrada de dados, controle de planilhas e rotinas diárias executadas com precisão milimétrica." },
-                { t: "4. Gestão Financeira e Conciliação", desc: "Contas a pagar, receber, faturamento e controle de fluxo de caixa garantindo saúde financeira." },
-                { t: "VeloxSites: Sua Retaguarda Estratégica", desc: "Fale com a Mari ou clique no WhatsApp lá em cima para criar o seu site ou serviço de gestão agora!" }
+                { t: "2. Gestão de Estoque e Almoxarifado", desc: "Estruturação física e lógica de materiais, inventários e planilhas de controle." },
+                { t: "3. Organização de Documentação", desc: "Categorização, arquivamento rigoroso e total rastreabilidade para projetos." },
+                { t: "4. Suporte Administrativo e Financeiro", desc: "Contas a pagar, receber, faturamento e controle de fluxo de caixa." },
+                { t: "VeloxSites: Sua Retaguarda Estratégica", desc: "Fale com a Mari ou clique no WhatsApp lá em cima para estruturar seu negócio agora!" }
             ];
 
             let index = 0;
