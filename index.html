@@ -262,68 +262,7 @@
             line-height: 1.6;
         }
 
-        /* Simulador de Orçamento Dinâmico */
-        .simulator-section {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border: 1px solid var(--primary-green);
-            border-radius: 12px;
-            padding: 40px;
-            margin-bottom: 50px;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
-        }
-
-        .simulator-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: var(--primary-green);
-        }
-
-        .simulator-section p {
-            color: var(--text-muted);
-            margin-bottom: 25px;
-        }
-
-        .sim-form-group {
-            margin-bottom: 20px;
-        }
-
-        .sim-form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .sim-select, .sim-input {
-            width: 100%;
-            padding: 12px;
-            background-color: #0b0f19;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            border-radius: 6px;
-            font-size: 1rem;
-        }
-
-        .sim-result {
-            margin-top: 25px;
-            padding: 20px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px dashed var(--primary-green);
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .sim-price {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-green);
-        }
-
-        /* Seção de Vídeo Institucional com Player Aprimorado */
+        /* Seção de Vídeo Institucional (Limpa e Funcional) */
         .video-section {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -372,7 +311,6 @@
             font-size: 1.8rem;
             color: var(--primary-green);
             margin-bottom: 15px;
-            transition: opacity 0.4s;
         }
 
         .video-screen p {
@@ -380,53 +318,130 @@
             color: var(--text-color);
             max-width: 600px;
             margin-bottom: 25px;
-            transition: opacity 0.4s;
         }
 
-        .video-progress-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 4px;
+        /* Widget de IA / Assistente Virtual Flutuante (Cantinho) */
+        .ai-widget-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             background-color: var(--primary-green);
-            width: 0%;
-            transition: width 0.1s linear;
-        }
-
-        .play-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(11, 15, 25, 0.85);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.4);
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            z-index: 10;
-            transition: opacity 0.3s;
+            gap: 10px;
+            z-index: 2000;
+            transition: transform 0.2s;
         }
 
-        .play-btn {
-            width: 80px;
-            height: 80px;
-            background-color: var(--primary-green);
+        .ai-widget-btn:hover {
+            transform: scale(1.05);
+            background-color: var(--primary-green-hover);
+        }
+
+        .ai-avatar {
+            width: 32px;
+            height: 32px;
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
-            transition: transform 0.2s, background-color 0.2s;
-            border: none;
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.1rem;
         }
 
-        .play-btn:hover {
-            transform: scale(1.1);
-            background-color: var(--primary-green-hover);
+        .ai-chat-box {
+            position: fixed;
+            bottom: 95px;
+            right: 30px;
+            width: 350px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 2001;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .ai-chat-header {
+            background-color: var(--sidebar-bg);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ai-chat-header span {
+            font-weight: bold;
+            color: var(--primary-green);
+            font-size: 0.95rem;
+        }
+
+        .ai-chat-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .ai-chat-body {
+            padding: 15px;
+            max-height: 280px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .ai-msg {
+            background: rgba(15, 23, 42, 0.7);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
+
+        .ai-chat-footer {
+            padding: 12px;
+            background-color: var(--sidebar-bg);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 8px;
+        }
+
+        .ai-chat-input {
+            flex: 1;
+            padding: 8px 12px;
+            background-color: #0b0f19;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .ai-chat-send {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
         }
 
         /* Seção de Percepção dos Clientes (Depoimentos) */
@@ -623,8 +638,7 @@
             <h4>Navegação</h4>
             <li><a href="#" onclick="toggleSidebar()">Início</a></li>
             <li><a href="#quemsomos" onclick="toggleSidebar()">Quem Somos</a></li>
-            <li><a href="#simulador" onclick="toggleSidebar()">Simulador de Orçamento</a></li>
-            <li><a href="#video" onclick="toggleSidebar()">Apresentação em Vídeo</a></li>
+            <li><a href="#video" onclick="toggleSidebar()">Apresentação</a></li>
             <li><a href="#depoimentos" onclick="toggleSidebar()">Percepção dos Clientes</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Serviços Administrativos</a></li>
             <li><a href="https://wa.me/" target="_blank" onclick="toggleSidebar()">Contato WhatsApp</a></li>
@@ -678,56 +692,18 @@
             </div>
         </section>
 
-        <!-- Simulador de Orçamento Dinâmico com Botão de Enviar -->
-        <section class="simulator-section" id="simulador">
-            <h2>Simulador de Orçamento Instantâneo</h2>
-            <p>Selecione o serviço e ajuste a quantidade estimada para calcular o investimento na hora:</p>
-            
-            <div class="sim-form-group">
-                <label for="servicoSelect">Tipo de Serviço:</label>
-                <select id="servicoSelect" class="sim-select" onchange="calcularOrcamento()">
-                    <option value="110">Gestão de Documentação de Projetos (R$ 110/h)</option>
-                    <option value="90">Assistência Administrativa / Back-Office (R$ 90/h)</option>
-                    <option value="130">Contas a Pagar, Receber e Conciliação (R$ 130/h)</option>
-                    <option value="100">Bases de Dados e Cadastros Corporativos (R$ 100/h)</option>
-                    <option value="150">Gestão de Ativos, Estoque e Inventário (R$ 150/h)</option>
-                    <option value="180">Planilhas Sob Medida e Dashboards Power BI (R$ 180/h)</option>
-                </select>
-            </div>
-
-            <div class="sim-form-group">
-                <label for="volumeInput">Quantidade estimada (Horas / Demandas):</label>
-                <input type="number" id="volumeInput" class="sim-input" value="10" min="1" max="200" oninput="calcularOrcamento()">
-            </div>
-
-            <div class="sim-result">
-                <div>
-                    <span style="font-size: 0.9rem; color: var(--text-muted); display: block;">Estimativa Calculada:</span>
-                    <span class="sim-price" id="precoEstimado">R$ 900,00</span>
-                </div>
-                <a href="https://wa.me/" class="btn-whatsapp" target="_blank" id="btnContratarSimulacao">
-                    <svg class="whatsapp-icon" viewBox="0 0 24 24">
-                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                    </svg>
-                    Enviar Orçamento
-                </a>
-            </div>
-        </section>
-
-        <!-- Seção de Vídeo Institucional (Com Barra de Progresso Real) -->
+        <!-- Seção de Vídeo Institucional (Limpa e Funcional) -->
         <section class="video-section" id="video">
             <h3>Apresentação Institucional</h3>
             <p>Conheça nossa metodologia de trabalho e a precisão das nossas entregas administrativas.</p>
             <div class="video-container">
-                <div class="play-overlay" id="playOverlay">
-                    <button class="play-btn" onclick="startVideoPresentation()">▶️</button>
-                    <span style="color: var(--text-muted); margin-top: 12px; font-weight: 600;">Assistir Apresentação VeloxSites</span>
+                <div class="video-screen">
+                    <h4>VeloxSites: Excelência Operacional</h4>
+                    <p>Transformando processos burocráticos em gestão estruturada, organizada e de alto desempenho.</p>
+                    <a href="https://wa.me/" class="btn-whatsapp" target="_blank" style="font-size: 0.95rem; padding: 10px 20px;">
+                        Saiba Mais pelo WhatsApp
+                    </a>
                 </div>
-                <div class="video-screen" id="videoScreen">
-                    <h4 id="vidTitle">VeloxSites: Excelência Operacional</h4>
-                    <p id="vidText">Clique no botão play acima para iniciar a apresentação interativa dos nossos serviços de gestão e suporte administrativo.</p>
-                </div>
-                <div class="video-progress-bar" id="videoProgressBar"></div>
             </div>
         </section>
 
@@ -763,7 +739,7 @@
             </div>
         </section>
 
-        <!-- Seção de Serviços Completos e Interativos -->
+        <!-- Seção de Serviços Interativos Completos -->
         <section class="services-section" id="servicos">
             <h2>Serviços Administrativos e Especializados</h2>
             <p class="section-subtitle">Clique em qualquer serviço abaixo para abrir e ler o escopo completo de atuação:</p>
@@ -848,6 +824,26 @@
         </footer>
     </main>
 
+    <!-- Widget de Inteligência Artificial Flutuante (Assistente Virtual no Cantinho) -->
+    <button class="ai-widget-btn" onclick="toggleAiChat()">
+        <div class="ai-avatar">IA</div>
+        <span>Fale com a Assistente</span>
+    </button>
+
+    <div class="ai-chat-box" id="aiChatBox">
+        <div class="ai-chat-header">
+            <span>Assistente Virtual VeloxSites</span>
+            <button class="ai-chat-close" onclick="toggleAiChat()">✕</button>
+        </div>
+        <div class="ai-chat-body" id="aiChatBody">
+            <div class="ai-msg">Olá! Sou a assistente virtual da VeloxSites. Qual serviço administrativo ou de gestão você precisa para a sua empresa hoje?</div>
+        </div>
+        <div class="ai-chat-footer">
+            <input type="text" id="aiChatInput" class="ai-chat-input" placeholder="Digite sua necessidade..." onkeypress="handleChatKey(event)">
+            <button class="ai-chat-send" onclick="sendAiMessage()">Enviar</button>
+        </div>
+    </div>
+
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
@@ -862,81 +858,54 @@
             card.classList.toggle('active');
         }
 
-        // Função do Simulador de Orçamento Dinâmico
-        function calcularOrcamento() {
-            const select = document.getElementById('servicoSelect');
-            const volumeInput = document.getElementById('volumeInput');
-            const precoElement = document.getElementById('precoEstimado');
-            const btnContratar = document.getElementById('btnContratarSimulacao');
-
-            if (!select || !volumeInput || !precoElement) return;
-
-            const taxaHora = parseFloat(select.value) || 100;
-            const volume = parseInt(volumeInput.value) || 1;
-            const total = taxaHora * volume;
-
-            precoElement.innerText = 'R$ ' + total.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-
-            const servicoNome = select.options[select.selectedIndex].text;
-            const msg = encodeURIComponent(Olá! Fiz uma simulação no site da VeloxSites:\nServiço: ${servicoNome}\nVolume: ${volume} horas/demandas\nEstimativa: R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits: 2})}\nGostaria de avançar com a contratação.);
-            btnContratar.href = https://wa.me/?text=${msg};
+        // Lógica do Widget de Inteligência Artificial (Chat)
+        function toggleAiChat() {
+            const box = document.getElementById('aiChatBox');
+            if (box.style.display === 'flex') {
+                box.style.display = 'none';
+            } else {
+                box.style.display = 'flex';
+                document.getElementById('aiChatInput').focus();
+            }
         }
 
-        // Inicializa o simulador ao carregar a página
-        window.onload = function() {
-            calcularOrcamento();
-        };
-
-        // Script para a Apresentação em Vídeo Animada com Barra de Progresso
-        function startVideoPresentation() {
-            const overlay = document.getElementById('playOverlay');
-            overlay.style.opacity = '0';
-            setTimeout(() => { overlay.style.display = 'none'; }, 300);
-
-            const title = document.getElementById('vidTitle');
-            const text = document.getElementById('vidText');
-            const progressBar = document.getElementById('videoProgressBar');
-
-            const steps = [
-                { t: "1. Gestão de Projetos e Documentação", desc: "Estruturamos projetos do início ao fim com arquivamento rigoroso, atendendo demandas exigentes." },
-                { t: "2. Back-Office e Financeiro", desc: "Contas a pagar/receber, conciliação e faturamento executados com precisão absoluta." },
-                { t: "3. Organização de Bases de Dados", desc: "Criação de diretórios estruturados com contatos, cadastros e informações limpas." },
-                { t: "4. Gestão de Ativos e Inventário", desc: "Controle técnico de almoxarifado e inventário para eliminar perdas e otimizar recursos." },
-                { t: "VeloxSites: Sua Retaguarda Estratégica", desc: "Fale conosco agora pelo WhatsApp e profissionalize a gestão da sua empresa!" }
-            ];
-
-            let index = 0;
-            let progress = 0;
-            
-            // Animação da barra de progresso
-            const progressInterval = setInterval(() => {
-                progress += 0.5;
-                if (progress > 100) progress = 100;
-                progressBar.style.width = progress + '%';
-            }, 100);
-
-            function nextStep() {
-                if (index < steps.length) {
-                    title.style.opacity = '0';
-                    text.style.opacity = '0';
-                    setTimeout(() => {
-                        title.innerText = steps[index].t;
-                        text.innerText = steps[index].desc;
-                        title.style.opacity = '1';
-                        text.style.opacity = '1';
-                        index++;
-                        if (index < steps.length) {
-                            setTimeout(nextStep, 4000);
-                        } else {
-                            setTimeout(() => {
-                                clearInterval(progressInterval);
-                                progressBar.style.width = '100%';
-                            }, 4000);
-                        }
-                    }, 400);
-                }
+        function handleChatKey(e) {
+            if (e.key === 'Enter') {
+                sendAiMessage();
             }
-            nextStep();
+        }
+
+        function sendAiMessage() {
+            const input = document.getElementById('aiChatInput');
+            const body = document.getElementById('aiChatBody');
+            const text = input.value.trim();
+
+            if (!text) return;
+
+            // Mensagem do usuário
+            const userMsg = document.createElement('div');
+            userMsg.className = 'ai-msg';
+            userMsg.style.background = 'rgba(16, 185, 129, 0.15)';
+            userMsg.style.borderColor = 'var(--primary-green)';
+            userMsg.innerText = text;
+            body.appendChild(userMsg);
+
+            input.value = '';
+            body.scrollTop = body.scrollHeight;
+
+            // Resposta da IA e redirecionamento para o WhatsApp
+            setTimeout(() => {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'ai-msg';
+                aiMsg.innerHTML = Perfeito! Anotei sua solicitação: "<em>${text}</em>". Vou te conectar diretamente com a Mariana no WhatsApp para fecharmos os detalhes.;
+                body.appendChild(aiMsg);
+                body.scrollTop = body.scrollHeight;
+
+                setTimeout(() => {
+                    const encodedMsg = encodeURIComponent(Olá! Vi pelo chat do site da VeloxSites e preciso do seguinte serviço: ${text});
+                    window.open(https://wa.me/?text=${encodedMsg}, '_blank');
+                }, 1500);
+            }, 800);
         }
     </script>
 
