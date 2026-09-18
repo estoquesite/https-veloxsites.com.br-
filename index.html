@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeloxSites - Soluções Digitais e Administrativas</title>
+    <title>VeloxSites - Soluções em Gestão, Dados e Automação</title>
     <style>
         :root {
             --bg-color: #0f172a;
@@ -13,6 +13,7 @@
             --primary-green: #10b981;
             --primary-green-hover: #059669;
             --border-color: #334155;
+            --accent-glow: rgba(16, 185, 129, 0.15);
         }
 
         * {
@@ -142,16 +143,16 @@
 
         .hero {
             text-align: center;
-            padding: 60px 20px;
-            max-width: 800px;
+            padding: 70px 20px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
         .badge {
             display: inline-block;
-            background: rgba(16, 185, 129, 0.1);
+            background: var(--accent-glow);
             color: var(--primary-green);
-            padding: 6px 14px;
+            padding: 6px 16px;
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
@@ -160,9 +161,10 @@
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 20px;
             font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         .hero h1 span {
@@ -171,23 +173,25 @@
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            margin-bottom: 35px;
         }
 
         .btn-primary {
             display: inline-block;
             background-color: var(--primary-green);
             color: white;
-            padding: 12px 28px;
+            padding: 14px 32px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            transition: background-color 0.2s;
+            font-size: 1.05rem;
+            transition: background-color 0.2s, transform 0.2s;
         }
 
         .btn-primary:hover {
             background-color: var(--primary-green-hover);
+            transform: translateY(-2px);
         }
 
         .services {
@@ -198,21 +202,21 @@
 
         .services h2 {
             text-align: center;
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 40px;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
         }
 
         .service-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 25px;
+            padding: 30px;
             border-radius: 10px;
             transition: transform 0.2s, border-color 0.2s;
         }
@@ -224,72 +228,71 @@
 
         .service-card h3 {
             color: var(--primary-green);
-            margin-bottom: 12px;
-            font-size: 1.25rem;
+            margin-bottom: 15px;
+            font-size: 1.35rem;
         }
 
         .service-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
-        /* Estilo da Tabela de Demonstração */
-        .table-container {
+        /* Seção de Demonstração de Dashboard Profissional */
+        .dashboard-preview {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 25px;
-            overflow-x: auto;
-            margin-top: 20px;
+            border-radius: 12px;
+            padding: 35px;
+            margin-top: 50px;
         }
 
-        .table-container h3 {
+        .dashboard-preview h3 {
             color: var(--primary-green);
-            margin-bottom: 8px;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
 
-        .table-container p {
+        .dashboard-preview p {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 0.95rem;
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
         }
 
-        th, td {
-            padding: 12px 15px;
-            border-bottom: 1px solid var(--border-color);
+        .kpi-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
         }
 
-        th {
-            color: var(--primary-green);
-            font-weight: 600;
-            background-color: rgba(16, 185, 129, 0.05);
-        }
-
-        tr:hover {
-            background-color: rgba(255, 255, 255, 0.02);
-        }
-
-        .total-row td {
+        .kpi-card .kpi-value {
+            font-size: 1.8rem;
             font-weight: bold;
-            color: var(--text-color);
-            border-top: 2px solid var(--primary-green);
+            color: var(--primary-green);
+            margin-bottom: 5px;
+        }
+
+        .kpi-card .kpi-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 40px;
             color: var(--text-muted);
             border-top: 1px solid var(--border-color);
-            margin-top: 60px;
-            font-size: 0.9rem;
+            margin-top: 80px;
+            font-size: 0.95rem;
         }
     </style>
 </head>
@@ -310,100 +313,79 @@
         <h3>Navegação</h3>
         <ul>
             <li><a href="#" onclick="toggleMenu()">Início</a></li>
-            <li><a href="#servicos" onclick="toggleMenu()">Serviços</a></li>
-            <li><a href="#exemplo-planilha" onclick="toggleMenu()">Exemplo de Planilha</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">Serviços Especializados</a></li>
+            <li><a href="#portfolio" onclick="toggleMenu()">Exemplo de Solução</a></li>
             <li><a href="https://wa.me/" target="_blank" onclick="toggleMenu()">Contato Direto</a></li>
         </ul>
-        <h3>Serviços Adm</h3>
+        <h3>Áreas de Atuação</h3>
         <ul>
-            <li><a href="#servicos" onclick="toggleMenu()">Planilhas Excel Sob Medida</a></li>
-            <li><a href="#servicos" onclick="toggleMenu()">Dashboards Power BI</a></li>
             <li><a href="#servicos" onclick="toggleMenu()">Gestão de Ativos & Estoque</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">Dashboards Power BI</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">Planilhas Inteligentes VBA</a></li>
             <li><a href="#servicos" onclick="toggleMenu()">Automação de Processos</a></li>
-            <li><a href="#servicos" onclick="toggleMenu()">Sites Profissionais</a></li>
+            <li><a href="#servicos" onclick="toggleMenu()">Sites e Landing Pages</a></li>
         </ul>
     </nav>
 
     <section class="hero">
-        <span class="badge">Soluções Digitais e Administrativas</span>
-        <h1>Tudo o que o seu negócio precisa para <span>crescer online</span></h1>
-        <p>Desenvolvemos sites profissionais de alta conversão, planilhas automatizadas sob medida e painéis gerenciais para organizar e otimizar a sua rotina.</p>
-        <a href="https://wa.me/" class="btn-primary" target="_blank">Contato Direto</a>
+        <span class="badge">Engenharia, Dados e Gestão Estratégica</span>
+        <h1>Transforme dados complexos em <span>decisões precisas</span></h1>
+        <p>Soluções corporativas avançadas em gestão de inventário, dashboards gerenciais em Power BI, ferramentas em Excel sob medida e automação de processos administrativos.</p>
+        <a href="https://wa.me/" class="btn-primary" target="_blank">Fale Comigo no WhatsApp</a>
     </section>
 
     <section class="services" id="servicos">
-        <h2>Nossos Trabalhos e Soluções</h2>
+        <h2>Serviços Especializados</h2>
         <div class="services-grid">
             <div class="service-card">
-                <h3>Planilhas Excel Sob Medida</h3>
-                <p>Criação de ferramentas inteligentes em Excel e VBA com fórmulas avançadas, automatizações e relatórios financeiros e operacionais personalizados.</p>
+                <h3>Gestão de Ativos e Inventário</h3>
+                <p>Controle rigoroso de almoxarifado, inventário físico e rotatividade de materiais. Otimização de estoques para evitar perdas e garantir disponibilidade operacional.</p>
             </div>
             <div class="service-card">
                 <h3>Dashboards e Power BI</h3>
-                <p>Construção de painéis interativos de indicadores e visualização de dados para apoiar a tomada de decisão gerencial e estratégica.</p>
+                <p>Construção de painéis interativos de indicadores de desempenho (KPIs), unificando bases de dados para uma visão executiva em tempo real.</p>
             </div>
             <div class="service-card">
-                <h3>Gestão de Inventário e Ativos</h3>
-                <p>Sistemas de controle de estoque, almoxarifado e inventário estruturados para garantir eficiência na gestão de materiais e equipamentos.</p>
+                <h3>Planilhas Avançadas e VBA</h3>
+                <p>Desenvolvimento de ferramentas robustas em Excel com automações, fórmulas complexas, validação de dados e relatórios automatizados.</p>
             </div>
             <div class="service-card">
-                <h3>Automação de Processos Adm</h3>
-                <p>Otimização de fluxos de trabalho administrativos, padronização de relatórios e redução de retrabalho nas rotinas diárias da empresa.</p>
+                <h3>Automação de Processos</h3>
+                <p>Eliminação de gargalos operacionais e retrabalho por meio da padronização de fluxos de trabalho administrativos e industriais.</p>
             </div>
             <div class="service-card">
-                <h3>Sites Profissionais</h3>
-                <p>Desenvolvimento de páginas modernas, responsivas e otimizadas para destacar sua marca e atrair novos clientes na internet.</p>
+                <h3>Sites e Landing Pages</h3>
+                <p>Criação de páginas web profissionais, rápidas e orientadas à conversão para consolidar a presença digital da sua marca.</p>
             </div>
             <div class="service-card">
-                <h3>Suporte Operacional & Consultoria</h3>
-                <p>Assistência técnica especializada em organização de dados, planilhas corporativas e melhoria contínua de processos.</p>
+                <h3>Consultoria e Confiabilidade</h3>
+                <p>Análise de processos orientada a engenharia de confiabilidade e gestão de ativos para maximizar a eficiência corporativa.</p>
             </div>
         </div>
 
-        <!-- Seção com a Tabela de Valores/Orçamento da Sofia -->
-        <div class="table-container" id="exemplo-planilha">
-            <h3>Exemplo Prático: Controle de Orçamento e Gastos</h3>
-            <p>Demonstração de estrutura automatizada desenvolvida sob medida para controle financeiro e planejamento:</p>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Categoria</th>
-                        <th>Descrição</th>
-                        <th>Orçamento Previsto</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Lazer e Recreação</td>
-                        <td>Passeios, Parquinhos e Cinema</td>
-                        <td>R$ 120,00</td>
-                    </tr>
-                    <tr>
-                        <td>Vestuário</td>
-                        <td>Roupas e Calçados Infantis</td>
-                        <td>R$ 150,00</td>
-                    </tr>
-                    <tr>
-                        <td>Educação e Cultura</td>
-                        <td>Livros, Jogos Educativos e Material</td>
-                        <td>R$ 130,00</td>
-                    </tr>
-                    <tr>
-                        <td>Reserva / Poupança</td>
-                        <td>Guardado para Futuro / Extras</td>
-                        <td>R$ 100,00</td>
-                    </tr>
-                    <tr class="total-row">
-                        <td colspan="2">TOTAL GERAL DO ORÇAMENTO</td>
-                        <td>R$ 500,00</td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- Preview de Dashboard Executivo (Substituindo a tabela fraca) -->
+        <div class="dashboard-preview" id="portfolio">
+            <h3>Exemplo de Solução: Painel de Controle de Ativos e Estoque</h3>
+            <p>Demonstração visual do tipo de métricas e indicadores de alta performance entregues aos clientes para monitoramento operacional:</p>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-value">98.4%</div>
+                    <div class="kpi-label">Disponibilidade de Ativos</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">-24%</div>
+                    <div class="kpi-label">Redução de Custo de Estoque</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">100%</div>
+                    <div class="kpi-label">Conformidade de Inventário</div>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 VeloxSites. Todos os direitos reservados.
+        &copy; 2026 VeloxSites. Soluções Profissionais em Gestão e Dados.
     </footer>
 
     <script>
