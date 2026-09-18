@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -181,24 +181,6 @@
             max-width: 900px;
         }
 
-        .badge-container {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .badge {
-            display: inline-block;
-            background: var(--accent-glow);
-            color: var(--primary-green);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-        }
-
         .hero h1 {
             font-size: clamp(2.2rem, 4vw, 3.2rem);
             margin-bottom: 20px;
@@ -223,7 +205,7 @@
             margin-bottom: 50px;
         }
 
-        /* Seção de Serviços (Movida para o Topo) */
+        /* Seção de Serviços */
         .services-section h2 {
             font-size: 2.2rem;
             margin-bottom: 10px;
@@ -305,7 +287,7 @@
             transform: rotate(45deg);
         }
 
-        /* Seção de Portfólio / Exemplos com a Frase Customizada */
+        /* Seção de Portfólio / Exemplos */
         .portfolio-section {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -377,58 +359,6 @@
 
         .btn-portfolio:hover {
             background-color: var(--primary-green-hover);
-        }
-
-        /* Seção Quem Somos */
-        .about-section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background-color: var(--primary-green);
-        }
-
-        .about-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--text-color);
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
-        }
-
-        .about-card {
-            background: rgba(15, 23, 42, 0.5);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .about-card h4 {
-            color: var(--primary-green);
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-
-        .about-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
         }
 
         /* Seção Como Funciona */
@@ -586,7 +516,7 @@
             transition: width 0.1s linear;
         }
 
-        /* Seção de Percepção dos Clientes (Agora a ÚLTIMA seção) */
+        /* Seção de Percepção dos Clientes */
         .testimonials-section h2 {
             font-size: 2.2rem;
             margin-bottom: 10px;
@@ -626,6 +556,59 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+
+        /* Seção "Nossa História" e Localização Verde no Rodapé */
+        .story-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary-green);
+        }
+
+        .story-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .story-section p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .green-badges-grid {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .green-badge {
+            background: var(--accent-glow);
+            color: var(--primary-green);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
         /* Widget da Assistente Mari */
@@ -834,10 +817,10 @@
             <li><a href="#" onclick="toggleSidebar()">Início</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Serviços & Criação de Sites</a></li>
             <li><a href="#portfolio" onclick="toggleSidebar()">Agendas & Demonstrações</a></li>
-            <li><a href="#quemsomos" onclick="toggleSidebar()">Quem Somos</a></li>
             <li><a href="#comofunciona" onclick="toggleSidebar()">Como Funciona</a></li>
             <li><a href="#video" onclick="toggleSidebar()">Apresentação</a></li>
             <li><a href="#depoimentos" onclick="toggleSidebar()">Depoimentos</a></li>
+            <li><a href="#quemsomos" onclick="toggleSidebar()">Nossa História</a></li>
         </ul>
 
         <ul class="sidebar-menu">
@@ -855,15 +838,11 @@
     <main class="main-content">
         <!-- Hero Section -->
         <section class="hero">
-            <div class="badge-container">
-                <span class="badge">Campo Grande, Rio de Janeiro - RJ</span>
-                <span class="badge">Atendimento para Empresas e Pessoas em Todo o Brasil</span>
-            </div>
             <h1>Precisa criar seu site ou suporte online? É <span>fácil, rápido e seguro</span></h1>
             <p>Serviços profissionais de retaguarda administrativa, criação de sites sob medida, controle financeiro e planilhas inteligentes. Entregas no prazo e qualidade garantida para você ou sua empresa.</p>
         </section>
 
-        <!-- Seção de Serviços e Criação de Sites (Movida para o Topo) -->
+        <!-- Seção de Serviços e Criação de Sites -->
         <section class="services-section" id="servicos">
             <h2>Serviços Profissionais e Criação de Sites</h2>
             <p class="section-subtitle">Clique em qualquer serviço abaixo para abrir e ler o escopo completo de atuação:</p>
@@ -943,7 +922,7 @@
             </div>
         </section>
 
-        <!-- Seção de Projetos e Portfólio (Com a sua frase exata) -->
+        <!-- Seção de Projetos e Portfólio -->
         <section class="portfolio-section" id="portfolio">
             <h2>Quer criar uma agenda de guarda compartilhada?</h2>
             <p style="color: var(--text-muted); font-size: 1.05rem;">Tem alguma programação que deseja fazer? Estamos aqui para atender, para criar a sua. Conheça os exemplos reais abaixo:</p>
@@ -973,29 +952,8 @@
             </div>
         </section>
 
-        <!-- Seção Quem Somos Detalhada -->
-        <section class="about-section" id="quemsomos" style="margin-top: 50px;">
-            <h2>Quem Somos & Nossa Essência</h2>
-            <p>A <strong>VeloxSites</strong> opera a partir do Rio de Janeiro (Campo Grande) fornecendo retaguarda administrativa de elite tanto para empresas quanto para pessoas físicas em todo o Brasil.</p>
-            
-            <div class="about-grid">
-                <div class="about-card">
-                    <h4>Nossa Raiz no RJ</h4>
-                    <p>Baseados no Rio de Janeiro, unimos o rigor analítico da engenharia e gestão de processos para organizar operações corporativas e individuais.</p>
-                </div>
-                <div class="about-card">
-                    <h4>Atendimento Amplo</h4>
-                    <p>Atendemos tanto corporações quanto pessoas que precisam de suporte pontual ou contínuo em suas demandas diárias.</p>
-                </div>
-                <div class="about-card">
-                    <h4>Sigilo e Segurança</h4>
-                    <p>Trabalhamos com total confidencialidade e conformidade no manuseio de dados, planilhas e documentações.</p>
-                </div>
-            </div>
-        </section>
-
         <!-- Seção Como Funciona -->
-        <section class="process-section" id="comofunciona">
+        <section class="process-section" id="comofunciona" style="margin-top: 50px;">
             <h2>Como Funciona a Contratação</h2>
             <div class="process-grid">
                 <div class="process-step">
@@ -1006,7 +964,7 @@
                 <div class="process-step">
                     <div class="step-number">2</div>
                     <h4>Execução Online Ágil</h4>
-                    <p>Cuidamos de todo o back-office, planilhas, sites ou documentos com rapidez e rigor nos prazos.</p>
+                    <p>Cuidamos de todo o back-office, planilhas, sites ou documentos com rigor nos prazos.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">3</div>
@@ -1033,7 +991,7 @@
             </div>
         </section>
 
-        <!-- Seção de Percepção dos Clientes (Agora a ÚLTIMA seção) -->
+        <!-- Seção de Percepção dos Clientes -->
         <section class="testimonials-section" id="depoimentos">
             <h2>Percepção dos Clientes</h2>
             <p class="section-subtitle">O que gestores e contratantes dizem sobre o padrão de organização e suporte prestado:</p>
@@ -1061,6 +1019,21 @@
                     <p>"Seguiu cronogramas diários à risca, realizou ligações e cadastros com extrema responsabilidade. Uma assistente virtual de altíssimo nível."</p>
                     <div class="testimonial-author">Alana P.</div>
                     <div class="testimonial-project">Assistência Remota e Cronogramas</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção "Nossa História" & Localização em Destaque Verde -->
+        <section class="story-section" id="quemsomos">
+            <h2>Nossa História & Essência</h2>
+            <p>A <strong>VeloxSites</strong> nasceu da percepção real das necessidades de empresas e pessoas que hoje precisam buscar e marcar presença de forma ágil na internet. Unindo o rigor analítico da engenharia e a gestão de processos, transformamos demandas complexas e rotinas diárias em ferramentas digitais, planilhas e portais de alto desempenho, operando a partir do Rio de Janeiro para todo o Brasil.</p>
+            
+            <div class="green-badges-grid">
+                <div class="green-badge">
+                    📍 Campo Grande, Rio de Janeiro - RJ
+                </div>
+                <div class="green-badge">
+                    🌐 Atendimento para Empresas e Pessoas em Todo o Brasil
                 </div>
             </div>
         </section>
