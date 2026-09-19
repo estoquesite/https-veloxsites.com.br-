@@ -1,101 +1,1218 @@
-// ==========================================
-// SISTEMA DE CONTROLE DE ESTOQUE - VELOX SITES
-// Versão de Demonstração (Limite de 5 Produtos)
-// ==========================================
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeloxSites - Criação de Sites, Estoques, Gestão e Assistência Administrativa</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --sidebar-bg: #111827;
+            --card-bg: #1e293b;
+            --card-hover: #26334d;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary-green: #10b981;
+            --primary-green-hover: #059669;
+            --whatsapp-green: #25d366;
+            --border-color: #334155;
+            --accent-glow: rgba(16, 185, 129, 0.2);
+        }
 
-document.addEventListener('DOMContentLoaded', () => {
-    carregarProdutos();
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    const form = document.getElementById('form-produto'); 
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            adicionarProduto();
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Menu Lateral Esquerdo Fixo */
+        aside.sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            padding: 30px 20px;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .custom-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-svg {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4));
+        }
+
+        .brand-text {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-color);
+            letter-spacing: 0.5px;
+        }
+
+        .brand-text span {
+            color: var(--primary-green);
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .sidebar-menu h4 {
+            color: var(--primary-green);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .sidebar-menu li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: block;
+            padding: 6px 10px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .sidebar-menu li a:hover {
+            color: var(--text-color);
+            background-color: rgba(255, 255, 255, 0.05);
+            padding-left: 14px;
+        }
+
+        /* Bolinha do WhatsApp no Topo (Canto Superior Direito) */
+        .top-whatsapp-badge {
+            position: fixed;
+            top: 25px;
+            right: 35px;
+            background-color: var(--whatsapp-green);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 10000;
+            transition: transform 0.2s, background-color 0.2s;
+            text-decoration: none;
+        }
+
+        .top-whatsapp-badge:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+        }
+
+        .top-whatsapp-badge svg {
+            width: 26px;
+            height: 26px;
+            fill: white;
+        }
+
+        /* Conteúdo Principal */
+        main.main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 50px;
+            max-width: 1250px;
+        }
+
+        /* Header Mobile */
+        .mobile-header {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--sidebar-bg);
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 900;
+        }
+
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: left;
+            padding: 10px 0 30px 0;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            color: var(--primary-green);
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        /* Seções Genéricas */
+        .about-section, .process-section, .video-section, .portfolio-section, .testimonials-section, .services-section {
+            margin-bottom: 50px;
+        }
+
+        /* Seção de Serviços */
+        .services-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-green);
+            background-color: var(--card-hover);
+        }
+
+        .service-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-card h3 span.icon {
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .service-card p.summary {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .service-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .service-card.active {
+            border-color: var(--primary-green);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background-color: var(--card-hover);
+        }
+
+        .service-card.active .service-details {
+            max-height: 400px;
+            opacity: 1;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .service-card.active h3 span.icon {
+            transform: rotate(45deg);
+        }
+
+        /* Seção de Portfólio / Exemplos */
+        .portfolio-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .portfolio-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .portfolio-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--primary-green);
+            padding: 25px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-green);
+            background-color: rgba(30, 41, 59, 0.8);
+        }
+
+        .portfolio-card h3 {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .portfolio-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-portfolio {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary-green);
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            align-self: flex-start;
+        }
+
+        .btn-portfolio:hover {
+            background-color: var(--primary-green-hover);
+        }
+
+        /* Seção Como Funciona */
+        .process-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+        }
+
+        .process-section h2 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .process-step {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .process-step .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-green);
+            color: white;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px auto;
+        }
+
+        .process-step h4 {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .process-step p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Seção de Vídeo Motion Player */
+        .video-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .video-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .video-section p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            background-color: #050811;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+            background: radial-gradient(circle at center, #111827 0%, #050811 100%);
+        }
+
+        .video-screen h4 {
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            transition: opacity 0.4s ease;
+        }
+
+        .video-screen p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            max-width: 600px;
+            margin-bottom: 25px;
+            transition: opacity 0.4s ease;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 15, 25, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+
+        .play-btn-circle {
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+            transition: transform 0.2s, background-color 0.2s;
+            border: none;
+        }
+
+        .play-btn-circle:hover {
+            transform: scale(1.1);
+            background-color: var(--primary-green-hover);
+        }
+
+        .video-progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background-color: var(--primary-green);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* Seção de Percepção dos Clientes */
+        .testimonials-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .testimonial-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary-green);
+        }
+
+        .testimonial-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-project {
+            color: var(--primary-green);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Seção "Nossa História" & Localização em Destaque Verde */
+        .story-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary-green);
+        }
+
+        .story-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .story-section p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .green-badges-grid {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .green-badge {
+            background: var(--accent-glow);
+            color: var(--primary-green);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Widget da Assistente Mari */
+        .ai-widget-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 8px 18px 8px 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 99999;
+            transition: transform 0.2s;
+        }
+
+        .ai-widget-btn:hover {
+            transform: scale(1.05);
+            background-color: var(--primary-green-hover);
+        }
+
+        .ai-avatar-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid white;
+        }
+
+        .ai-chat-box {
+            position: fixed;
+            bottom: 95px;
+            right: 30px;
+            width: 350px;
+            max-width: calc(100vw - 40px);
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            z-index: 100000;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .ai-chat-header {
+            background-color: var(--sidebar-bg);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ai-chat-header-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ai-chat-header-info span {
+            font-weight: bold;
+            color: var(--primary-green);
+            font-size: 0.95rem;
+        }
+
+        .ai-chat-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .ai-chat-body {
+            padding: 15px;
+            max-height: 280px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .ai-msg {
+            background: rgba(15, 23, 42, 0.7);
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
+
+        .ai-chat-footer {
+            padding: 12px;
+            background-color: var(--sidebar-bg);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 8px;
+        }
+
+        .ai-chat-input {
+            flex: 1;
+            padding: 8px 12px;
+            background-color: #0b0f19;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .ai-chat-send {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            aside.sidebar {
+                transform: translateX(-100%);
+            }
+            aside.sidebar.active {
+                transform: translateX(0);
+            }
+            main.main-content {
+                margin-left: 0;
+                padding: 90px 20px 40px 20px;
+            }
+            .mobile-header {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .top-whatsapp-badge {
+                top: 15px;
+                right: 70px;
+                width: 40px;
+                height: 40px;
+            }
+            .top-whatsapp-badge svg {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bolinha do WhatsApp no Topo (Canto Superior Direito) -->
+    <a href="https://wa.me/5521967860665" target="_blank" class="top-whatsapp-badge" title="Fale pelo WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+    </a>
+
+    <!-- Header Mobile -->
+    <div class="mobile-header">
+        <a href="#" class="custom-logo">
+            <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="8" fill="#10B981" fill-opacity="0.15"/>
+                <path d="M10 28L18 14L24 22L30 12" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="30" cy="12" r="3" fill="#10B981"/>
+            </svg>
+            <span class="brand-text">VELOX<span>SITES</span></span>
+        </a>
+        <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+    </div>
+
+    <!-- Menu Lateral Esquerdo Fixo -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <a href="#" class="custom-logo" onclick="toggleSidebar()">
+                <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="#10B981" fill-opacity="0.15"/>
+                    <path d="M10 28L18 14L24 22L30 12" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="30" cy="12" r="3" fill="#10B981"/>
+                </svg>
+                <span class="brand-text">VELOX<span>SITES</span></span>
+            </a>
+        </div>
+
+        <ul class="sidebar-menu">
+            <h4>Navegação</h4>
+            <li><a href="#" onclick="toggleSidebar()">Início</a></li>
+            <li><a href="#servicos" onclick="toggleSidebar()">Serviços & Criação de Sites</a></li>
+            <li><a href="#portfolio" onclick="toggleSidebar()">Agendas & Estoques</a></li>
+            <li><a href="#comofunciona" onclick="toggleSidebar()">Como Funciona</a></li>
+            <li><a href="#video" onclick="toggleSidebar()">Apresentação</a></li>
+            <li><a href="#depoimentos" onclick="toggleSidebar()">Depoimentos</a></li>
+            <li><a href="#quemsomos" onclick="toggleSidebar()">Nossa História</a></li>
+        </ul>
+
+        <ul class="sidebar-menu">
+            <h4>Áreas de Atuação</h4>
+            <li><a href="#servicos" onclick="toggleSidebar()">Criação de Sites e Portais</a></li>
+            <li><a href="#servicos" onclick="toggleSidebar()">Gestão de Estoque e Almoxarifado</a></li>
+            <li><a href="#servicos" onclick="toggleSidebar()">Gestão de Documentação</a></li>
+            <li><a href="#servicos" onclick="toggleSidebar()">Contas a Pagar e Receber</a></li>
+            <li><a href="#servicos" onclick="toggleSidebar()">Bases de Dados e Cadastros</a></li>
+            <li><a href="#servicos" onclick="toggleSidebar()">Planilhas e Power BI</a></li>
+        </ul>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Precisa estruturar seu estoque ou criar seu site com a <span>Velox</span>? É <span>fácil, rápido e seguro</span></h1>
+            <p>Serviços profissionais de retaguarda administrativa, criação de sites sob medida, estruturação de almoxarifados e planilhas inteligentes. Entregas no prazo e qualidade garantida para você ou sua empresa.</p>
+        </section>
+
+        <!-- Seção de Serviços e Criação de Sites -->
+        <section class="services-section" id="servicos">
+            <h2>Serviços Profissionais e Criação de Sites</h2>
+            <p class="section-subtitle">Clique em qualquer serviço abaixo para abrir e ler o escopo completo de atuação:</p>
+            
+            <div class="services-grid">
+                <!-- 1. Criação de Sites -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Criação de Sites e Páginas Personalizadas <span class="icon">+</span></h3>
+                    <p class="summary">Desenvolvimento de portais sob medida para agendas, projetos e negócios.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Criação de qualquer tipo de site ou página que você precise (como portais de guarda compartilhada, cronogramas de programação, páginas institucionais ou landing pages) com foco em organização e elegância.</p>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Gestão de Estoque, Almoxarifado e Ativos <span class="icon">+</span></h3>
+                    <p class="summary">Controle técnico de materiais, inventário físico, planilhas de guarda e rotatividade.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Estruturação completa de estoques para terceiros, inventários físicos, controle rigoroso de entradas/saídas e aplicação de conceitos de confiabilidade para otimizar almoxarifados e evitar perdas.</p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Gestão de Documentação de Projetos <span class="icon">+</span></h3>
+                    <p class="summary">Abordagem estruturada para projetos com início, meio e fim bem definidos.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Categorização, arquivamento rigoroso e recuperação ágil de todos os documentos relevantes. Garantimos que a documentação esteja completa, organizada e pronta para futuras referências e auditorias.</p>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Assistência Administrativa Remota (Back-Office) <span class="icon">+</span></h3>
+                    <p class="summary">Suporte responsável para digitação, conferência de dados e controle rotineiro.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Execução de tarefas essenciais de back-office, incluindo entrada de dados, preenchimento e estruturação de planilhas, cadastros em sistemas e organização documental com rigor em prazos.</p>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Contas a Pagar, Receber e Conciliação <span class="icon">+</span></h3>
+                    <p class="summary">Organização financeira rigorosa e controle de fluxo de caixa.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Gestão de pagamentos, cobranças, lançamento de extratos, conciliação bancária diária e relatórios financeiros para assegurar saúde e previsibilidade ao seu negócio.</p>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Bases de Dados e Cadastros Corporativos <span class="icon">+</span></h3>
+                    <p class="summary">Criação de diretórios estruturados com nomes, endereços e contatos.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Unificação e limpeza de cadastros de clientes, fornecedores e parceiros em planilhas inteligentes, garantindo padronização e buscas rápidas.</p>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Planilhas Sob Medida e Dashboards Power BI <span class="icon">+</span></h3>
+                    <p class="summary">Ferramentas inteligentes e painéis gerenciais personalizados.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Desenvolvimento de planilhas avançadas em Excel/VBA com automações e criação de dashboards visuais em Power BI para monitoramento de KPIs.</p>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="service-card" onclick="toggleCard(this)">
+                    <h3>Faturamento e Cronograma de Atividades <span class="icon">+</span></h3>
+                    <p class="summary">Organização de rotinas diárias, notas fiscais e pendências.</p>
+                    <div class="service-details">
+                        <p><strong>Escopo completo:</strong> Acompanhamento de cronogramas diários, emissão de notas fiscais, controle de tarefas pendentes e relatórios de produtividade.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Projetos e Portfólio (Com o link do estoque apontando para a Listateste) -->
+        <section class="portfolio-section" id="portfolio">
+            <h2>Quer criar uma agenda de guarda compartilhada, programação ou estruturar o seu estoque?</h2>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">O que você deseja criar, nós desenvolvemos para você. Conheça os exemplos reais abaixo:</p>
+            
+            <div class="portfolio-grid">
+                <!-- Exemplo 1: Guarda Compartilhada -->
+                <div class="portfolio-card">
+                    <div>
+                        <h3>Agenda de Guarda Compartilhada <span>👨‍👩‍👧‍👦</span></h3>
+                        <p>Exemplo prático de site e portal dedicado à organização parental, datas, feriados e rotinas familiares sem atritos:</p>
+                    </div>
+                    <a href="https://sites.google.com/view/agenda-sophia-2027/in%C3%ADcio" target="_blank" class="btn-portfolio">
+                        Ver Exemplo (Agenda Sophia) ↗
+                    </a>
+                </div>
+
+                <!-- Exemplo 2: Programação -->
+                <div class="portfolio-card">
+                    <div>
+                        <h3>Programação & Cronograma <span>📊</span></h3>
+                        <p>Exemplo prático de página estruturada para gestão temporal, marcos de projetos e acompanhamento sequencial de etapas:</p>
+                    </div>
+                    <a href="https://sites.google.com/view/programacao-2027/in%C3%ADcio" target="_blank" class="btn-portfolio">
+                        Ver Exemplo (Programação) ↗
+                    </a>
+                </div>
+
+                <!-- Exemplo 3: Sistema de Estoque (Apontando para Listateste) -->
+                <div class="portfolio-card">
+                    <div>
+                        <h3>Sistema de Estoque & Almoxarifado <span>📦</span></h3>
+                        <p>Exemplo prático de controle de materiais, entradas, saídas e inventário físico estruturado sob medida:</p>
+                    </div>
+                    <a href="https://estoquesite.github.io/Listateste/" target="_blank" class="btn-portfolio">
+                        Ver Exemplo (Estoque) ↗
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção Como Funciona -->
+        <section class="process-section" id="comofunciona" style="margin-top: 50px;">
+            <h2>Como Funciona a Contratação</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Fale com a Mari ou WhatsApp</h4>
+                    <p>Você nos conta qual é a sua necessidade (seja para sua empresa ou projeto pessoal).</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Execução Online Ágil</h4>
+                    <p>Cuidamos de todo o back-office, planilhas, sites ou documentos com rigor nos prazos.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Entrega com Qualidade</h4>
+                    <p>Você recebe seu projeto pronto, organizado e seguro, sem burocracia ou intermediários.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Vídeo Motion Player Interativo -->
+        <section class="video-section" id="video">
+            <h3>Apresentação em Vídeo</h3>
+            <p>Clique no play para assistir à nossa apresentação interativa sobre o padrão de excelência VeloxSites.</p>
+            <div class="video-container">
+                <div class="play-overlay" id="playOverlay">
+                    <button class="play-btn-circle" onclick="startVideo()">▶</button>
+                    <span style="color: var(--text-muted); margin-top: 15px; font-weight: 600; font-size: 0.95rem;">Assistir Apresentação Institucional</span>
+                </div>
+                <div class="video-screen">
+                    <h4 id="vidTitle">VeloxSites: Excelência Operacional</h4>
+                    <p id="vidText">Transformando processos burocráticos em gestão estruturada, organizada e de alto desempenho.</p>
+                </div>
+                <div class="video-progress-bar" id="videoProgressBar"></div>
+            </div>
+        </section>
+
+        <!-- Seção de Percepção dos Clientes -->
+        <section class="testimonials-section" id="depoimentos">
+            <h2>Percepção dos Clientes</h2>
+            <p class="section-subtitle">O que gestores e contratantes dizem sobre o padrão de organização e suporte prestado:</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Precisávamos de um profissional para organizar e categorizar a documentação de um projeto com início e fim definidos. A entrega foi impecável e com total rastreabilidade."</p>
+                    <div class="testimonial-author">Davi M.</div>
+                    <div class="testimonial-project">Gestão de Documentação de Projetos</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>"Excelente suporte no back-office financeiro. Organizou nosso contas a pagar e receber, lançamentos e compras com muita atenção aos detalhes."</p>
+                    <div class="testimonial-author">Valentina S.</div>
+                    <div class="testimonial-project">Contas a Pagar e Receber</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>"Criou bases de dados limpas e estruturadas apenas com nomes, endereços e contatos de empresas. Agilizou absurdamente a nossa rotina comercial."</p>
+                    <div class="testimonial-author">João Lucas R.</div>
+                    <div class="testimonial-project">Bases de Dados e Cadastros</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p>"Seguiu cronogramas diários à risca, realizou ligações e cadastros com extrema responsabilidade. Uma assistente virtual de altíssimo nível."</p>
+                    <div class="testimonial-author">Alana P.</div>
+                    <div class="testimonial-project">Assistência Remota e Cronogramas</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção "Nossa História" & Localização em Destaque Verde -->
+        <section class="story-section" id="quemsomos">
+            <h2>Nossa História & Essência</h2>
+            <p>A <strong>VeloxSites</strong> nasceu da percepção real das necessidades de empresas e pessoas que hoje precisam buscar e marcar presença de forma ágil na internet. Unindo o rigor analítico da engenharia e a gestão de processos, transformamos demandas complexas, controle de estoques e rotinas diárias em ferramentas digitais e portais de alto desempenho, operando a partir do Rio de Janeiro para todo o Brasil.</p>
+            
+            <div class="green-badges-grid">
+                <div class="green-badge">
+                    📍 Campo Grande, Rio de Janeiro - RJ
+                </div>
+                <div class="green-badge">
+                    🌐 Atendimento para Empresas e Pessoas em Todo o Brasil
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
+            <div style="margin-top: 10px; font-size: 0.85rem; color: var(--text-muted);">
+                Visitas ao site: <span id="visitorCount" style="color: var(--primary-green); font-weight: bold;">947</span>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Botão Flutuante com a Fotinha da Mari -->
+    <button class="ai-widget-btn" onclick="toggleAiChat()">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces" alt="Mari" class="ai-avatar-img">
+        <span>Fale com a Mari</span>
+    </button>
+
+    <!-- Caixa de Chat da Mari -->
+    <div class="ai-chat-box" id="aiChatBox" style="display: none;">
+        <div class="ai-chat-header">
+            <div class="ai-chat-header-info">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces" alt="Mari" class="ai-avatar-img" style="width: 28px; height: 28px;">
+                <span>Mari (Assistente Virtual)</span>
+            </div>
+            <button class="ai-chat-close" onclick="toggleAiChat()">✕</button>
+        </div>
+        <div class="ai-chat-body" id="aiChatBody">
+            <div class="ai-msg">Olá! Sou a <strong>Mari</strong>, assistente virtual da VeloxSites. Gostaria de estruturar seu estoque ou criar um site personalizado hoje?</div>
+        </div>
+        <div class="ai-chat-footer">
+            <input type="text" id="aiChatInput" class="ai-chat-input" placeholder="Digite sua necessidade..." onkeypress="handleChatKey(event)">
+            <button class="ai-chat-send" onclick="sendAiMessage()">Enviar</button>
+        </div>
+    </div>
+
+    <script>
+        // Contador iniciando em 947
+        document.addEventListener("DOMContentLoaded", function() {
+            let visits = localStorage.getItem('velox_site_visits');
+            if (!visits) {
+                visits = 947;
+                localStorage.setItem('velox_site_visits', visits);
+            } else {
+                visits = parseInt(visits) + 1;
+                localStorage.setItem('velox_site_visits', visits);
+            }
+            const counterElement = document.getElementById('visitorCount');
+            if (counterElement) {
+                counterElement.innerText = visits;
+            }
         });
-    }
-});
 
-// Recupera os produtos salvos no navegador (LocalStorage)
-function obterProdutos() {
-    return JSON.parse(localStorage.getItem('velox_produtos_teste')) || [];
-}
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
 
-// Salva a lista de produtos no LocalStorage
-function salvarProdutos(produtos) {
-    localStorage.setItem('velox_produtos_teste', JSON.stringify(produtos));
-}
+        function toggleCard(card) {
+            const cards = document.querySelectorAll('.service-card');
+            cards.forEach(c => {
+                if (c !== card) c.classList.remove('active');
+            });
+            card.classList.toggle('active');
+        }
 
-// Função para Adicionar Novo Produto com Trava de Limite (Demo)
-function adicionarProduto() {
-    let produtos = obterProdutos();
+        // Controle do Chat da Mari
+        function toggleAiChat() {
+            const box = document.getElementById('aiChatBox');
+            if (box) {
+                if (box.style.display === 'flex') {
+                    box.style.display = 'none';
+                } else {
+                    box.style.display = 'flex';
+                    const input = document.getElementById('aiChatInput');
+                    if (input) input.focus();
+                }
+            }
+        }
 
-    // 🛑 TRAVA DA VERSÃO DE DEMONSTRAÇÃO (Limite de 5 produtos)
-    if (produtos.length >= 5) {
-        alert("⚠️ Versão de Demonstração VeloxSites:\n\nO limite de testes para esta demonstração gratuita é de 5 produtos.\n\nPara liberar o sistema completo, ilimitado e personalizado para a sua empresa, clique em OK para falar diretamente com a nossa equipe no WhatsApp!");
-        
-        // Direciona direto para o seu WhatsApp com mensagem pronta
-        window.open("https://wa.me/5521967860665?text=Olá! Testei a demonstração do sistema de estoque e quero contratar a versão completa e ilimitada para a minha empresa.", "_blank");
-        
-        return; // Interrompe o cadastro do 6º produto
-    }
+        function handleChatKey(e) {
+            if (e.key === 'Enter') {
+                sendAiMessage();
+            }
+        }
 
-    // Captura os valores dos inputs do formulário 
-    // (Certifique-se de que os IDs no seu HTML correspondem a estes: 'nome-produto', 'qtd-produto', 'preco-produto')
-    const nomeInput = document.getElementById('nome-produto');
-    const qtdInput = document.getElementById('qtd-produto');
-    const precoInput = document.getElementById('preco-produto');
+        function sendAiMessage() {
+            const input = document.getElementById('aiChatInput');
+            const body = document.getElementById('aiChatBody');
+            const text = input.value.trim();
 
-    if (!nomeInput || !qtdInput || nomeInput.value.trim() === '' || qtdInput.value.trim() === '') {
-        alert("Por favor, preencha o nome e a quantidade do produto!");
-        return;
-    }
+            if (!text) return;
 
-    const novoProduto = {
-        id: Date.now(),
-        nome: nomeInput.value.trim(),
-        quantidade: qtdInput.value.trim(),
-        preco: precoInput ? precoInput.value.trim() : '0,00'
-    };
+            const userMsg = document.createElement('div');
+            userMsg.className = 'ai-msg';
+            userMsg.style.background = 'rgba(16, 185, 129, 0.15)';
+            userMsg.style.borderColor = 'var(--primary-green)';
+            userMsg.innerText = text;
+            body.appendChild(userMsg);
 
-    produtos.push(novoProduto);
-    salvarProdutos(produtos);
+            input.value = '';
+            body.scrollTop = body.scrollHeight;
 
-    // Limpa os campos após salvar
-    nomeInput.value = '';
-    qtdInput.value = '';
-    if (precoInput) precoInput.value = '';
+            setTimeout(() => {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'ai-msg';
+                aiMsg.innerHTML = `Entendido! Anotei sua necessidade: "<em>${text}</em>". Vou te direcionar direto para o WhatsApp para conversarmos os detalhes do seu projeto.`;
+                body.appendChild(aiMsg);
+                body.scrollTop = body.scrollHeight;
 
-    carregarProdutos();
-    alert("✅ Produto cadastrado com sucesso! (Demonstração: " + produtos.length + "/5 produtos utilizados)");
-}
+                setTimeout(() => {
+                    const encodedMsg = encodeURIComponent(`Olá! Falei com a Mari no site e gostaria de solicitar: ${text}`);
+                    window.open(`https://wa.me/5521967860665?text=${encodedMsg}`, '_blank');
+                }, 1500);
+            }, 800);
+        }
 
-// Carrega e exibe os produtos na tabela do site
-function carregarProdutos() {
-    const produtos = obterProdutos();
-    const tabela = document.getElementById('tabela-produtos'); // ID da sua tabela no HTML
-    
-    if (!tabela) return;
+        // Apresentação Interativa
+        function startVideo() {
+            const overlay = document.getElementById('playOverlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => { overlay.style.display = 'none'; }, 300);
 
-    tabela.innerHTML = '';
+            const title = document.getElementById('vidTitle');
+            const text = document.getElementById('vidText');
+            const progressBar = document.getElementById('videoProgressBar');
 
-    produtos.forEach((prod) => {
-        const linha = document.createElement('tr');
-        linha.innerHTML = `
-            <td style="padding: 10px; border-bottom: 1px solid #334155;">${prod.nome}</td>
-            <td style="padding: 10px; border-bottom: 1px solid #334155; text-align: center;">${prod.quantidade}</td>
-            <td style="padding: 10px; border-bottom: 1px solid #334155; text-align: center;">R$ ${prod.preco}</td>
-            <td style="padding: 10px; border-bottom: 1px solid #334155; text-align: center;">
-                <button onclick="removerProduto(${prod.id})" style="background: #ef4444; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: 600;">Excluir</button>
-            </td>
-        `;
-        tabela.appendChild(linha);
-    });
-}
+            const steps = [
+                { t: "1. Criação de Sites e Portais", desc: "Desenvolvimento de páginas customizadas para agendas, projetos e negócios." },
+                { t: "2. Gestão de Estoque e Almoxarifado", desc: "Estruturação física e lógica de materiais, inventários e planilhas de controle." },
+                { t: "3. Organização de Documentação", desc: "Categorização, arquivamento rigoroso e total rastreabilidade para projetos." },
+                { t: "4. Suporte Administrativo e Financeiro", desc: "Contas a pagar, receber, faturamento e controle de fluxo de caixa." },
+                { t: "VeloxSites: Sua Retaguarda Estratégica", desc: "Fale com a Mari ou clique no WhatsApp lá em cima para estruturar seu negócio agora!" }
+            ];
 
-// Remove um produto da lista
-function removerProduto(id) {
-    let produtos = obterProdutos();
-    produtos = produtos.filter(prod => prod.id !== id);
-    salvarProdutos(produtos);
-    carregarProdutos();
-}
+            let index = 0;
+            let progress = 0;
+            
+            const progressInterval = setInterval(() => {
+                progress += 0.4;
+                if (progress > 100) progress = 100;
+                progressBar.style.width = progress + '%';
+            }, 100);
+
+            function nextStep() {
+                if (index < steps.length) {
+                    title.style.opacity = '0';
+                    text.style.opacity = '0';
+                    setTimeout(() => {
+                        title.innerText = steps[index].t;
+                        text.innerText = steps[index].desc;
+                        title.style.opacity = '1';
+                        text.style.opacity = '1';
+                        index++;
+                        if (index < steps.length) {
+                            setTimeout(nextStep, 4000);
+                        } else {
+                            setTimeout(() => {
+                                clearInterval(progressInterval);
+                                progressBar.style.width = '100%';
+                            }, 4000);
+                        }
+                    }, 400);
+                }
+            }
+            nextStep();
+        }
+    </script>
+
+</body>
+</html>
