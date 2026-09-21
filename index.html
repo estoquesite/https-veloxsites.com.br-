@@ -6,31 +6,27 @@
     <title>VeloxSites - Mariana & Mari | Sites e Sistemas sob Medida</title>
     <style>
         :root {
-            --bg: #090d16;
-            --surface: #111827;
-            --surface-hover: #1f293d;
+            --bg: #060913;
+            --surface: #0c1021;
+            --surface-hover: #141b33;
             --border: rgba(255, 255, 255, 0.08);
             --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --pink-hot: #ff2a85;       /* Rosa Choque */
-            --pink-baby: #ffb6c1;      /* Rosa Bebê */
-            --primary: #ff2a85;
-            --primary-glow: rgba(255, 42, 133, 0.7);
+            --text-muted: #a3b1c6;
+            --neon-green: #00ff88;     /* Verde Neon */
+            --neon-glow: rgba(0, 255, 136, 0.7);
             --whatsapp: #25d366;
         }
 
         /* Tema Claro */
         body.light-theme {
-            --bg: #fff1f2;
+            --bg: #f1f5f9;
             --surface: #ffffff;
-            --surface-hover: #ffe4e6;
-            --border: rgba(255, 42, 133, 0.2);
-            --text-main: #1f2937;
-            --text-muted: #6b7280;
-            --pink-hot: #e11d48;
-            --pink-baby: #fda4af;
-            --primary: #e11d48;
-            --primary-glow: rgba(225, 29, 72, 0.5);
+            --surface-hover: #e2e8f0;
+            --border: rgba(0, 255, 136, 0.2);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --neon-green: #059669;
+            --neon-glow: rgba(5, 150, 105, 0.5);
         }
 
         * {
@@ -48,40 +44,40 @@
             overflow-x: hidden;
         }
 
-        /* Animação de Piscar em Rosa Choque */
-        @keyframes pinkBlink {
+        /* Animação de Piscar em Verde Neon */
+        @keyframes greenBlink {
             0%, 100% {
                 opacity: 1;
-                text-shadow: 0 0 25px var(--primary-glow), 0 0 10px var(--pink-hot);
+                text-shadow: 0 0 25px var(--neon-glow), 0 0 10px var(--neon-green);
             }
             50% {
                 opacity: 0.6;
-                text-shadow: 0 0 8px rgba(255, 42, 133, 0.3);
+                text-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
             }
         }
 
-        /* Animação de Neon Pulsante Intenso para o Logótipo e Badge */
+        /* Animação de Neon Pulsante Intenso para o Badge */
         @keyframes neonFlash {
             0%, 100% {
-                border-color: var(--pink-hot);
-                box-shadow: 0 0 15px var(--pink-hot), inset 0 0 10px var(--pink-hot);
-                background: rgba(255, 42, 133, 0.25);
+                border-color: var(--neon-green);
+                box-shadow: 0 0 15px var(--neon-green), inset 0 0 10px var(--neon-green);
+                background: rgba(0, 255, 136, 0.15);
             }
             50% {
-                border-color: var(--pink-baby);
-                box-shadow: 0 0 35px var(--pink-hot), inset 0 0 20px var(--pink-hot);
-                background: rgba(255, 42, 133, 0.45);
+                border-color: #ffffff;
+                box-shadow: 0 0 35px var(--neon-green), inset 0 0 20px var(--neon-green);
+                background: rgba(0, 255, 136, 0.35);
             }
         }
 
-        /* Animação para o Logotipo e Ícone piscarem */
+        /* Animação para o Logótipo piscar */
         @keyframes logoBlink {
             0%, 100% {
-                filter: drop-shadow(0 0 12px var(--pink-hot));
+                filter: drop-shadow(0 0 12px var(--neon-green));
                 opacity: 1;
             }
             50% {
-                filter: drop-shadow(0 0 4px var(--pink-baby));
+                filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
                 opacity: 0.7;
             }
         }
@@ -90,11 +86,11 @@
         @keyframes buttonPulse {
             0%, 100% {
                 transform: scale(1);
-                box-shadow: 0 0 20px var(--primary-glow);
+                box-shadow: 0 0 20px var(--neon-glow);
             }
             50% {
                 transform: scale(1.04);
-                box-shadow: 0 0 40px var(--pink-hot);
+                box-shadow: 0 0 40px var(--neon-green);
             }
         }
 
@@ -130,8 +126,8 @@
         }
 
         .nav-brand span {
-            color: var(--pink-hot);
-            animation: pinkBlink 1.8s ease-in-out infinite;
+            color: var(--neon-green);
+            animation: greenBlink 1.8s ease-in-out infinite;
         }
 
         .nav-links {
@@ -149,7 +145,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--pink-hot);
+            color: var(--neon-green);
         }
 
         .nav-actions {
@@ -174,8 +170,8 @@
         }
 
         .btn-wa {
-            background: var(--pink-hot);
-            color: white;
+            background: var(--neon-green);
+            color: #060913;
             border: none;
             padding: 9px 18px;
             border-radius: 8px;
@@ -186,14 +182,14 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 20px var(--primary-glow);
+            box-shadow: 0 4px 20px var(--neon-glow);
             animation: buttonPulse 1.6s ease-in-out infinite;
         }
 
         .btn-wa:hover {
             animation: none;
             transform: scale(1.05);
-            box-shadow: 0 6px 30px var(--pink-hot);
+            box-shadow: 0 6px 30px var(--neon-green);
         }
 
         /* Container Principal */
@@ -210,20 +206,20 @@
             margin: 0 auto 80px auto;
         }
 
-        /* Badge com Neon Rosa Choque a Piscar */
+        /* Badge com Neon Verde a Piscar */
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            border: 2px solid var(--pink-hot);
-            color: var(--pink-hot);
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
             padding: 8px 22px;
             border-radius: 50px;
             font-size: 0.95rem;
             font-weight: 800;
             margin-bottom: 25px;
             animation: neonFlash 1.5s ease-in-out infinite;
-            text-shadow: 0 0 10px var(--pink-hot);
+            text-shadow: 0 0 10px var(--neon-green);
         }
 
         .hero h1 {
@@ -235,8 +231,8 @@
         }
 
         .hero h1 span {
-            color: var(--pink-hot);
-            animation: pinkBlink 1.8s ease-in-out infinite;
+            color: var(--neon-green);
+            animation: greenBlink 1.8s ease-in-out infinite;
             display: inline-block;
         }
 
@@ -255,13 +251,13 @@
         }
 
         .btn-primary {
-            background: var(--pink-hot);
-            color: white;
+            background: var(--neon-green);
+            color: #060913;
             padding: 14px 28px;
             border-radius: 12px;
             font-weight: 800;
             text-decoration: none;
-            box-shadow: 0 8px 25px var(--primary-glow);
+            box-shadow: 0 8px 25px var(--neon-glow);
             animation: buttonPulse 1.6s ease-in-out infinite;
             display: inline-flex;
             align-items: center;
@@ -271,7 +267,7 @@
         .btn-primary:hover {
             animation: none;
             transform: scale(1.06);
-            box-shadow: 0 12px 40px var(--pink-hot);
+            box-shadow: 0 12px 40px var(--neon-green);
         }
 
         /* Seções Estilizadas */
@@ -315,9 +311,9 @@
         }
 
         .service-card:hover {
-            border-color: var(--pink-hot);
+            border-color: var(--neon-green);
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(255, 42, 133, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
         }
 
         .service-card h3 {
@@ -330,7 +326,7 @@
         }
 
         .service-card h3 span {
-            color: var(--pink-hot);
+            color: var(--neon-green);
             font-size: 1.2rem;
         }
 
@@ -350,7 +346,7 @@
         }
 
         .service-card.active {
-            border-color: var(--pink-hot);
+            border-color: var(--neon-green);
             background: var(--surface-hover);
         }
 
@@ -390,13 +386,13 @@
         }
 
         .calc-chip:hover {
-            border-color: var(--pink-hot);
+            border-color: var(--neon-green);
         }
 
         .calc-chip.selected {
-            background: var(--primary-glow);
-            border-color: var(--pink-hot);
-            color: var(--pink-hot);
+            background: var(--neon-glow);
+            border-color: var(--neon-green);
+            color: #060913;
         }
 
         .calc-footer {
@@ -431,7 +427,7 @@
 
         .portfolio-item:hover {
             transform: translateY(-5px);
-            border-color: var(--pink-hot);
+            border-color: var(--neon-green);
         }
 
         .portfolio-item h3 {
@@ -448,7 +444,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--pink-hot);
+            color: var(--neon-green);
             font-weight: 700;
             text-decoration: none;
         }
@@ -483,7 +479,7 @@
         }
 
         .faq-q span {
-            color: var(--pink-hot);
+            color: var(--neon-green);
         }
 
         .faq-a {
@@ -496,7 +492,7 @@
         }
 
         .faq-item.active {
-            border-color: var(--pink-hot);
+            border-color: var(--neon-green);
             background: var(--surface-hover);
         }
 
@@ -522,17 +518,17 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: var(--pink-hot);
-            color: white;
+            background: var(--neon-green);
+            color: #060913;
             border: none;
             border-radius: 50px;
             padding: 12px 24px 12px 14px;
-            font-weight: 700;
+            font-weight: 800;
             display: flex;
             align-items: center;
             gap: 12px;
             cursor: pointer;
-            box-shadow: 0 10px 30px var(--primary-glow);
+            box-shadow: 0 10px 30px var(--neon-glow);
             z-index: 9999;
             transition: transform 0.2s;
         }
@@ -546,7 +542,7 @@
             height: 36px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--pink-baby);
+            border: 2px solid var(--neon-green);
         }
 
         /* Responsividade */
@@ -569,9 +565,9 @@
     <header class="navbar">
         <a href="#" class="nav-brand">
             <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
-                <rect width="40" height="40" rx="10" fill="#ff2a85" fill-opacity="0.25" stroke="#ff2a85" stroke-width="1.5"/>
-                <path d="M12 28L20 12L28 28H23L20 21L17 28H12Z" fill="#ff2a85"/>
-                <circle cx="20" cy="16" r="2.5" fill="#ffb6c1"/>
+                <rect width="40" height="40" rx="10" fill="#00ff88" fill-opacity="0.25" stroke="#00ff88" stroke-width="1.5"/>
+                <path d="M12 28L20 12L28 28H23L20 21L17 28H12Z" fill="#00ff88"/>
+                <circle cx="20" cy="16" r="2.5" fill="#ffffff"/>
             </svg>
             VELOX<span>SITES</span>
         </a>
@@ -620,7 +616,7 @@
 
                 <div class="calc-footer">
                     <div>
-                        <div id="calcText" style="font-weight: 700; color: var(--pink-hot);">Nenhum item selecionado.</div>
+                        <div id="calcText" style="font-weight: 700; color: var(--neon-green);">Nenhum item selecionado.</div>
                         <div style="font-size: 0.85rem; color: var(--text-muted);">Mariana & Mari prontas para iniciar o desenvolvimento.</div>
                     </div>
                     <a href="#" id="calcBtn" target="_blank" class="btn-primary" onclick="sendCalc(event)" style="opacity: 0.5; pointer-events: none;">Enviar para o WhatsApp ↗</a>
@@ -725,7 +721,7 @@
     <footer>
         &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
         <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.7 (Logótipo e Elementos em Neon Rosa Choque)
+            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.8 (Neon Verde Pulsante Edition)
         </div>
     </footer>
 
@@ -740,20 +736,20 @@
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme_v37', isLight ? 'light' : 'dark');
+            localStorage.setItem('velox_theme_v38', isLight ? 'light' : 'dark');
             document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem('velox_theme_v37') === 'light') {
+            if (localStorage.getItem('velox_theme_v38') === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
 
             // Contador de visitas
-            let visits = localStorage.getItem('velox_visits_v37') || 947;
+            let visits = localStorage.getItem('velox_visits_v38') || 947;
             visits = parseInt(visits) + 1;
-            localStorage.setItem('velox_visits_v37', visits);
+            localStorage.setItem('velox_visits_v38', visits);
             document.getElementById('visitorCount').innerText = visits;
         });
 
