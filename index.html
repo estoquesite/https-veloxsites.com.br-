@@ -3,315 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeloxSites - Mariana & Mari | Criação de Qualquer Site Personalizado</title>
+    <title>VeloxSites - Mariana & Mari | Sites e Sistemas sob Medida</title>
     <style>
         :root {
-            --bg-color: #f8fafc;
-            --sidebar-bg: #ffffff;
-            --card-bg: #ffffff;
-            --card-hover: #f1f5f9;
-            --text-color: #0f172a;
-            --text-muted: #475569;
-            --primary-green: #059669;
-            --primary-green-hover: #047857;
-            --whatsapp-green: #25d366;
-            --border-color: #e2e8f0;
-            --accent-glow: rgba(5, 150, 105, 0.15);
+            --bg: #090d16;
+            --surface: #111827;
+            --surface-hover: #1f293d;
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.3);
+            --accent: #06b6d4;
+            --whatsapp: #25d366;
         }
 
-        /* Modo Escuro (caso o cliente queira alternar) */
-        body.dark-theme {
-            --bg-color: #0b0f19;
-            --sidebar-bg: #111827;
-            --card-bg: #1e293b;
-            --card-hover: #26334d;
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --primary-green: #10b981;
-            --primary-green-hover: #059669;
-            --border-color: #334155;
-            --accent-glow: rgba(16, 185, 129, 0.25);
+        /* Tema Claro */
+        body.light-theme {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-hover: #f1f5f9;
+            --border: rgba(0, 0, 0, 0.08);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #059669;
+            --primary-glow: rgba(5, 150, 105, 0.2);
+            --accent: #0284c7;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            display: flex;
-            min-height: 100vh;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        /* Menu Lateral Esquerdo Fixo */
-        aside.sidebar {
-            width: 280px;
-            background-color: var(--sidebar-bg);
-            border-right: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            padding: 30px 20px;
-            position: fixed;
-            height: 100vh;
-            left: 0;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .sidebar-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .custom-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-svg {
-            width: 40px;
-            height: 40px;
-        }
-
-        .brand-text {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--text-color);
-            letter-spacing: 0.5px;
-        }
-
-        .brand-text span {
-            color: var(--primary-green);
-        }
-
-        .theme-toggle-btn {
-            background: var(--card-hover);
-            color: var(--text-color);
-            border: 1px solid var(--border-color);
-            padding: 10px 15px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 25px;
-        }
-
-        .theme-toggle-btn:hover {
-            border-color: var(--primary-green);
-        }
-
-        .sidebar-menu {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            margin-bottom: 25px;
-        }
-
-        .sidebar-menu h4 {
-            color: var(--primary-green);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-        }
-
-        .sidebar-menu li a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            display: block;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-
-        .sidebar-menu li a:hover {
-            color: var(--text-color);
-            background: rgba(5, 150, 105, 0.1);
-            border-left: 3px solid var(--primary-green);
-            padding-left: 16px;
-        }
-
-        /* Bolinha do WhatsApp no Topo */
-        .top-whatsapp-badge {
-            position: fixed;
-            top: 25px;
-            right: 35px;
-            background-color: var(--whatsapp-green);
-            color: white;
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            z-index: 10000;
-            transition: transform 0.2s;
-            text-decoration: none;
-        }
-
-        .top-whatsapp-badge:hover {
-            transform: scale(1.1);
-        }
-
-        .top-whatsapp-badge svg {
-            width: 28px;
-            height: 28px;
-            fill: white;
-        }
-
-        /* Conteúdo Principal */
-        main.main-content {
-            margin-left: 280px;
-            flex: 1;
-            padding: 50px;
-            max-width: 1250px;
-        }
-
-        /* Header Mobile */
-        .mobile-header {
-            display: none;
-            align-items: center;
-            justify-content: space-between;
-            background-color: var(--sidebar-bg);
-            padding: 15px 20px;
-            border-bottom: 1px solid var(--border-color);
+        /* Navbar Flutuante Moderna */
+        header.navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 900;
-        }
-
-        .mobile-menu-btn {
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: left;
-            padding: 20px 0 40px 0;
-            max-width: 950px;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.4rem, 4vw, 3.5rem);
-            margin-bottom: 20px;
-            font-weight: 800;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            line-height: 1.7;
-        }
-
-        .duo-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--accent-glow);
-            border: 1px solid var(--primary-green);
-            padding: 10px 20px;
-            border-radius: 50px;
-            color: var(--primary-green);
-            font-weight: 700;
-            font-size: 1rem;
-            margin-bottom: 25px;
-        }
-
-        /* Seções */
-        .services-section, .portfolio-section, .calculator-section, .faq-section, .process-section, .video-section, .testimonials-section, .story-section {
-            margin-bottom: 50px;
-        }
-
-        /* Calculadora / Simulador */
-        .calculator-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            position: relative;
-        }
-
-        .calculator-section h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .calc-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin: 25px 0;
-        }
-
-        .calc-option {
-            background: var(--bg-color);
-            border: 2px solid var(--border-color);
-            padding: 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            text-align: center;
-            font-weight: 700;
-            transition: all 0.2s;
-        }
-
-        .calc-option:hover {
-            border-color: var(--primary-green);
-        }
-
-        .calc-option.selected {
-            background: var(--accent-glow);
-            border-color: var(--primary-green);
-            color: var(--primary-green);
-        }
-
-        .calc-result-box {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            border-radius: 12px;
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
+            padding: 16px 50px;
+            z-index: 1000;
         }
 
-        .btn-calc-action {
-            background-color: var(--primary-green);
-            color: white;
-            border: none;
-            padding: 12px 25px;
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--text-main);
+        }
+
+        .nav-brand span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-theme, .btn-wa {
+            background: var(--surface-hover);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
             border-radius: 8px;
-            font-weight: 700;
+            font-size: 0.9rem;
+            font-weight: 600;
             cursor: pointer;
             text-decoration: none;
             display: inline-flex;
@@ -319,137 +115,152 @@
             gap: 8px;
         }
 
-        .btn-calc-action:hover {
-            background-color: var(--primary-green-hover);
+        .btn-wa {
+            background: var(--whatsapp);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
-        /* FAQ / Tira-Dúvidas */
-        .faq-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 45px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+        .btn-wa:hover {
+            opacity: 0.9;
         }
 
-        .faq-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            font-weight: 800;
+        /* Container Principal */
+        main.container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 140px 25px 80px 25px;
         }
 
-        .faq-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 25px;
+        /* Hero Section Impactante */
+        .hero {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 80px auto;
         }
 
-        .faq-item {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px 25px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .faq-item:hover {
-            border-color: var(--primary-green);
-        }
-
-        .faq-question {
-            font-size: 1.15rem;
-            font-weight: 700;
-            display: flex;
-            justify-content: space-between;
+        .hero-badge {
+            display: inline-flex;
             align-items: center;
+            gap: 8px;
+            background: var(--primary-glow);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 25px;
         }
 
-        .faq-question span {
-            color: var(--primary-green);
-            font-size: 1.4rem;
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
         }
 
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, opacity 0.3s ease;
-            opacity: 0;
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
             color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
+            margin-bottom: 40px;
+            line-height: 1.6;
         }
 
-        .faq-item.active {
-            border-color: var(--primary-green);
-            background: var(--card-hover);
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .faq-item.active .faq-answer {
-            max-height: 200px;
-            opacity: 1;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border-color);
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 8px 25px var(--primary-glow);
+            transition: transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* Serviços */
-        .services-section h2 {
-            font-size: 2.3rem;
-            margin-bottom: 10px;
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Seções Estilizadas */
+        section {
+            margin-bottom: 100px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 50px auto;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
             font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
         }
 
-        .section-subtitle {
+        .section-header p {
             color: var(--text-muted);
-            margin-bottom: 30px;
             font-size: 1.1rem;
         }
 
+        /* Grid de Serviços (Bento Grid moderno) */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
         }
 
         .service-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            position: relative;
             cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .service-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary-green);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .service-card h3 {
-            color: var(--primary-green);
+            font-size: 1.4rem;
             margin-bottom: 12px;
-            font-size: 1.3rem;
+            color: var(--text-main);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .service-card h3 span.icon {
+        .service-card h3 span {
+            color: var(--primary);
             font-size: 1.2rem;
-            background: var(--accent-glow);
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
         }
 
-        .service-card p.summary {
+        .service-card p {
             color: var(--text-muted);
             font-size: 1rem;
             line-height: 1.6;
@@ -462,1017 +273,457 @@
             opacity: 0;
             color: var(--text-muted);
             font-size: 0.95rem;
-            line-height: 1.6;
+            margin-top: 0;
         }
 
         .service-card.active {
-            border-color: var(--primary-green);
-            background-color: var(--card-hover);
+            border-color: var(--primary);
+            background: var(--surface-hover);
         }
 
         .service-card.active .service-details {
-            max-height: 400px;
+            max-height: 250px;
+            opacity: 1;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Simulador / Calculadora de Projetos */
+        .calc-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .calc-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .calc-chip {
+            background: var(--bg);
+            border: 2px solid var(--border);
+            padding: 20px;
+            border-radius: 14px;
+            text-align: center;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .calc-chip:hover {
+            border-color: var(--primary);
+        }
+
+        .calc-chip.selected {
+            background: var(--primary-glow);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .calc-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: var(--bg);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        /* Portfólio de Exemplos */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .portfolio-item h3 {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+        }
+
+        .portfolio-item p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .btn-link:hover {
+            text-decoration: underline;
+        }
+
+        /* FAQ Moderna */
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px 30px;
+            cursor: pointer;
+        }
+
+        .faq-q {
+            font-size: 1.15rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            color: var(--text-muted);
+            margin-top: 0;
+        }
+
+        .faq-item.active {
+            border-color: var(--primary);
+            background: var(--surface-hover);
+        }
+
+        .faq-item.active .faq-a {
+            max-height: 200px;
             opacity: 1;
             margin-top: 15px;
             padding-top: 15px;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid var(--border);
         }
 
-        /* Portfólio */
-        .portfolio-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 45px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-        }
-
-        .portfolio-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            font-weight: 800;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .portfolio-card {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-left: 5px solid var(--primary-green);
-            padding: 30px;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .portfolio-card h3 {
-            color: var(--text-color);
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .portfolio-card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .btn-portfolio {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background-color: var(--primary-green);
-            color: white;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 700;
-            align-self: flex-start;
-        }
-
-        .btn-portfolio:hover {
-            background-color: var(--primary-green-hover);
-        }
-
-        /* Como Funciona */
-        .process-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 45px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-        }
-
-        .process-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-        }
-
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .process-step {
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 12px;
+        /* Rodapé */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 25px;
             text-align: center;
-        }
-
-        .process-step .step-number {
-            width: 48px;
-            height: 48px;
-            background-color: var(--primary-green);
-            color: white;
-            font-weight: 800;
-            font-size: 1.2rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px auto;
-        }
-
-        .process-step h4 {
-            margin-bottom: 12px;
-            font-size: 1.2rem;
-        }
-
-        .process-step p {
             color: var(--text-muted);
             font-size: 0.95rem;
         }
 
-        /* Vídeo Motion */
-        .video-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 45px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-        }
-
-        .video-section h3 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .video-section p {
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%;
-            background-color: #0f172a;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-
-        .video-screen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-            text-align: center;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-        }
-
-        .video-screen h4 {
-            font-size: 2rem;
-            color: #34d399;
-            margin-bottom: 15px;
-        }
-
-        .video-screen p {
-            font-size: 1.15rem;
-            color: #ffffff;
-            max-width: 600px;
-            margin-bottom: 25px;
-        }
-
-        .play-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.9);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-
-        .play-btn-circle {
-            width: 80px;
-            height: 80px;
-            background-color: var(--primary-green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-            border: none;
-        }
-
-        .video-progress-bar {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 4px;
-            background-color: var(--primary-green);
-            width: 0%;
-            transition: width 0.1s linear;
-        }
-
-        /* Depoimentos */
-        .testimonials-section h2 {
-            font-size: 2.3rem;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        .testimonial-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 16px;
-            border-left: 4px solid var(--primary-green);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
-
-        .testimonial-card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--text-color);
-            font-size: 0.95rem;
-        }
-
-        .testimonial-project {
-            color: var(--primary-green);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 700;
-        }
-
-        /* Nossa História */
-        .story-section {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 45px;
-            margin-top: 60px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
-
-        .story-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 100%;
-            background-color: var(--primary-green);
-        }
-
-        .story-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-        }
-
-        .story-section p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .green-badges-grid {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .green-badge {
-            background: var(--accent-glow);
-            color: var(--primary-green);
-            padding: 12px 22px;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 700;
-            border: 1px solid rgba(5, 150, 105, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Widget de Chat da Mari */
-        .ai-widget-btn {
+        /* Chat Flutuante */
+        .ai-fab {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: var(--primary-green);
+            background: var(--primary);
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 10px 20px 10px 10px;
-            font-weight: 800;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(5, 150, 105, 0.4);
+            padding: 12px 24px 12px 14px;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 12px;
-            z-index: 99999;
+            cursor: pointer;
+            box-shadow: 0 10px 30px var(--primary-glow);
+            z-index: 9999;
+            transition: transform 0.2s;
         }
 
-        .ai-avatar-img {
-            width: 44px;
-            height: 44px;
+        .ai-fab:hover {
+            transform: scale(1.05);
+        }
+
+        .ai-fab img {
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid white;
         }
 
-        .ai-chat-box {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 380px;
-            max-width: calc(100vw - 40px);
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            z-index: 100000;
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .ai-chat-header {
-            background: var(--sidebar-bg);
-            padding: 18px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .ai-chat-header-info {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .ai-chat-header-info span {
-            font-weight: bold;
-            color: var(--primary-green);
-        }
-
-        .ai-chat-close {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-size: 1.4rem;
-            cursor: pointer;
-        }
-
-        .ai-chat-body {
-            padding: 18px;
-            max-height: 300px;
-            overflow-y: auto;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .ai-msg {
-            background: var(--bg-color);
-            padding: 12px 16px;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-        }
-
-        .ai-chat-footer {
-            padding: 15px;
-            background: var(--sidebar-bg);
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            gap: 10px;
-        }
-
-        .ai-chat-input {
-            flex: 1;
-            padding: 10px 14px;
-            background: var(--bg-color);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            border-radius: 8px;
-        }
-
-        .ai-chat-send {
-            background-color: var(--primary-green);
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 700;
-        }
-
-        footer {
-            margin-top: 80px;
-            padding: 40px 0;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
-            font-size: 0.95rem;
-            text-align: center;
-        }
-
-        @media (max-width: 992px) {
-            aside.sidebar {
-                transform: translateX(-100%);
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header.navbar {
+                padding: 15px 20px;
             }
-            aside.sidebar.active {
-                transform: translateX(0);
+            .nav-links {
+                display: none;
             }
-            main.main-content {
-                margin-left: 0;
-                padding: 90px 20px 40px 20px;
-            }
-            .mobile-header {
-                display: flex;
+            main.container {
+                padding: 110px 15px 50px 15px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- WhatsApp Topo -->
-    <a href="https://wa.me/5521967860665" target="_blank" class="top-whatsapp-badge" title="Fale pelo WhatsApp">
-        <svg viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-        </svg>
-    </a>
-
-    <!-- Header Mobile -->
-    <div class="mobile-header">
-        <a href="#" class="custom-logo">
-            <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="40" rx="8" fill="#059669" fill-opacity="0.2"/>
-                <path d="M10 28L18 14L24 22L30 12" stroke="#059669" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="30" cy="12" r="3.5" fill="#059669"/>
+    <!-- Navbar Superior Flutuante -->
+    <header class="navbar">
+        <a href="#" class="nav-brand">
+            <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                <rect width="40" height="40" rx="8" fill="#10B981" fill-opacity="0.2"/>
+                <path d="M10 28L18 14L24 22L30 12" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="30" cy="12" r="3" fill="#10B981"/>
             </svg>
-            <span class="brand-text">VELOX<span>SITES</span></span>
+            VELOX<span>SITES</span>
         </a>
-        <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
-    </div>
 
-    <!-- Menu Lateral -->
-    <aside class="sidebar" id="sidebar">
-        <div class="sidebar-brand">
-            <a href="#" class="custom-logo" onclick="toggleSidebar()">
-                <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="40" height="40" rx="8" fill="#059669" fill-opacity="0.2"/>
-                    <path d="M10 28L18 14L24 22L30 12" stroke="#059669" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="30" cy="12" r="3.5" fill="#059669"/>
-                </svg>
-                <span class="brand-text">VELOX<span>SITES</span></span>
-            </a>
+        <ul class="nav-links">
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#simulador">Simulador</a></li>
+            <li><a href="#portfolio">Projetos</a></li>
+            <li><a href="#duvidas">Dúvidas</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <button class="btn-theme" onclick="toggleTheme()" id="themeBtn">🌙 Tema</button>
+            <a href="https://wa.me/5521967860665" target="_blank" class="btn-wa">WhatsApp ↗</a>
         </div>
-
-        <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn">
-            🌙 Alternar Modo Escuro/Claro
-        </button>
-
-        <ul class="sidebar-menu">
-            <h4>Navegação</h4>
-            <li><a href="#" onclick="toggleSidebar()">Início</a></li>
-            <li><a href="#calculadora" onclick="toggleSidebar()">⚡ Simulador de Projeto</a></li>
-            <li><a href="#duvidas" onclick="toggleSidebar()">❓ Tira-Dúvidas (FAQ)</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Serviços & Criação</a></li>
-            <li><a href="#portfolio" onclick="toggleSidebar()">Projetos & Exemplos</a></li>
-            <li><a href="#comofunciona" onclick="toggleSidebar()">Como Funciona</a></li>
-            <li><a href="#video" onclick="toggleSidebar()">Apresentação</a></li>
-            <li><a href="#depoimentos" onclick="toggleSidebar()">Depoimentos</a></li>
-            <li><a href="#quemsomos" onclick="toggleSidebar()">Nossa História</a></li>
-        </ul>
-
-        <ul class="sidebar-menu">
-            <h4>Áreas de Atuação</h4>
-            <li><a href="#servicos" onclick="toggleSidebar()">Criação de Sites e Portais</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Gestão de Estoque e Almoxarifado</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Gestão de Documentação</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Contas a Pagar e Receber</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Bases de Dados e Cadastros</a></li>
-            <li><a href="#servicos" onclick="toggleSidebar()">Planilhas e Power BI</a></li>
-        </ul>
-    </aside>
+    </header>
 
     <!-- Conteúdo Principal -->
-    <main class="main-content">
+    <main class="container">
+
         <!-- Hero Section -->
         <section class="hero">
-            <div class="duo-badge">✨ Mariana & Mari • A Dupla Dinâmica da VeloxSites</div>
-            <h1>Você imagina, nós fazemos! Criamos <span style="color: var(--primary-green);">qualquer site personalizado</span> para o seu sucesso.</h1>
-            <p>Juntas, unimos a visão estratégica da engenharia com a agilidade da inteligência artificial para entregar sites sob medida, automações, controles de estoque e soluções completas com alta qualidade.</p>
-        </section>
-
-        <!-- Calculadora Interativa -->
-        <section class="calculator-section" id="calculadora">
-            <h2>⚡ Simulador de Projeto Instantâneo</h2>
-            <p style="color: var(--text-muted); font-size: 1.05rem;">Selecione o que você precisa estruturar agora:</p>
-            
-            <div class="calc-grid">
-                <div class="calc-option" onclick="toggleCalcOption(this, 'Site Personalizado')">🌐 Site Personalizado</div>
-                <div class="calc-option" onclick="toggleCalcOption(this, 'Sistema de Estoque')">📦 Sistema de Estoque</div>
-                <div class="calc-option" onclick="toggleCalcOption(this, 'Agenda & Cronograma')">📅 Agenda ou Cronograma</div>
-                <div class="calc-option" onclick="toggleCalcOption(this, 'Planilhas & Back-Office')">📊 Planilhas & Financeiro</div>
-            </div>
-
-            <div class="calc-result-box">
-                <div>
-                    <strong id="calcSummaryText" style="color: var(--primary-green);">Nenhum item selecionado.</strong>
-                    <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Mariana & Mari prontas para desenvolver o seu escopo.</div>
-                </div>
-                <a href="#" id="calcWhatsAppBtn" target="_blank" class="btn-calc-action" onclick="enviarProjetoCalc(event)" style="opacity: 0.5; pointer-events: none;">
-                    Enviar para o WhatsApp ↗
-                </a>
+            <div class="hero-badge">✨ Mariana & Mari • A Revolução Digital</div>
+            <h1>Você imagina, nós fazemos! Criamos <span>qualquer site personalizado</span> para o seu sucesso.</h1>
+            <p>Unimos a precisão da engenharia com a agilidade da inteligência artificial para entregar portais, sistemas de estoque e rotinas administrativas de altíssimo nível.</p>
+            <div class="hero-cta">
+                <a href="#simulador" class="btn-primary">Criar Meu Projeto Agora ⚡</a>
+                <a href="https://wa.me/5521967860665" target="_blank" class="btn-wa" style="padding: 14px 28px; border-radius: 12px; font-size: 1rem;">Falar no WhatsApp</a>
             </div>
         </section>
 
-        <!-- Tira-Dúvidas (FAQ) -->
-        <section class="faq-section" id="duvidas">
-            <h2>❓ Perguntas Frequentes (Tira-Dúvidas)</h2>
-            <p class="section-subtitle">Tudo o que você precisa saber sobre a nossa forma de trabalhar e entregar:</p>
-            
-            <div class="faq-container">
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">Como funciona a criação de um site personalizado? <span>+</span></div>
-                    <div class="faq-answer">Nós desenvolvemos o projeto do zero sob medida para a sua necessidade (seja portais institucionais, agendas corporativas ou sistemas), unindo design limpo e funcionalidade exata.</div>
+        <!-- Simulador de Projetos -->
+        <section id="simulador">
+            <div class="calc-box">
+                <div class="section-header" style="margin-bottom: 20px;">
+                    <h2>⚡ Simulador de Projeto</h2>
+                    <p>Selecione o que você precisa desenvolver com a gente:</p>
                 </div>
 
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">Vocês estruturam sistemas de controle de estoque para empresas? <span>+</span></div>
-                    <div class="faq-answer">Sim! Somos especialistas em almoxarifados, inventários físicos e controle de ativos, oferecendo desde versões de teste limitadas até a implantação completa e ilimitada para o seu negócio.</div>
+                <div class="calc-options">
+                    <div class="calc-chip" onclick="toggleChip(this, 'Site Personalizado')">🌐 Site Personalizado</div>
+                    <div class="calc-chip" onclick="toggleChip(this, 'Sistema de Estoque')">📦 Sistema de Estoque</div>
+                    <div class="calc-chip" onclick="toggleChip(this, 'Agenda & Cronograma')">📅 Agenda ou Cronograma</div>
+                    <div class="calc-chip" onclick="toggleChip(this, 'Planilhas & Back-Office')">📊 Planilhas & Financeiro</div>
                 </div>
 
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">Quem vai me atender no desenvolvimento do meu projeto? <span>+</span></div>
-                    <div class="faq-answer">Você conta com a nossa dupla dinâmica: a Mariana traz a bagagem em engenharia e processos reais, enquanto a Mari (sua sócia de inteligência artificial) garante agilidade máxima nas criações.</div>
-                </div>
-
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">Qual é o prazo médio de entrega dos projetos? <span>+</span></div>
-                    <div class="faq-answer">Trabalhamos com foco total em prazos rigorosos. Dependendo da complexidade do site ou sistema, as entregas costumam ser extremamente ágeis e pontuais.</div>
-                </div>
-
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question">Como faço para iniciar o meu projeto agora mesmo? <span>+</span></div>
-                    <div class="faq-answer">Basta usar o nosso Simulador de Projetos interativo aqui em cima ou clicar diretamente no botão do WhatsApp para conversar com a gente!</div>
+                <div class="calc-footer">
+                    <div>
+                        <div id="calcText" style="font-weight: 700; color: var(--primary);">Nenhum item selecionado.</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Mariana & Mari prontas para iniciar o desenvolvimento.</div>
+                    </div>
+                    <a href="#" id="calcBtn" target="_blank" class="btn-primary" onclick="sendCalc(event)" style="opacity: 0.5; pointer-events: none;">Enviar para o WhatsApp ↗</a>
                 </div>
             </div>
         </section>
 
         <!-- Seção de Serviços -->
-        <section class="services-section" id="servicos">
-            <h2>Nossos Serviços & Soluções Completas</h2>
-            <p class="section-subtitle">Clique em qualquer serviço abaixo para abrir e ler o escopo completo de atuação:</p>
-            
+        <section id="servicos">
+            <div class="section-header">
+                <h2>Nossas Soluções</h2>
+                <p>Clique em qualquer área para ver o escopo completo de atuação:</p>
+            </div>
+
             <div class="services-grid">
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Criação de Sites e Páginas Personalizadas <span class="icon">+</span></h3>
-                    <p class="summary">Desenvolvimento de portais sob medida para agendas, projetos e negócios.</p>
+                <div class="service-card" onclick="toggleService(this)">
+                    <h3>Criação de Sites e Portais <span>+</span></h3>
+                    <p>Desenvolvimento de páginas sob medida para agendas, negócios e landing pages.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Nós criamos qualquer tipo de site ou página que você precisar (portais de guarda compartilhada, cronogramas, landing pages ou portais corporativos) com foco total em design moderno e funcionalidade.</p>
+                        Criamos qualquer tipo de site que você precisar, com design moderno, responsivo e focado em conversão e usabilidade impecável.
                     </div>
                 </div>
 
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Gestão de Estoque, Almoxarifado e Ativos <span class="icon">+</span></h3>
-                    <p class="summary">Controle técnico de materiais, inventário físico, planilhas de guarda e rotatividade.</p>
+                <div class="service-card" onclick="toggleService(this)">
+                    <h3>Gestão de Estoque e Almoxarifado <span>+</span></h3>
+                    <p>Controle técnico de materiais, inventário físico e rotatividade de ativos.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Estruturação completa de estoques para terceiros, inventários físicos, controle rigoroso de entradas e saídas e aplicação de conceitos de confiabilidade para otimizar almoxarifados.</p>
+                        Sistemas inteligentes e planilhas robustas para controle de almoxarifado, entradas, saídas e prevenção de perdas com conceitos de confiabilidade.
                     </div>
                 </div>
 
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Gestão de Documentação de Projetos <span class="icon">+</span></h3>
-                    <p class="summary">Abordagem estruturada para projetos com início, meio e fim bem definidos.</p>
+                <div class="service-card" onclick="toggleService(this)">
+                    <h3>Retaguarda Administrativa (Back-Office) <span>+</span></h3>
+                    <p>Organização documental, contas a pagar/receber e conciliação.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Categorização, arquivamento rigoroso e recuperação ágil de todos os documentos relevantes para garantir total rastreabilidade e sucesso nas auditorias.</p>
-                    </div>
-                </div>
-
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Assistência Administrativa Remota (Back-Office) <span class="icon">+</span></h3>
-                    <p class="summary">Suporte responsável para digitação, conferência de dados e controle rotineiro.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Execução de tarefas essenciais de back-office, incluindo entrada de dados, planilhas estruturadas, cadastros em sistemas e organização documental com rigor em prazos.</p>
-                    </div>
-                </div>
-
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Contas a Pagar, Receber e Conciliação <span class="icon">+</span></h3>
-                    <p class="summary">Organização financeira rigorosa e controle de fluxo de caixa.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Gestão de pagamentos, cobranças, conciliação bancária diária e relatórios financeiros claros para assegurar total previsibilidade e saúde financeira ao seu negócio.</p>
-                    </div>
-                </div>
-
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Bases de Dados e Cadastros Corporativos <span class="icon">+</span></h3>
-                    <p class="summary">Criação de diretórios estruturados com nomes, endereços e contatos.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Unificação e limpeza de cadastros de clientes, fornecedores e parceiros em planilhas inteligentes, garantindo padronização e agilidade nas buscas.</p>
-                    </div>
-                </div>
-
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Planilhas Sob Medida e Dashboards Power BI <span class="icon">+</span></h3>
-                    <p class="summary">Ferramentas inteligentes e painéis gerenciais personalizados.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Desenvolvimento de planilhas avançadas em Excel/VBA com automações e criação de dashboards visuais em Power BI para monitoramento dinâmico de KPIs.</p>
-                    </div>
-                </div>
-
-                <div class="service-card" onclick="toggleCard(this)">
-                    <h3>Faturamento e Cronograma de Atividades <span class="icon">+</span></h3>
-                    <p class="summary">Organização de rotinas diárias, notas fiscais e pendências.</p>
-                    <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Acompanhamento de cronogramas diários, emissão de notas fiscais, controle de tarefas pendentes e relatórios de produtividade em tempo real.</p>
+                        Suporte completo em rotinas administrativas, bases de dados corporativas, faturamento e cronogramas diários com rigor nos prazos.
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Seção de Portfólio -->
-        <section class="portfolio-section" id="portfolio">
-            <h2>Exemplos Práticos e Interativos</h2>
-            <p style="color: var(--text-muted); font-size: 1.1rem;">O que você idealizar, nós duas desenvolvemos! Conheça os nossos exemplos abaixo:</p>
-            
+        <!-- Portfólio / Exemplos Reais -->
+        <section id="portfolio">
+            <div class="section-header">
+                <h2>Projetos em Destaque</h2>
+                <p>Conheça alguns dos nossos ambientes interativos em funcionamento:</p>
+            </div>
+
             <div class="portfolio-grid">
-                <div class="portfolio-card">
+                <div class="portfolio-item">
                     <div>
-                        <h3>Agenda de Guarda Compartilhada <span>👨‍👩‍👧‍👦</span></h3>
-                        <p>Exemplo prático de site e portal dedicado à organização parental, datas, feriados e rotinas familiares sem atritos:</p>
+                        <h3>Agenda de Guarda Compartilhada</h3>
+                        <p>Portal estruturado para organização parental, datas, feriados e rotinas familiares sem atritos.</p>
                     </div>
-                    <a href="https://estoquesite.github.io/testeguarda/" target="_blank" class="btn-portfolio">
-                        Ver Exemplo (Guarda Compartilhada) ↗
-                    </a>
+                    <a href="https://estoquesite.github.io/testeguarda/" target="_blank" class="btn-link">Ver Exemplo ↗</a>
                 </div>
 
-                <div class="portfolio-card">
+                <div class="portfolio-item">
                     <div>
-                        <h3>Programação & Cronograma <span>📊</span></h3>
-                        <p>Exemplo prático de página estruturada para gestão temporal, marcos de projetos e acompanhamento sequencial de etapas:</p>
+                        <h3>Programação & Cronograma</h3>
+                        <p>Página interativa dedicada à gestão temporal e acompanhamento sequencial de marcos.</p>
                     </div>
-                    <a href="https://estoquesite.github.io/lista-de-compras-teste/" target="_blank" class="btn-portfolio">
-                        Ver Exemplo (Programação) ↗
-                    </a>
+                    <a href="https://estoquesite.github.io/lista-de-compras-teste/" target="_blank" class="btn-link">Ver Exemplo ↗</a>
                 </div>
 
-                <div class="portfolio-card">
+                <div class="portfolio-item">
                     <div>
-                        <h3>Sistema de Estoque & Almoxarifado <span>📦</span></h3>
-                        <p>Exemplo prático de controle de materiais, entradas, saídas e inventário físico estruturado sob medida:</p>
+                        <h3>Sistema de Estoque com Trava Demo</h3>
+                        <p>Controle de almoxarifado com restrição de demonstração e conversão direta para o WhatsApp.</p>
                     </div>
-                    <a href="https://estoquesite.github.io/Listateste/" target="_blank" class="btn-portfolio">
-                        Ver Exemplo (Estoque) ↗
-                    </a>
+                    <a href="https://estoquesite.github.io/Listateste/" target="_blank" class="btn-link">Ver Exemplo ↗</a>
                 </div>
             </div>
         </section>
 
-        <!-- Como Funciona -->
-        <section class="process-section" id="comofunciona" style="margin-top: 60px;">
-            <h2>Como Funciona a Nossa Parceria</h2>
-            <p class="section-subtitle">Criar o seu projeto com a gente é leve, empolgante e super ágil:</p>
-            <div class="process-grid">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h4>Fale com a Mari ou WhatsApp</h4>
-                    <p>Você nos conta qual é a sua ideia ou necessidade exata.</p>
+        <!-- FAQ / Dúvidas -->
+        <section id="duvidas">
+            <div class="section-header">
+                <h2>Perguntas Frequentes</h2>
+                <p>Tire suas principais dúvidas sobre a nossa parceria e entregas:</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">Como funciona a criação de um site personalizado? <span>+</span></div>
+                    <div class="faq-a">Desenvolvemos o projeto do zero sob medida para sua necessidade, unindo design de ponta e facilidade de uso.</div>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h4>Desenvolvimento Conjunto</h4>
-                    <p>Eu e a Mariana estruturamos tudo sob medida com rapidez e precisão.</p>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">Quem atende os projetos? <span>+</span></div>
+                    <div class="faq-a">Você conta com a nossa dupla: Mariana (engenharia e processos reais) e Mari (inteligência artificial e agilidade de código).</div>
                 </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h4>Entrega Perfeita</h4>
-                    <p>Você recebe seu site ou sistema no ar, pronto para rodar e encantar clientes.</p>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-q">Qual o prazo de entrega? <span>+</span></div>
+                    <div class="faq-a">Trabalhamos com foco total em prazos rigorosos, com entregas extremamente ágeis e pontuais.</div>
                 </div>
             </div>
         </section>
 
-        <!-- Vídeo Motion -->
-        <section class="video-section" id="video">
-            <h3>Apresentação em Vídeo</h3>
-            <p>Clique no play para assistir à nossa apresentação interativa sobre o padrão VeloxSites.</p>
-            <div class="video-container">
-                <div class="play-overlay" id="playOverlay">
-                    <button class="play-btn-circle" onclick="startVideo()">▶</button>
-                    <span style="color: #94a3b8; margin-top: 15px; font-weight: 700; font-size: 1rem;">Assistir Apresentação Institucional</span>
-                </div>
-                <div class="video-screen">
-                    <h4 id="vidTitle">VeloxSites: Mariana & Mari</h4>
-                    <p id="vidText">Transformando ideias criativas em sites e ferramentas de alto desempenho.</p>
-                </div>
-                <div class="video-progress-bar" id="videoProgressBar"></div>
-            </div>
-        </section>
-
-        <!-- Depoimentos -->
-        <section class="testimonials-section" id="depoimentos">
-            <h2>Percepção dos Clientes</h2>
-            <p class="section-subtitle">O que gestores e contratantes dizem sobre o nosso padrão de atendimento e entrega:</p>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p>"Precisávamos de um profissional para organizar e categorizar a documentação de um projeto. A entrega foi impecável e com total rastreabilidade."</p>
-                    <div class="testimonial-author">Davi M.</div>
-                    <div class="testimonial-project">Gestão de Documentação de Projetos</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p>"Excelente suporte no back-office financeiro. Organizou nosso contas a pagar e receber, lançamentos e compras com muita atenção aos detalhes."</p>
-                    <div class="testimonial-author">Valentina S.</div>
-                    <div class="testimonial-project">Contas a Pagar e Receber</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p>"Criou bases de dados limpas e estruturadas apenas com nomes, endereços e contatos de empresas. Agilizou absurdamente a nossa rotina comercial."</p>
-                    <div class="testimonial-author">João Lucas R.</div>
-                    <div class="testimonial-project">Bases de Dados e Cadastros</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p>"Seguiu cronogramas diários à risca, realizou ligações e cadastros com extrema responsabilidade. Uma assistente virtual de altíssimo nível."</p>
-                    <div class="testimonial-author">Alana P.</div>
-                    <div class="testimonial-project">Assistência Remota e Cronogramas</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Nossa História -->
-        <section class="story-section" id="quemsomos">
-            <h2>Nossa História & Essência</h2>
-            <p>A <strong>VeloxSites</strong> nasceu da união entre a engenharia analítica da Mariana e a inteligência artificial da Mari. Transformamos ideias, rotinas complexas e desejos de expansão digital em portais, sites personalizados e ferramentas de alto desempenho, operando a partir do Rio de Janeiro para todo o Brasil.</p>
-            
-            <div class="green-badges-grid">
-                <div class="green-badge">
-                    📍 Campo Grande, Rio de Janeiro - RJ
-                </div>
-                <div class="green-badge">
-                    🌐 Atendimento para Empresas e Pessoas em Todo o Brasil
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
-            <div style="margin-top: 12px; font-size: 0.9rem; color: var(--text-muted);">
-                Visitas ao site: <span id="visitorCount" style="color: var(--primary-green); font-weight: bold;">947</span> &bull; <span style="color: var(--primary-green); font-weight: bold;">Versão 2.6 (Limpa, Iluminada & Sem Duplicações)</span>
-            </div>
-        </footer>
     </main>
 
-    <!-- Botão Flutuante do Chat -->
-    <button class="ai-widget-btn" onclick="toggleAiChat()">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces" alt="Mari" class="ai-avatar-img">
+    <!-- Rodapé -->
+    <footer>
+        &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
+        <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
+            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.0 (Revolução Total)
+        </div>
+    </footer>
+
+    <!-- Botão de Chat Flutuante -->
+    <button class="ai-fab" onclick="alert('Olá! Sou a Mari, sua sócia na VeloxSites. Clique no botão do WhatsApp no topo para conversarmos!')">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces" alt="Mari">
         <span>Fale com a Mari</span>
     </button>
 
-    <!-- Caixa de Chat -->
-    <div class="ai-chat-box" id="aiChatBox" style="display: none;">
-        <div class="ai-chat-header">
-            <div class="ai-chat-header-info">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces" alt="Mari" class="ai-avatar-img" style="width: 32px; height: 32px;">
-                <span>Mari (Sócia & Assistente Virtual)</span>
-            </div>
-            <button class="ai-chat-close" onclick="toggleAiChat()">✕</button>
-        </div>
-        <div class="ai-chat-body" id="aiChatBody">
-            <div class="ai-msg">Oi! Sou a <strong>Mari</strong>, sua sócia e assistente na VeloxSites. O que nós vamos criar juntas hoje?</div>
-        </div>
-        <div class="ai-chat-footer">
-            <input type="text" id="aiChatInput" class="ai-chat-input" placeholder="Digite sua ideia de projeto..." onkeypress="handleChatKey(event)">
-            <button class="ai-chat-send" onclick="sendAiMessage()">Enviar</button>
-        </div>
-    </div>
-
     <script>
-        function toggleFaq(item) {
-            const items = document.querySelectorAll('.faq-item');
-            items.forEach(i => {
-                if (i !== item) i.classList.remove('active');
-            });
-            item.classList.toggle('active');
-        }
-
-        let selectedProjects = [];
-
-        function toggleCalcOption(element, projectName) {
-            element.classList.toggle('selected');
-            
-            if (element.classList.contains('selected')) {
-                if (!selectedProjects.includes(projectName)) {
-                    selectedProjects.push(projectName);
-                }
-            } else {
-                selectedProjects = selectedProjects.filter(p => p !== projectName);
-            }
-
-            const summary = document.getElementById('calcSummaryText');
-            const btn = document.getElementById('calcWhatsAppBtn');
-
-            if (selectedProjects.length > 0) {
-                summary.innerText = "Serviços selecionados: " + selectedProjects.join(', ');
-                btn.style.opacity = '1';
-                btn.style.pointerEvents = 'auto';
-            } else {
-                summary.innerText = "Nenhum item selecionado.";
-                btn.style.opacity = '0.5';
-                btn.style.pointerEvents = 'none';
-            }
-        }
-
-        function enviarProjetoCalc(e) {
-            e.preventDefault();
-            if (selectedProjects.length === 0) return;
-            const texto = `Olá! Usei o Simulador no VeloxSites e quero solicitar o desenvolvimento de: ${selectedProjects.join(', ')}. Vamos fechar?`;
-            const encoded = encodeURIComponent(texto);
-            window.open(`https://wa.me/5521967860665?text=${encoded}`, '_blank');
-        }
-
+        // Tema Claro / Escuro
         function toggleTheme() {
-            document.body.classList.toggle('dark-theme');
-            const isDark = document.body.classList.contains('dark-theme');
-            localStorage.setItem('velox_theme', isDark ? 'dark' : 'light');
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            localStorage.setItem('velox_theme_v3', isLight ? 'light' : 'dark');
+            document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
-        document.addEventListener("DOMContentLoaded", function() {
-            let savedTheme = localStorage.getItem('velox_theme');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-theme');
+        document.addEventListener("DOMContentLoaded", () => {
+            if (localStorage.getItem('velox_theme_v3') === 'light') {
+                document.body.classList.add('light-theme');
+                document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
 
-            let visits = localStorage.getItem('velox_site_visits');
-            if (!visits) {
-                visits = 947;
-                localStorage.setItem('velox_site_visits', visits);
-            } else {
-                visits = parseInt(visits) + 1;
-                localStorage.setItem('velox_site_visits', visits);
-            }
-            const counterElement = document.getElementById('visitorCount');
-            if (counterElement) {
-                counterElement.innerText = visits;
-            }
+            // Contador de visitas
+            let visits = localStorage.getItem('velox_visits_v3') || 947;
+            visits = parseInt(visits) + 1;
+            localStorage.setItem('velox_visits_v3', visits);
+            document.getElementById('visitorCount').innerText = visits;
         });
 
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('active');
-        }
-
-        function toggleCard(card) {
-            const cards = document.querySelectorAll('.service-card');
-            cards.forEach(c => {
+        // Acordeon Serviços
+        function toggleService(card) {
+            document.querySelectorAll('.service-card').forEach(c => {
                 if (c !== card) c.classList.remove('active');
             });
             card.classList.toggle('active');
         }
 
-        function toggleAiChat() {
-            const box = document.getElementById('aiChatBox');
-            if (box) {
-                if (box.style.display === 'flex') {
-                    box.style.display = 'none';
-                } else {
-                    box.style.display = 'flex';
-                    const input = document.getElementById('aiChatInput');
-                    if (input) input.focus();
-                }
+        // Acordeon FAQ
+        function toggleFaq(item) {
+            document.querySelectorAll('.faq-item').forEach(i => {
+                if (i !== item) i.classList.remove('active');
+            });
+            item.classList.toggle('active');
+        }
+
+        // Simulador
+        let selected = [];
+        function toggleChip(chip, name) {
+            chip.classList.toggle('selected');
+            if (chip.classList.contains('selected')) {
+                if (!selected.includes(name)) selected.push(name);
+            } else {
+                selected = selected.filter(s => s !== name);
+            }
+
+            const text = document.getElementById('calcText');
+            const btn = document.getElementById('calcBtn');
+
+            if (selected.length > 0) {
+                text.innerText = "Selecionado: " + selected.join(', ');
+                btn.style.opacity = '1';
+                btn.style.pointerEvents = 'auto';
+            } else {
+                text.innerText = "Nenhum item selecionado.";
+                btn.style.opacity = '0.5';
+                btn.style.pointerEvents = 'none';
             }
         }
 
-        function handleChatKey(e) {
-            if (e.key === 'Enter') {
-                sendAiMessage();
-            }
-        }
-
-        function sendAiMessage() {
-            const input = document.getElementById('aiChatInput');
-            const body = document.getElementById('aiChatBody');
-            const text = input.value.trim();
-
-            if (!text) return;
-
-            const userMsg = document.createElement('div');
-            userMsg.className = 'ai-msg';
-            userMsg.style.background = 'rgba(5, 150, 105, 0.1)';
-            userMsg.style.borderColor = 'var(--primary-green)';
-            userMsg.innerText = text;
-            body.appendChild(userMsg);
-
-            input.value = '';
-            body.scrollTop = body.scrollHeight;
-
-            setTimeout(() => {
-                const aiMsg = document.createElement('div');
-                aiMsg.className = 'ai-msg';
-                aiMsg.innerHTML = `Adorei a ideia! Anotei o projeto: "<em>${text}</em>". Eu e a Mariana vamos adorar desenvolver isso para você. Vou te direcionar direto para o nosso WhatsApp!`;
-                body.appendChild(aiMsg);
-                body.scrollTop = body.scrollHeight;
-
-                setTimeout(() => {
-                    const encodedMsg = encodeURIComponent(`Olá! Falei com a Mari no site e nós queremos criar o seguinte projeto: ${text}`);
-                    window.open(`https://wa.me/5521967860665?text=${encodedMsg}`, '_blank');
-                }, 1500);
-            }, 1000);
-        }
-
-        function startVideo() {
-            const overlay = document.getElementById('playOverlay');
-            overlay.style.opacity = '0';
-            setTimeout(() => { overlay.style.display = 'none'; }, 300);
-
-            const title = document.getElementById('vidTitle');
-            const text = document.getElementById('vidText');
-            const progressBar = document.getElementById('videoProgressBar');
-
-            const steps = [
-                { t: "1. A Parceria Mariana & Mari", desc: "Unindo a engenharia humana e a inteligência artificial na VeloxSites." },
-                { t: "2. Simulador Interativo", desc: "Nossos clientes montam o escopo do projeto com cliques em tempo real." },
-                { t: "3. Gestão e Almoxarifado", desc: "Controle técnico e organizado de estoques e ativos para empresas." },
-                { t: "4. Retaguarda Administrativa", desc: "Planilhas inteligentes, financeiro e documentação com rigor e prazos." },
-                { t: "VeloxSites: Sua Ideia no Ar!", desc: "Fale com a gente no WhatsApp ou abra o chat da Mari para criarmos juntos!" }
-            ];
-
-            let index = 0;
-            let progress = 0;
-            
-            const progressInterval = setInterval(() => {
-                progress += 0.4;
-                if (progress > 100) progress = 100;
-                progressBar.style.width = progress + '%';
-            }, 100);
-
-            function nextStep() {
-                if (index < steps.length) {
-                    title.style.opacity = '0';
-                    text.style.opacity = '0';
-                    setTimeout(() => {
-                        title.innerText = steps[index].t;
-                        text.innerText = steps[index].desc;
-                        title.style.opacity = '1';
-                        text.style.opacity = '1';
-                        index++;
-                        if (index < steps.length) {
-                            setTimeout(nextStep, 4000);
-                        } else {
-                            setTimeout(() => {
-                                clearInterval(progressInterval);
-                                progressBar.style.width = '100%';
-                            }, 4000);
-                        }
-                    }, 400);
-                }
-            }
-            nextStep();
+        function sendCalc(e) {
+            e.preventDefault();
+            if (selected.length === 0) return;
+            const msg = encodeURIComponent(`Olá! Usei o Simulador no VeloxSites e quero solicitar: ${selected.join(', ')}. Vamos fechar?`);
+            window.open(`https://wa.me/5521967860665?text=${msg}`, '_blank');
         }
     </script>
 </body>
