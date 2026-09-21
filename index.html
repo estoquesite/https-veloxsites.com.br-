@@ -15,7 +15,7 @@
             --pink-hot: #ff2a85;       /* Rosa Choque */
             --pink-baby: #ffb6c1;      /* Rosa Bebê */
             --primary: #ff2a85;
-            --primary-glow: rgba(255, 42, 133, 0.6);
+            --primary-glow: rgba(255, 42, 133, 0.7);
             --whatsapp: #25d366;
         }
 
@@ -30,7 +30,7 @@
             --pink-hot: #e11d48;
             --pink-baby: #fda4af;
             --primary: #e11d48;
-            --primary-glow: rgba(225, 29, 72, 0.4);
+            --primary-glow: rgba(225, 29, 72, 0.5);
         }
 
         * {
@@ -48,7 +48,7 @@
             overflow-x: hidden;
         }
 
-        /* Animação de Piscar/Pulsar em Rosa Choque */
+        /* Animação de Piscar em Rosa Choque */
         @keyframes pinkBlink {
             0%, 100% {
                 opacity: 1;
@@ -57,6 +57,32 @@
             50% {
                 opacity: 0.6;
                 text-shadow: 0 0 8px rgba(255, 42, 133, 0.3);
+            }
+        }
+
+        /* Animação de Neon Pulsante Intenso para o Logótipo e Badge */
+        @keyframes neonFlash {
+            0%, 100% {
+                border-color: var(--pink-hot);
+                box-shadow: 0 0 15px var(--pink-hot), inset 0 0 10px var(--pink-hot);
+                background: rgba(255, 42, 133, 0.25);
+            }
+            50% {
+                border-color: var(--pink-baby);
+                box-shadow: 0 0 35px var(--pink-hot), inset 0 0 20px var(--pink-hot);
+                background: rgba(255, 42, 133, 0.45);
+            }
+        }
+
+        /* Animação para o Logotipo e Ícone piscarem */
+        @keyframes logoBlink {
+            0%, 100% {
+                filter: drop-shadow(0 0 12px var(--pink-hot));
+                opacity: 1;
+            }
+            50% {
+                filter: drop-shadow(0 0 4px var(--pink-baby));
+                opacity: 0.7;
             }
         }
 
@@ -96,10 +122,16 @@
             font-weight: 800;
             font-size: 1.25rem;
             color: var(--text-main);
+            animation: logoBlink 2s ease-in-out infinite;
+        }
+
+        .nav-brand svg {
+            animation: logoBlink 2s ease-in-out infinite;
         }
 
         .nav-brand span {
             color: var(--pink-hot);
+            animation: pinkBlink 1.8s ease-in-out infinite;
         }
 
         .nav-links {
@@ -141,7 +173,6 @@
             gap: 8px;
         }
 
-        /* Botão do WhatsApp no topo AGORA EM ROSA CHOQUE PULSANTE */
         .btn-wa {
             background: var(--pink-hot);
             color: white;
@@ -179,11 +210,11 @@
             margin: 0 auto 80px auto;
         }
 
+        /* Badge com Neon Rosa Choque a Piscar */
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: rgba(255, 42, 133, 0.15);
             border: 2px solid var(--pink-hot);
             color: var(--pink-hot);
             padding: 8px 22px;
@@ -191,8 +222,8 @@
             font-size: 0.95rem;
             font-weight: 800;
             margin-bottom: 25px;
-            box-shadow: 0 0 25px var(--primary-glow);
-            text-shadow: 0 0 10px rgba(255, 42, 133, 0.4);
+            animation: neonFlash 1.5s ease-in-out infinite;
+            text-shadow: 0 0 10px var(--pink-hot);
         }
 
         .hero h1 {
@@ -203,7 +234,6 @@
             letter-spacing: -1px;
         }
 
-        /* Frase principal piscando em Rosa Choque */
         .hero h1 span {
             color: var(--pink-hot);
             animation: pinkBlink 1.8s ease-in-out infinite;
@@ -224,7 +254,6 @@
             flex-wrap: wrap;
         }
 
-        /* Botão Principal com Efeito Piscante/Pulsante em Rosa Choque */
         .btn-primary {
             background: var(--pink-hot);
             color: white;
@@ -696,7 +725,7 @@
     <footer>
         &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
         <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.5 (WhatsApp & Botões em Rosa Choque Pulsante)
+            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.7 (Logótipo e Elementos em Neon Rosa Choque)
         </div>
     </footer>
 
@@ -711,20 +740,20 @@
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme_v35', isLight ? 'light' : 'dark');
+            localStorage.setItem('velox_theme_v37', isLight ? 'light' : 'dark');
             document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem('velox_theme_v35') === 'light') {
+            if (localStorage.getItem('velox_theme_v37') === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
 
             // Contador de visitas
-            let visits = localStorage.getItem('velox_visits_v35') || 947;
+            let visits = localStorage.getItem('velox_visits_v37') || 947;
             visits = parseInt(visits) + 1;
-            localStorage.setItem('velox_visits_v35', visits);
+            localStorage.setItem('velox_visits_v37', visits);
             document.getElementById('visitorCount').innerText = visits;
         });
 
