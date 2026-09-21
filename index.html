@@ -6,30 +6,31 @@
     <title>VeloxSites - Mariana & Mari | Criação de Qualquer Site Personalizado</title>
     <style>
         :root {
-            --bg-color: #060913;
-            --sidebar-bg: #0c1021;
-            --card-bg: rgba(20, 27, 51, 0.75);
-            --card-hover: rgba(30, 40, 74, 0.9);
-            --text-color: #ffffff;
-            --text-muted: #a3b1c6;
-            --primary-green: #00ff88;
-            --primary-green-hover: #00cc6a;
-            --accent-pink: #ff2a85;
-            --whatsapp-green: #25d366;
-            --border-color: rgba(0, 255, 136, 0.25);
-            --accent-glow: rgba(0, 255, 136, 0.4);
-        }
-
-        /* Tema Claro */
-        body.light-theme {
-            --bg-color: #f1f5f9;
+            --bg-color: #f8fafc;
             --sidebar-bg: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --card-hover: rgba(226, 232, 240, 0.95);
+            --card-bg: #ffffff;
+            --card-hover: #f1f5f9;
             --text-color: #0f172a;
             --text-muted: #475569;
-            --border-color: rgba(0, 185, 100, 0.3);
-            --accent-glow: rgba(0, 185, 100, 0.25);
+            --primary-green: #059669;
+            --primary-green-hover: #047857;
+            --whatsapp-green: #25d366;
+            --border-color: #e2e8f0;
+            --accent-glow: rgba(5, 150, 105, 0.15);
+        }
+
+        /* Modo Escuro (caso o cliente queira alternar) */
+        body.dark-theme {
+            --bg-color: #0b0f19;
+            --sidebar-bg: #111827;
+            --card-bg: #1e293b;
+            --card-hover: #26334d;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary-green: #10b981;
+            --primary-green-hover: #059669;
+            --border-color: #334155;
+            --accent-glow: rgba(16, 185, 129, 0.25);
         }
 
         * {
@@ -46,34 +47,12 @@
             line-height: 1.6;
             display: flex;
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
-        /* Animações de Movimento */
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 15px var(--accent-glow); }
-            50% { box-shadow: 0 0 30px var(--primary-green); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero, .services-section, .portfolio-section, .process-section, .video-section, .testimonials-section, .story-section, .calculator-section, .faq-section {
-            animation: fadeInUp 0.8s ease-out both;
-        }
-
-        /* Menu Lateral Esquerdo Fixo com Glassmorphism */
+        /* Menu Lateral Esquerdo Fixo */
         aside.sidebar {
             width: 280px;
             background-color: var(--sidebar-bg);
-            backdrop-filter: blur(15px);
             border-right: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
@@ -83,7 +62,7 @@
             left: 0;
             top: 0;
             z-index: 1000;
-            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
         }
 
         .sidebar-brand {
@@ -103,8 +82,6 @@
         .logo-svg {
             width: 40px;
             height: 40px;
-            filter: drop-shadow(0 0 12px var(--primary-green));
-            animation: floatSlow 4s ease-in-out infinite;
         }
 
         .brand-text {
@@ -116,7 +93,6 @@
 
         .brand-text span {
             color: var(--primary-green);
-            text-shadow: 0 0 10px var(--accent-glow);
         }
 
         .theme-toggle-btn {
@@ -133,14 +109,10 @@
             justify-content: center;
             gap: 8px;
             margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.2s, border-color 0.2s;
         }
 
         .theme-toggle-btn:hover {
-            transform: scale(1.03);
             border-color: var(--primary-green);
-            box-shadow: 0 0 20px var(--accent-glow);
         }
 
         .sidebar-menu {
@@ -166,18 +138,17 @@
             display: block;
             padding: 8px 12px;
             border-radius: 8px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s;
         }
 
         .sidebar-menu li a:hover {
             color: var(--text-color);
-            background: rgba(0, 255, 136, 0.15);
-            border-left: 4px solid var(--primary-green);
-            padding-left: 18px;
-            transform: translateX(4px);
+            background: rgba(5, 150, 105, 0.1);
+            border-left: 3px solid var(--primary-green);
+            padding-left: 16px;
         }
 
-        /* Bolinha do WhatsApp com Movimento Contínuo */
+        /* Bolinha do WhatsApp no Topo */
         .top-whatsapp-badge {
             position: fixed;
             top: 25px;
@@ -190,15 +161,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
             z-index: 10000;
-            animation: floatSlow 3s ease-in-out infinite;
             transition: transform 0.2s;
             text-decoration: none;
         }
 
         .top-whatsapp-badge:hover {
-            transform: scale(1.15) rotate(15deg);
+            transform: scale(1.1);
         }
 
         .top-whatsapp-badge svg {
@@ -221,7 +191,6 @@
             align-items: center;
             justify-content: space-between;
             background-color: var(--sidebar-bg);
-            backdrop-filter: blur(10px);
             padding: 15px 20px;
             border-bottom: 1px solid var(--border-color);
             position: fixed;
@@ -251,7 +220,6 @@
             margin-bottom: 20px;
             font-weight: 800;
             line-height: 1.2;
-            letter-spacing: -0.5px;
         }
 
         .hero p {
@@ -265,7 +233,7 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.25), rgba(255, 42, 133, 0.25));
+            background: var(--accent-glow);
             border: 1px solid var(--primary-green);
             padding: 10px 20px;
             border-radius: 50px;
@@ -273,34 +241,21 @@
             font-weight: 700;
             font-size: 1rem;
             margin-bottom: 25px;
-            animation: pulseGlow 3s infinite;
         }
 
-        /* Seções Gerais */
-        .about-section, .process-section, .video-section, .portfolio-section, .testimonials-section, .services-section, .calculator-section, .faq-section {
+        /* Seções */
+        .services-section, .portfolio-section, .calculator-section, .faq-section, .process-section, .video-section, .testimonials-section, .story-section {
             margin-bottom: 50px;
         }
 
-        /* Calculadora Interativa */
+        /* Calculadora / Simulador */
         .calculator-section {
             background: var(--card-bg);
-            backdrop-filter: blur(15px);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 40px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
             position: relative;
-            overflow: hidden;
-        }
-
-        .calculator-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--primary-green), var(--accent-pink));
         }
 
         .calculator-section h2 {
@@ -324,21 +279,17 @@
             cursor: pointer;
             text-align: center;
             font-weight: 700;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.2s;
         }
 
         .calc-option:hover {
             border-color: var(--primary-green);
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 8px 25px var(--accent-glow);
         }
 
         .calc-option.selected {
-            background: rgba(0, 255, 136, 0.2);
+            background: var(--accent-glow);
             border-color: var(--primary-green);
             color: var(--primary-green);
-            box-shadow: 0 0 20px var(--accent-glow);
-            transform: scale(1.03);
         }
 
         .calc-result-box {
@@ -355,15 +306,13 @@
         }
 
         .btn-calc-action {
-            background: linear-gradient(135deg, var(--primary-green), #00b055);
-            color: #060913;
+            background-color: var(--primary-green);
+            color: white;
             border: none;
             padding: 12px 25px;
-            border-radius: 10px;
-            font-weight: 800;
+            border-radius: 8px;
+            font-weight: 700;
             cursor: pointer;
-            animation: pulseGlow 2.5s infinite;
-            transition: transform 0.2s;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -371,17 +320,16 @@
         }
 
         .btn-calc-action:hover {
-            transform: scale(1.08);
+            background-color: var(--primary-green-hover);
         }
 
-        /* NOVA SEÇÃO: FAQ / Tira-Dúvidas */
+        /* FAQ / Tira-Dúvidas */
         .faq-section {
             background: var(--card-bg);
-            backdrop-filter: blur(15px);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 45px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
         }
 
         .faq-section h2 {
@@ -400,22 +348,19 @@
         .faq-item {
             background: var(--bg-color);
             border: 1px solid var(--border-color);
-            border-radius: 14px;
-            padding: 22px 25px;
+            border-radius: 12px;
+            padding: 20px 25px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s;
         }
 
         .faq-item:hover {
             border-color: var(--primary-green);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px var(--accent-glow);
         }
 
         .faq-question {
             font-size: 1.15rem;
             font-weight: 700;
-            color: var(--text-color);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -424,13 +369,12 @@
         .faq-question span {
             color: var(--primary-green);
             font-size: 1.4rem;
-            transition: transform 0.3s ease;
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.3s ease;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
             opacity: 0;
             color: var(--text-muted);
             font-size: 1rem;
@@ -443,15 +387,11 @@
         }
 
         .faq-item.active .faq-answer {
-            max-height: 250px;
+            max-height: 200px;
             opacity: 1;
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid var(--border-color);
-        }
-
-        .faq-item.active .faq-question span {
-            transform: rotate(45deg);
         }
 
         /* Serviços */
@@ -475,20 +415,18 @@
 
         .service-card {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             padding: 30px;
             border-radius: 16px;
             cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
         .service-card:hover {
-            transform: translateY(-8px) scale(1.01);
+            transform: translateY(-4px);
             border-color: var(--primary-green);
-            background-color: var(--card-hover);
-            box-shadow: 0 18px 45px var(--accent-glow);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
         }
 
         .service-card h3 {
@@ -502,20 +440,13 @@
 
         .service-card h3 span.icon {
             font-size: 1.2rem;
-            background: rgba(0, 255, 136, 0.15);
-            width: 34px;
-            height: 34px;
+            background: var(--accent-glow);
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            transition: transform 0.4s ease, background 0.3s;
-        }
-
-        .service-card:hover h3 span.icon {
-            background: var(--primary-green);
-            color: #060913;
-            transform: rotate(90deg);
         }
 
         .service-card p.summary {
@@ -527,7 +458,7 @@
         .service-details {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s ease, opacity 0.3s ease;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
             opacity: 0;
             color: var(--text-muted);
             font-size: 0.95rem;
@@ -536,7 +467,6 @@
 
         .service-card.active {
             border-color: var(--primary-green);
-            box-shadow: 0 15px 40px var(--accent-glow);
             background-color: var(--card-hover);
         }
 
@@ -548,18 +478,13 @@
             border-top: 1px solid var(--border-color);
         }
 
-        .service-card.active h3 span.icon {
-            transform: rotate(45deg);
-        }
-
         /* Portfólio */
         .portfolio-section {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 45px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
         }
 
         .portfolio-section h2 {
@@ -580,17 +505,10 @@
             border: 1px solid var(--border-color);
             border-left: 5px solid var(--primary-green);
             padding: 30px;
-            border-radius: 14px;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.35s ease;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary-green);
-            box-shadow: 0 15px 35px var(--accent-glow);
         }
 
         .portfolio-card h3 {
@@ -613,31 +531,27 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: linear-gradient(135deg, var(--primary-green), #00b055);
-            color: #060913;
+            background-color: var(--primary-green);
+            color: white;
             text-decoration: none;
             padding: 12px 20px;
-            border-radius: 10px;
+            border-radius: 8px;
             font-size: 0.95rem;
             font-weight: 700;
-            transition: transform 0.2s, box-shadow 0.2s;
             align-self: flex-start;
-            box-shadow: 0 4px 15px var(--accent-glow);
         }
 
         .btn-portfolio:hover {
-            transform: scale(1.06);
-            box-shadow: 0 6px 20px var(--primary-green);
+            background-color: var(--primary-green-hover);
         }
 
-        /* Processo */
+        /* Como Funciona */
         .process-section {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 45px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
         }
 
         .process-section h2 {
@@ -656,21 +570,15 @@
             background: var(--bg-color);
             border: 1px solid var(--border-color);
             padding: 30px;
-            border-radius: 14px;
+            border-radius: 12px;
             text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .process-step:hover {
-            transform: translateY(-6px);
-            border-color: var(--primary-green);
         }
 
         .process-step .step-number {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, var(--primary-green), #00b055);
-            color: #060913;
+            background-color: var(--primary-green);
+            color: white;
             font-weight: 800;
             font-size: 1.2rem;
             border-radius: 50%;
@@ -678,13 +586,11 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px auto;
-            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .process-step h4 {
             margin-bottom: 12px;
             font-size: 1.2rem;
-            color: var(--text-color);
         }
 
         .process-step p {
@@ -695,18 +601,16 @@
         /* Vídeo Motion */
         .video-section {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 45px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
         }
 
         .video-section h3 {
             font-size: 2rem;
             margin-bottom: 10px;
-            color: var(--text-color);
         }
 
         .video-section p {
@@ -718,8 +622,8 @@
             position: relative;
             width: 100%;
             padding-top: 56.25%;
-            background-color: #03050a;
-            border-radius: 14px;
+            background-color: #0f172a;
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-color);
         }
@@ -736,19 +640,18 @@
             justify-content: center;
             padding: 40px;
             text-align: center;
-            background: radial-gradient(circle at center, var(--card-bg) 0%, var(--bg-color) 100%);
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
         }
 
         .video-screen h4 {
             font-size: 2rem;
-            color: var(--primary-green);
+            color: #34d399;
             margin-bottom: 15px;
-            text-shadow: 0 0 15px var(--accent-glow);
         }
 
         .video-screen p {
             font-size: 1.15rem;
-            color: var(--text-color);
+            color: #ffffff;
             max-width: 600px;
             margin-bottom: 25px;
         }
@@ -759,42 +662,34 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(6, 9, 19, 0.92);
+            background: rgba(15, 23, 42, 0.9);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 10;
-            transition: opacity 0.3s ease;
         }
 
         .play-btn-circle {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, var(--primary-green), #00b055);
+            width: 80px;
+            height: 80px;
+            background-color: var(--primary-green);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #060913;
-            font-size: 2.2rem;
+            color: white;
+            font-size: 2rem;
             cursor: pointer;
-            box-shadow: 0 0 35px var(--primary-green);
-            animation: pulseGlow 2s infinite;
-            transition: transform 0.2s;
             border: none;
-        }
-
-        .play-btn-circle:hover {
-            transform: scale(1.15);
         }
 
         .video-progress-bar {
             position: absolute;
             bottom: 0;
             left: 0;
-            height: 6px;
-            background: linear-gradient(90deg, var(--primary-green), var(--accent-pink));
+            height: 4px;
+            background-color: var(--primary-green);
             width: 0%;
             transition: width 0.1s linear;
         }
@@ -815,12 +710,11 @@
 
         .testimonial-card {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
             padding: 30px;
             border-radius: 16px;
             border-left: 4px solid var(--primary-green);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
         .testimonial-card p {
@@ -847,14 +741,13 @@
         /* Nossa História */
         .story-section {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 16px;
             padding: 45px;
             margin-top: 60px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
 
         .story-section::before {
@@ -864,13 +757,12 @@
             left: 0;
             width: 6px;
             height: 100%;
-            background: linear-gradient(180deg, var(--primary-green), var(--accent-pink));
+            background-color: var(--primary-green);
         }
 
         .story-section h2 {
             font-size: 2.2rem;
             margin-bottom: 15px;
-            color: var(--text-color);
         }
 
         .story-section p {
@@ -887,17 +779,16 @@
         }
 
         .green-badge {
-            background: rgba(0, 255, 136, 0.15);
+            background: var(--accent-glow);
             color: var(--primary-green);
             padding: 12px 22px;
-            border-radius: 12px;
+            border-radius: 10px;
             font-size: 1rem;
             font-weight: 700;
-            border: 1px solid rgba(0, 255, 136, 0.4);
+            border: 1px solid rgba(5, 150, 105, 0.3);
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         /* Widget de Chat da Mari */
@@ -905,25 +796,19 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: linear-gradient(135deg, var(--primary-green), #00b055);
-            color: #060913;
+            background-color: var(--primary-green);
+            color: white;
             border: none;
             border-radius: 50px;
             padding: 10px 20px 10px 10px;
             font-weight: 800;
             font-size: 1rem;
             cursor: pointer;
-            box-shadow: 0 0 25px var(--primary-green);
-            animation: floatSlow 3.5s ease-in-out infinite;
+            box-shadow: 0 4px 20px rgba(5, 150, 105, 0.4);
             display: flex;
             align-items: center;
             gap: 12px;
             z-index: 99999;
-            transition: transform 0.2s;
-        }
-
-        .ai-widget-btn:hover {
-            transform: scale(1.1);
         }
 
         .ai-avatar-img {
@@ -931,7 +816,7 @@
             height: 44px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #060913;
+            border: 2px solid white;
         }
 
         .ai-chat-box {
@@ -941,10 +826,9 @@
             width: 380px;
             max-width: calc(100vw - 40px);
             background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            border: 1px solid var(--primary-green);
-            border-radius: 20px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             z-index: 100000;
             display: none;
             flex-direction: column;
@@ -969,7 +853,6 @@
         .ai-chat-header-info span {
             font-weight: bold;
             color: var(--primary-green);
-            font-size: 1rem;
         }
 
         .ai-chat-close {
@@ -994,35 +877,9 @@
         .ai-msg {
             background: var(--bg-color);
             padding: 12px 16px;
-            border-radius: 12px;
+            border-radius: 10px;
             border: 1px solid var(--border-color);
             color: var(--text-color);
-        }
-
-        .typing-indicator {
-            display: inline-flex;
-            gap: 4px;
-            padding: 8px 12px;
-            background: var(--bg-color);
-            border-radius: 10px;
-            align-self: flex-start;
-            border: 1px solid var(--border-color);
-        }
-
-        .typing-dot {
-            width: 7px;
-            height: 7px;
-            background: var(--primary-green);
-            border-radius: 50%;
-            animation: bounce 1.4s infinite ease-in-out both;
-        }
-
-        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes bounce {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1.0); }
         }
 
         .ai-chat-footer {
@@ -1039,23 +896,17 @@
             background: var(--bg-color);
             border: 1px solid var(--border-color);
             color: var(--text-color);
-            border-radius: 10px;
-            font-size: 0.95rem;
-        }
-
-        .ai-chat-input:focus {
-            outline: none;
-            border-color: var(--primary-green);
+            border-radius: 8px;
         }
 
         .ai-chat-send {
-            background: linear-gradient(135deg, var(--primary-green), #00b055);
-            color: #060913;
+            background-color: var(--primary-green);
+            color: white;
             border: none;
             padding: 10px 18px;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: 800;
+            font-weight: 700;
         }
 
         footer {
@@ -1081,15 +932,6 @@
             .mobile-header {
                 display: flex;
             }
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-            .top-whatsapp-badge {
-                top: 15px;
-                right: 70px;
-                width: 44px;
-                height: 44px;
-            }
         }
     </style>
 </head>
@@ -1106,9 +948,9 @@
     <div class="mobile-header">
         <a href="#" class="custom-logo">
             <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="40" rx="8" fill="#00FF88" fill-opacity="0.2"/>
-                <path d="M10 28L18 14L24 22L30 12" stroke="#00FF88" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="30" cy="12" r="3.5" fill="#00FF88"/>
+                <rect width="40" height="40" rx="8" fill="#059669" fill-opacity="0.2"/>
+                <path d="M10 28L18 14L24 22L30 12" stroke="#059669" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="30" cy="12" r="3.5" fill="#059669"/>
             </svg>
             <span class="brand-text">VELOX<span>SITES</span></span>
         </a>
@@ -1120,16 +962,16 @@
         <div class="sidebar-brand">
             <a href="#" class="custom-logo" onclick="toggleSidebar()">
                 <svg class="logo-svg" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="40" height="40" rx="8" fill="#00FF88" fill-opacity="0.2"/>
-                    <path d="M10 28L18 14L24 22L30 12" stroke="#00FF88" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="30" cy="12" r="3.5" fill="#00FF88"/>
+                    <rect width="40" height="40" rx="8" fill="#059669" fill-opacity="0.2"/>
+                    <path d="M10 28L18 14L24 22L30 12" stroke="#059669" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="30" cy="12" r="3.5" fill="#059669"/>
                 </svg>
                 <span class="brand-text">VELOX<span>SITES</span></span>
             </a>
         </div>
 
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn">
-            🌞 Modo Claro / Escuro
+            🌙 Alternar Modo Escuro/Claro
         </button>
 
         <ul class="sidebar-menu">
@@ -1161,8 +1003,8 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="duo-badge">✨ Mariana & Mari • A Dupla Dinâmica da VeloxSites</div>
-            <h1>Você imagina, nós fazemos! Criamos <span style="color: var(--primary-green); text-shadow: 0 0 15px var(--accent-glow);">qualquer site personalizado</span> para o seu sucesso.</h1>
-            <p>Juntas, unimos a visão estratégica da engenharia com a agilidade da inteligência artificial para entregar sites sob medida, automações, controles de estoque e soluções completas com alta tecnologia e inovação.</p>
+            <h1>Você imagina, nós fazemos! Criamos <span style="color: var(--primary-green);">qualquer site personalizado</span> para o seu sucesso.</h1>
+            <p>Juntas, unimos a visão estratégica da engenharia com a agilidade da inteligência artificial para entregar sites sob medida, automações, controles de estoque e soluções completas com alta qualidade.</p>
         </section>
 
         <!-- Calculadora Interativa -->
@@ -1182,13 +1024,13 @@
                     <strong id="calcSummaryText" style="color: var(--primary-green);">Nenhum item selecionado.</strong>
                     <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Mariana & Mari prontas para desenvolver o seu escopo.</div>
                 </div>
-                <a href="#" id="calcWhatsAppBtn" target="_blank" class="btn-calc-action" onclick="enviarProjetoCalc(event)" style="opacity: 0.6; pointer-events: none;">
+                <a href="#" id="calcWhatsAppBtn" target="_blank" class="btn-calc-action" onclick="enviarProjetoCalc(event)" style="opacity: 0.5; pointer-events: none;">
                     Enviar para o WhatsApp ↗
                 </a>
             </div>
         </section>
 
-        <!-- NOVA SEÇÃO: Tira-Dúvidas (FAQ) -->
+        <!-- Tira-Dúvidas (FAQ) -->
         <section class="faq-section" id="duvidas">
             <h2>❓ Perguntas Frequentes (Tira-Dúvidas)</h2>
             <p class="section-subtitle">Tudo o que você precisa saber sobre a nossa forma de trabalhar e entregar:</p>
@@ -1196,7 +1038,7 @@
             <div class="faq-container">
                 <div class="faq-item" onclick="toggleFaq(this)">
                     <div class="faq-question">Como funciona a criação de um site personalizado? <span>+</span></div>
-                    <div class="faq-answer">Nós desenvolvemos o projeto do zero sob medida para a sua necessidade (seja portais institucionais, agendas corporativas ou sistemas), unindo design moderno e funcionalidade exata.</div>
+                    <div class="faq-answer">Nós desenvolvemos o projeto do zero sob medida para a sua necessidade (seja portais institucionais, agendas corporativas ou sistemas), unindo design limpo e funcionalidade exata.</div>
                 </div>
 
                 <div class="faq-item" onclick="toggleFaq(this)">
@@ -1361,7 +1203,7 @@
             <div class="video-container">
                 <div class="play-overlay" id="playOverlay">
                     <button class="play-btn-circle" onclick="startVideo()">▶</button>
-                    <span style="color: var(--text-muted); margin-top: 15px; font-weight: 700; font-size: 1rem;">Assistir Apresentação Institucional</span>
+                    <span style="color: #94a3b8; margin-top: 15px; font-weight: 700; font-size: 1rem;">Assistir Apresentação Institucional</span>
                 </div>
                 <div class="video-screen">
                     <h4 id="vidTitle">VeloxSites: Mariana & Mari</h4>
@@ -1421,7 +1263,7 @@
         <footer>
             &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
             <div style="margin-top: 12px; font-size: 0.9rem; color: var(--text-muted);">
-                Visitas ao site: <span id="visitorCount" style="color: var(--primary-green); font-weight: bold;">947</span> &bull; <span style="color: var(--primary-green); font-weight: bold;">Versão 2.5 (Com Tira-Dúvidas / FAQ)</span>
+                Visitas ao site: <span id="visitorCount" style="color: var(--primary-green); font-weight: bold;">947</span> &bull; <span style="color: var(--primary-green); font-weight: bold;">Versão 2.6 (Limpa, Iluminada & Sem Duplicações)</span>
             </div>
         </footer>
     </main>
@@ -1451,7 +1293,6 @@
     </div>
 
     <script>
-        // Lógica do Acordeon de Tira-Dúvidas (FAQ)
         function toggleFaq(item) {
             const items = document.querySelectorAll('.faq-item');
             items.forEach(i => {
@@ -1482,7 +1323,7 @@
                 btn.style.pointerEvents = 'auto';
             } else {
                 summary.innerText = "Nenhum item selecionado.";
-                btn.style.opacity = '0.6';
+                btn.style.opacity = '0.5';
                 btn.style.pointerEvents = 'none';
             }
         }
@@ -1496,15 +1337,15 @@
         }
 
         function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-            const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme', isLight ? 'light' : 'dark');
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            localStorage.setItem('velox_theme', isDark ? 'dark' : 'light');
         }
 
         document.addEventListener("DOMContentLoaded", function() {
             let savedTheme = localStorage.getItem('velox_theme');
-            if (savedTheme === 'light') {
-                document.body.classList.add('light-theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-theme');
             }
 
             let visits = localStorage.getItem('velox_site_visits');
@@ -1562,7 +1403,7 @@
 
             const userMsg = document.createElement('div');
             userMsg.className = 'ai-msg';
-            userMsg.style.background = 'rgba(0, 255, 136, 0.15)';
+            userMsg.style.background = 'rgba(5, 150, 105, 0.1)';
             userMsg.style.borderColor = 'var(--primary-green)';
             userMsg.innerText = text;
             body.appendChild(userMsg);
@@ -1570,17 +1411,7 @@
             input.value = '';
             body.scrollTop = body.scrollHeight;
 
-            const typingIndicator = document.createElement('div');
-            typingIndicator.className = 'typing-indicator';
-            typingIndicator.id = 'typingIndicator';
-            typingIndicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
-            body.appendChild(typingIndicator);
-            body.scrollTop = body.scrollHeight;
-
             setTimeout(() => {
-                const indicator = document.getElementById('typingIndicator');
-                if (indicator) indicator.remove();
-
                 const aiMsg = document.createElement('div');
                 aiMsg.className = 'ai-msg';
                 aiMsg.innerHTML = `Adorei a ideia! Anotei o projeto: "<em>${text}</em>". Eu e a Mariana vamos adorar desenvolver isso para você. Vou te direcionar direto para o nosso WhatsApp!`;
@@ -1591,7 +1422,7 @@
                     const encodedMsg = encodeURIComponent(`Olá! Falei com a Mari no site e nós queremos criar o seguinte projeto: ${text}`);
                     window.open(`https://wa.me/5521967860665?text=${encodedMsg}`, '_blank');
                 }, 1500);
-            }, 1200);
+            }, 1000);
         }
 
         function startVideo() {
