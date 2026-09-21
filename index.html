@@ -12,23 +12,25 @@
             --border: rgba(255, 255, 255, 0.08);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --primary: #10b981;
-            --primary-glow: rgba(16, 185, 129, 0.3);
-            --accent: #06b6d4;
+            --pink-hot: #ff2a85;       /* Rosa Choque */
+            --pink-baby: #ffb6c1;      /* Rosa Bebê */
+            --primary: #ff2a85;        /* Cor principal em Rosa Choque */
+            --primary-glow: rgba(255, 42, 133, 0.35);
             --whatsapp: #25d366;
         }
 
         /* Tema Claro */
         body.light-theme {
-            --bg: #f8fafc;
+            --bg: #fff1f2;
             --surface: #ffffff;
-            --surface-hover: #f1f5f9;
-            --border: rgba(0, 0, 0, 0.08);
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --primary: #059669;
-            --primary-glow: rgba(5, 150, 105, 0.2);
-            --accent: #0284c7;
+            --surface-hover: #ffe4e6;
+            --border: rgba(255, 42, 133, 0.15);
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+            --pink-hot: #e11d48;
+            --pink-baby: #fda4af;
+            --primary: #e11d48;
+            --primary-glow: rgba(225, 29, 72, 0.2);
         }
 
         * {
@@ -73,7 +75,7 @@
         }
 
         .nav-brand span {
-            color: var(--primary);
+            color: var(--pink-hot);
         }
 
         .nav-links {
@@ -91,7 +93,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--pink-hot);
         }
 
         .nav-actions {
@@ -145,13 +147,14 @@
             align-items: center;
             gap: 8px;
             background: var(--primary-glow);
-            border: 1px solid var(--primary);
-            color: var(--primary);
+            border: 1px solid var(--pink-hot);
+            color: var(--pink-hot);
             padding: 6px 16px;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 700;
             margin-bottom: 25px;
+            box-shadow: 0 0 20px var(--primary-glow);
         }
 
         .hero h1 {
@@ -162,10 +165,10 @@
             letter-spacing: -1px;
         }
 
+        /* A frase principal em destaque com Rosa Choque */
         .hero h1 span {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--pink-hot);
+            text-shadow: 0 0 25px var(--primary-glow);
         }
 
         .hero p {
@@ -183,14 +186,14 @@
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: var(--pink-hot);
             color: white;
             padding: 14px 28px;
             border-radius: 12px;
             font-weight: 700;
             text-decoration: none;
             box-shadow: 0 8px 25px var(--primary-glow);
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -198,6 +201,7 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
+            box-shadow: 0 12px 35px var(--primary-glow);
         }
 
         /* Seções Estilizadas */
@@ -223,7 +227,7 @@
             font-size: 1.1rem;
         }
 
-        /* Grid de Serviços (Bento Grid moderno) */
+        /* Grid de Serviços */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -241,9 +245,9 @@
         }
 
         .service-card:hover {
-            border-color: var(--primary);
+            border-color: var(--pink-hot);
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(255, 42, 133, 0.1);
         }
 
         .service-card h3 {
@@ -256,7 +260,7 @@
         }
 
         .service-card h3 span {
-            color: var(--primary);
+            color: var(--pink-hot);
             font-size: 1.2rem;
         }
 
@@ -273,11 +277,10 @@
             opacity: 0;
             color: var(--text-muted);
             font-size: 0.95rem;
-            margin-top: 0;
         }
 
         .service-card.active {
-            border-color: var(--primary);
+            border-color: var(--pink-hot);
             background: var(--surface-hover);
         }
 
@@ -317,13 +320,13 @@
         }
 
         .calc-chip:hover {
-            border-color: var(--primary);
+            border-color: var(--pink-hot);
         }
 
         .calc-chip.selected {
             background: var(--primary-glow);
-            border-color: var(--primary);
-            color: var(--primary);
+            border-color: var(--pink-hot);
+            color: var(--pink-hot);
         }
 
         .calc-footer {
@@ -358,7 +361,7 @@
 
         .portfolio-item:hover {
             transform: translateY(-5px);
-            border-color: var(--primary);
+            border-color: var(--pink-hot);
         }
 
         .portfolio-item h3 {
@@ -375,7 +378,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--primary);
+            color: var(--pink-hot);
             font-weight: 700;
             text-decoration: none;
         }
@@ -409,6 +412,10 @@
             align-items: center;
         }
 
+        .faq-q span {
+            color: var(--pink-hot);
+        }
+
         .faq-a {
             max-height: 0;
             overflow: hidden;
@@ -419,7 +426,7 @@
         }
 
         .faq-item.active {
-            border-color: var(--primary);
+            border-color: var(--pink-hot);
             background: var(--surface-hover);
         }
 
@@ -445,7 +452,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: var(--primary);
+            background: var(--pink-hot);
             color: white;
             border: none;
             border-radius: 50px;
@@ -469,6 +476,7 @@
             height: 36px;
             border-radius: 50%;
             object-fit: cover;
+            border: 2px solid var(--pink-baby);
         }
 
         /* Responsividade */
@@ -491,9 +499,9 @@
     <header class="navbar">
         <a href="#" class="nav-brand">
             <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
-                <rect width="40" height="40" rx="8" fill="#10B981" fill-opacity="0.2"/>
-                <path d="M10 28L18 14L24 22L30 12" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="30" cy="12" r="3" fill="#10B981"/>
+                <rect width="40" height="40" rx="8" fill="#ff2a85" fill-opacity="0.2"/>
+                <path d="M10 28L18 14L24 22L30 12" stroke="#ff2a85" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="30" cy="12" r="3" fill="#ff2a85"/>
             </svg>
             VELOX<span>SITES</span>
         </a>
@@ -518,7 +526,7 @@
         <section class="hero">
             <div class="hero-badge">✨ Mariana & Mari • A Revolução Digital</div>
             <h1>Você imagina, nós fazemos! Criamos <span>qualquer site personalizado</span> para o seu sucesso.</h1>
-            <p>Unimos a precisão da engenharia com a agilidade da inteligência artificial para entregar portais, sistemas de estoque e rotinas administrativas de altíssimo nível.</p>
+            <p>Unimos a precisão da engenharia com a agilidade da inteligência artificial para entregar portais, sistemas de estoque e rotinas administrativas com um toque único e marcante.</p>
             <div class="hero-cta">
                 <a href="#simulador" class="btn-primary">Criar Meu Projeto Agora ⚡</a>
                 <a href="https://wa.me/5521967860665" target="_blank" class="btn-wa" style="padding: 14px 28px; border-radius: 12px; font-size: 1rem;">Falar no WhatsApp</a>
@@ -542,7 +550,7 @@
 
                 <div class="calc-footer">
                     <div>
-                        <div id="calcText" style="font-weight: 700; color: var(--primary);">Nenhum item selecionado.</div>
+                        <div id="calcText" style="font-weight: 700; color: var(--pink-hot);">Nenhum item selecionado.</div>
                         <div style="font-size: 0.85rem; color: var(--text-muted);">Mariana & Mari prontas para iniciar o desenvolvimento.</div>
                     </div>
                     <a href="#" id="calcBtn" target="_blank" class="btn-primary" onclick="sendCalc(event)" style="opacity: 0.5; pointer-events: none;">Enviar para o WhatsApp ↗</a>
@@ -647,7 +655,7 @@
     <footer>
         &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
         <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.0 (Revolução Total)
+            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.1 (Rosa Choque Edition)
         </div>
     </footer>
 
@@ -662,20 +670,20 @@
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme_v3', isLight ? 'light' : 'dark');
+            localStorage.setItem('velox_theme_v31', isLight ? 'light' : 'dark');
             document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem('velox_theme_v3') === 'light') {
+            if (localStorage.getItem('velox_theme_v31') === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
 
             // Contador de visitas
-            let visits = localStorage.getItem('velox_visits_v3') || 947;
+            let visits = localStorage.getItem('velox_visits_v31') || 947;
             visits = parseInt(visits) + 1;
-            localStorage.setItem('velox_visits_v3', visits);
+            localStorage.setItem('velox_visits_v31', visits);
             document.getElementById('visitorCount').innerText = visits;
         });
 
