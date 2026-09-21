@@ -8,15 +8,15 @@
         :root {
             --bg-color: #060913;
             --sidebar-bg: #0c1021;
-            --card-bg: #141b33;
-            --card-hover: #1e284a;
+            --card-bg: rgba(20, 27, 51, 0.75);
+            --card-hover: rgba(30, 40, 74, 0.9);
             --text-color: #ffffff;
             --text-muted: #a3b1c6;
             --primary-green: #00ff88;
             --primary-green-hover: #00cc6a;
             --accent-pink: #ff2a85;
             --whatsapp-green: #25d366;
-            --border-color: #223055;
+            --border-color: rgba(0, 255, 136, 0.2);
             --accent-glow: rgba(0, 255, 136, 0.35);
         }
 
@@ -24,11 +24,11 @@
         body.light-theme {
             --bg-color: #f1f5f9;
             --sidebar-bg: #ffffff;
-            --card-bg: #ffffff;
-            --card-hover: #e2e8f0;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-hover: rgba(226, 232, 240, 0.95);
             --text-color: #0f172a;
             --text-muted: #475569;
-            --border-color: #cbd5e1;
+            --border-color: rgba(0, 185, 100, 0.3);
             --accent-glow: rgba(0, 185, 100, 0.25);
         }
 
@@ -48,10 +48,11 @@
             min-height: 100vh;
         }
 
-        /* Menu Lateral Esquerdo Fixo */
+        /* Menu Lateral Esquerdo Fixo com Glassmorphism */
         aside.sidebar {
             width: 280px;
             background-color: var(--sidebar-bg);
+            backdrop-filter: blur(12px);
             border-right: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
@@ -61,8 +62,7 @@
             left: 0;
             top: 0;
             z-index: 1000;
-            transition: transform 0.3s ease-in-out;
-            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.15);
         }
 
         .sidebar-brand {
@@ -97,13 +97,13 @@
             text-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* Botão de Tema no Menu */
+        /* Botão de Tema */
         .theme-toggle-btn {
             background: var(--card-hover);
             color: var(--text-color);
             border: 1px solid var(--border-color);
             padding: 10px 15px;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 0.9rem;
             font-weight: 700;
             cursor: pointer;
@@ -112,12 +112,12 @@
             justify-content: center;
             gap: 8px;
             margin-bottom: 25px;
-            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .theme-toggle-btn:hover {
             border-color: var(--primary-green);
-            background-color: rgba(0, 255, 136, 0.1);
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .sidebar-menu {
@@ -142,18 +142,18 @@
             font-size: 0.9rem;
             display: block;
             padding: 8px 12px;
-            border-radius: 6px;
+            border-radius: 8px;
             transition: all 0.2s;
         }
 
         .sidebar-menu li a:hover {
             color: var(--text-color);
-            background-color: rgba(0, 255, 136, 0.12);
+            background: rgba(0, 255, 136, 0.15);
             border-left: 3px solid var(--primary-green);
             padding-left: 16px;
         }
 
-        /* Bolinha do WhatsApp no Topo (Canto Superior Direito) */
+        /* Bolinha do WhatsApp no Topo */
         .top-whatsapp-badge {
             position: fixed;
             top: 25px;
@@ -166,15 +166,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
             z-index: 10000;
-            transition: transform 0.2s, background-color 0.2s;
+            transition: transform 0.2s;
             text-decoration: none;
         }
 
         .top-whatsapp-badge:hover {
             transform: scale(1.15) rotate(10deg);
-            background-color: #20ba5a;
         }
 
         .top-whatsapp-badge svg {
@@ -197,6 +196,7 @@
             align-items: center;
             justify-content: space-between;
             background-color: var(--sidebar-bg);
+            backdrop-filter: blur(10px);
             padding: 15px 20px;
             border-bottom: 1px solid var(--border-color);
             position: fixed;
@@ -227,7 +227,6 @@
             font-weight: 800;
             line-height: 1.2;
             letter-spacing: -0.5px;
-            color: var(--text-color);
         }
 
         .hero p {
@@ -249,20 +248,110 @@
             font-weight: 700;
             font-size: 1rem;
             margin-bottom: 25px;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        /* Seções Genéricas com Glassmorphism */
+        .about-section, .process-section, .video-section, .portfolio-section, .testimonials-section, .services-section, .calculator-section {
+            margin-bottom: 50px;
+        }
+
+        /* Calculadora Interativa de Projetos (NOVIDADE V2.3) */
+        .calculator-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calculator-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary-green), var(--accent-pink));
+        }
+
+        .calculator-section h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .calc-option {
+            background: var(--bg-color);
+            border: 2px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 700;
+            transition: all 0.25s ease;
+        }
+
+        .calc-option:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        .calc-option.selected {
+            background: rgba(0, 255, 136, 0.15);
+            border-color: var(--primary-green);
+            color: var(--primary-green);
             box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* Seções Genéricas */
-        .about-section, .process-section, .video-section, .portfolio-section, .testimonials-section, .services-section {
-            margin-bottom: 60px;
+        .calc-result-box {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        /* Seção de Serviços */
+        .btn-calc-action {
+            background: linear-gradient(135deg, var(--primary-green), #00b055);
+            color: #060913;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 4px 15px var(--accent-glow);
+            transition: transform 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-calc-action:hover {
+            transform: scale(1.05);
+        }
+
+        /* Serviços */
         .services-section h2 {
             font-size: 2.3rem;
             margin-bottom: 10px;
             font-weight: 800;
-            color: var(--text-color);
         }
 
         .section-subtitle {
@@ -278,20 +367,21 @@
         }
 
         .service-card {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
             padding: 30px;
             border-radius: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .service-card:hover {
             transform: translateY(-6px);
             border-color: var(--primary-green);
             background-color: var(--card-hover);
-            box-shadow: 0 12px 35px var(--accent-glow);
+            box-shadow: 0 15px 40px var(--accent-glow);
         }
 
         .service-card h3 {
@@ -338,7 +428,7 @@
 
         .service-card.active {
             border-color: var(--primary-green);
-            box-shadow: 0 10px 30px var(--accent-glow);
+            box-shadow: 0 12px 35px var(--accent-glow);
             background-color: var(--card-hover);
         }
 
@@ -354,11 +444,12 @@
             transform: rotate(45deg);
         }
 
-        /* Seção de Portfólio / Exemplos */
+        /* Portfólio */
         .portfolio-section {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 45px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
@@ -381,7 +472,7 @@
             border: 1px solid var(--border-color);
             border-left: 5px solid var(--primary-green);
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -391,7 +482,7 @@
         .portfolio-card:hover {
             transform: translateY(-6px);
             border-color: var(--primary-green);
-            box-shadow: 0 10px 25px var(--accent-glow);
+            box-shadow: 0 12px 30px var(--accent-glow);
         }
 
         .portfolio-card h3 {
@@ -421,7 +512,7 @@
             border-radius: 8px;
             font-size: 0.95rem;
             font-weight: 700;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
             align-self: flex-start;
             box-shadow: 0 4px 15px var(--accent-glow);
         }
@@ -430,11 +521,12 @@
             transform: scale(1.05);
         }
 
-        /* Seção Como Funciona */
+        /* Como Funciona */
         .process-section {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 45px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
@@ -455,7 +547,7 @@
             background: var(--bg-color);
             border: 1px solid var(--border-color);
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 14px;
             text-align: center;
             transition: transform 0.3s;
         }
@@ -491,11 +583,12 @@
             font-size: 0.95rem;
         }
 
-        /* Seção de Vídeo Motion Player */
+        /* Vídeo Motion */
         .video-section {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 45px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -517,7 +610,7 @@
             width: 100%;
             padding-top: 56.25%;
             background-color: #03050a;
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
             border: 1px solid var(--border-color);
         }
@@ -541,7 +634,6 @@
             font-size: 2rem;
             color: var(--primary-green);
             margin-bottom: 15px;
-            transition: opacity 0.4s ease;
             text-shadow: 0 0 15px var(--accent-glow);
         }
 
@@ -550,7 +642,6 @@
             color: var(--text-color);
             max-width: 600px;
             margin-bottom: 25px;
-            transition: opacity 0.4s ease;
         }
 
         .play-overlay {
@@ -580,7 +671,7 @@
             font-size: 2.2rem;
             cursor: pointer;
             box-shadow: 0 0 35px var(--primary-green);
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
             border: none;
         }
 
@@ -598,7 +689,7 @@
             transition: width 0.1s linear;
         }
 
-        /* Seção de Percepção dos Clientes */
+        /* Depoimentos */
         .testimonials-section h2 {
             font-size: 2.3rem;
             margin-bottom: 10px;
@@ -613,12 +704,13 @@
         }
 
         .testimonial-card {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
             padding: 30px;
-            border-radius: 14px;
+            border-radius: 16px;
             border-left: 4px solid var(--primary-green);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .testimonial-card p {
@@ -642,11 +734,12 @@
             font-weight: 700;
         }
 
-        /* Seção "Nossa História" & Localização em Destaque */
+        /* Nossa História */
         .story-section {
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
+            border-radius: 20px;
             padding: 45px;
             margin-top: 60px;
             position: relative;
@@ -659,7 +752,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 5px;
+            width: 6px;
             height: 100%;
             background: linear-gradient(180deg, var(--primary-green), var(--accent-pink));
         }
@@ -687,7 +780,7 @@
             background: rgba(0, 255, 136, 0.15);
             color: var(--primary-green);
             padding: 12px 22px;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 1rem;
             font-weight: 700;
             border: 1px solid rgba(0, 255, 136, 0.4);
@@ -697,7 +790,7 @@
             box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        /* Widget da Assistente Mari */
+        /* Widget de Chat da Mari com Efeito de Digitação */
         .ai-widget-btn {
             position: fixed;
             bottom: 30px;
@@ -715,7 +808,7 @@
             align-items: center;
             gap: 12px;
             z-index: 99999;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
         }
 
         .ai-widget-btn:hover {
@@ -736,10 +829,11 @@
             right: 30px;
             width: 380px;
             max-width: calc(100vw - 40px);
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
             border: 1px solid var(--primary-green);
-            border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
             z-index: 100000;
             display: none;
             flex-direction: column;
@@ -747,7 +841,7 @@
         }
 
         .ai-chat-header {
-            background-color: var(--sidebar-bg);
+            background: var(--sidebar-bg);
             padding: 18px;
             display: flex;
             justify-content: space-between;
@@ -788,15 +882,41 @@
 
         .ai-msg {
             background: var(--bg-color);
-            padding: 12px;
-            border-radius: 10px;
+            padding: 12px 16px;
+            border-radius: 12px;
             border: 1px solid var(--border-color);
             color: var(--text-color);
         }
 
+        .typing-indicator {
+            display: inline-flex;
+            gap: 4px;
+            padding: 8px 12px;
+            background: var(--bg-color);
+            border-radius: 10px;
+            align-self: flex-start;
+            border: 1px solid var(--border-color);
+        }
+
+        .typing-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+
         .ai-chat-footer {
             padding: 15px;
-            background-color: var(--sidebar-bg);
+            background: var(--sidebar-bg);
             border-top: 1px solid var(--border-color);
             display: flex;
             gap: 10px;
@@ -805,10 +925,10 @@
         .ai-chat-input {
             flex: 1;
             padding: 10px 14px;
-            background-color: var(--bg-color);
+            background: var(--bg-color);
             border: 1px solid var(--border-color);
             color: var(--text-color);
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 0.95rem;
         }
 
@@ -822,7 +942,7 @@
             color: #060913;
             border: none;
             padding: 10px 18px;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 800;
         }
@@ -836,7 +956,6 @@
             text-align: center;
         }
 
-        /* Responsividade */
         @media (max-width: 992px) {
             aside.sidebar {
                 transform: translateX(-100%);
@@ -860,16 +979,12 @@
                 width: 44px;
                 height: 44px;
             }
-            .top-whatsapp-badge svg {
-                width: 24px;
-                height: 24px;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Bolinha do WhatsApp no Topo (Canto Superior Direito) -->
+    <!-- WhatsApp Topo -->
     <a href="https://wa.me/5521967860665" target="_blank" class="top-whatsapp-badge" title="Fale pelo WhatsApp">
         <svg viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
@@ -889,7 +1004,7 @@
         <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
     </div>
 
-    <!-- Menu Lateral Esquerdo Fixo -->
+    <!-- Menu Lateral -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-brand">
             <a href="#" class="custom-logo" onclick="toggleSidebar()">
@@ -902,14 +1017,14 @@
             </a>
         </div>
 
-        <!-- Botão de Claro / Escuro -->
         <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn">
-            🌞 Alternar Modo Claro/Escuro
+            🌞 Modo Claro / Escuro
         </button>
 
         <ul class="sidebar-menu">
             <h4>Navegação</h4>
             <li><a href="#" onclick="toggleSidebar()">Início</a></li>
+            <li><a href="#calculadora" onclick="toggleSidebar()">⚡ Simulador de Projeto</a></li>
             <li><a href="#servicos" onclick="toggleSidebar()">Serviços & Criação</a></li>
             <li><a href="#portfolio" onclick="toggleSidebar()">Projetos & Exemplos</a></li>
             <li><a href="#comofunciona" onclick="toggleSidebar()">Como Funciona</a></li>
@@ -935,43 +1050,62 @@
         <section class="hero">
             <div class="duo-badge">✨ Mariana & Mari • A Dupla Dinâmica da VeloxSites</div>
             <h1>Você imagina, nós fazemos! Criamos <span style="color: var(--primary-green); text-shadow: 0 0 15px var(--accent-glow);">qualquer site personalizado</span> para o seu sucesso.</h1>
-            <p>Juntas, unimos a visão estratégica da engenharia com a agilidade da inteligência artificial para entregar sites sob medida, automações, controles de estoque e soluções completas com muita energia e inovação para a sua empresa.</p>
+            <p>Juntas, unimos a visão estratégica da engenharia com a agilidade da inteligência artificial para entregar sites sob medida, automações, controles de estoque e soluções completas com alta tecnologia e inovação.</p>
         </section>
 
-        <!-- Seção de Serviços e Criação de Sites -->
+        <!-- NOVIDADE V2.3: Calculadora / Simulador Interativo de Projetos -->
+        <section class="calculator-section" id="calculadora">
+            <h2>⚡ Simulador de Projeto Instantâneo</h2>
+            <p style="color: var(--text-muted); font-size: 1.05rem;">Selecione o que você precisa estruturar agora:</p>
+            
+            <div class="calc-grid">
+                <div class="calc-option" onclick="toggleCalcOption(this, 'Site Personalizado')">🌐 Site Personalizado</div>
+                <div class="calc-option" onclick="toggleCalcOption(this, 'Sistema de Estoque')">📦 Sistema de Estoque</div>
+                <div class="calc-option" onclick="toggleCalcOption(this, 'Agenda & Cronograma')">📅 Agenda ou Cronograma</div>
+                <div class="calc-option" onclick="toggleCalcOption(this, 'Planilhas & Back-Office')">📊 Planilhas & Financeiro</div>
+            </div>
+
+            <div class="calc-result-box">
+                <div>
+                    <strong id="calcSummaryText" style="color: var(--primary-green);">Nenhum item selecionado.</strong>
+                    <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 4px;">Mariana & Mari prontas para desenvolver o seu escopo.</div>
+                </div>
+                <a href="#" id="calcWhatsAppBtn" target="_blank" class="btn-calc-action" onclick="enviarProjetoCalc(event)" style="opacity: 0.6; pointer-events: none;">
+                    Enviar para o WhatsApp ↗
+                </a>
+            </div>
+        </section>
+
+        <!-- Seção de Serviços -->
         <section class="services-section" id="servicos">
             <h2>Nossos Serviços & Soluções Completas</h2>
             <p class="section-subtitle">Clique em qualquer serviço abaixo para abrir e ler o escopo completo de atuação:</p>
             
             <div class="services-grid">
-                <!-- 1. Criação de Sites -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Criação de Sites e Páginas Personalizadas <span class="icon">+</span></h3>
                     <p class="summary">Desenvolvimento de portais sob medida para agendas, projetos e negócios.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Nós criamos qualquer tipo de site ou página que você precisar (portais de guarda compartilhada, cronogramas, landing pages ou portais corporativos) com foco total em design moderno, funcionalidade e alto impacto visual.</p>
+                        <p><strong>Escopo completo:</strong> Nós criamos qualquer tipo de site ou página que você precisar (portais de guarda compartilhada, cronogramas, landing pages ou portais corporativos) com foco total em design moderno e funcionalidade.</p>
                     </div>
                 </div>
 
-                <!-- 2 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Gestão de Estoque, Almoxarifado e Ativos <span class="icon">+</span></h3>
                     <p class="summary">Controle técnico de materiais, inventário físico, planilhas de guarda e rotatividade.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Estruturação completa de estoques para terceiros, inventários físicos, controle rigoroso de entradas e saídas e aplicação de conceitos de confiabilidade para otimizar almoxarifados com precisão cirúrgica.</p>
+                        <p><strong>Escopo completo:</strong> Estruturação completa de estoques para terceiros, inventários físicos, controle rigoroso de entradas e saídas e aplicação de conceitos de confiabilidade para otimizar almoxarifados.</p>
                     </div>
                 </div>
 
-                <!-- 3 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Gestão de Documentação de Projetos <span class="icon">+</span></h3>
                     <p class="summary">Abordagem estruturada para projetos com início, meio e fim bem definidos.</p>
                     <div class="service-details">
-                        <p><strong>Escopo completo:</strong> Categorização, arquivamento rigoroso e recuperação ágil de todos os documentos relevantes para garantir total rastreabilidade e sucesso absoluto nas auditorias.</p>
+                        <p><strong>Escopo completo:</strong> Categorização, arquivamento rigoroso e recuperação ágil de todos os documentos relevantes para garantir total rastreabilidade e sucesso nas auditorias.</p>
                     </div>
                 </div>
 
-                <!-- 4 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Assistência Administrativa Remota (Back-Office) <span class="icon">+</span></h3>
                     <p class="summary">Suporte responsável para digitação, conferência de dados e controle rotineiro.</p>
@@ -980,7 +1114,6 @@
                     </div>
                 </div>
 
-                <!-- 5 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Contas a Pagar, Receber e Conciliação <span class="icon">+</span></h3>
                     <p class="summary">Organização financeira rigorosa e controle de fluxo de caixa.</p>
@@ -989,7 +1122,6 @@
                     </div>
                 </div>
 
-                <!-- 6 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Bases de Dados e Cadastros Corporativos <span class="icon">+</span></h3>
                     <p class="summary">Criação de diretórios estruturados com nomes, endereços e contatos.</p>
@@ -998,7 +1130,6 @@
                     </div>
                 </div>
 
-                <!-- 7 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Planilhas Sob Medida e Dashboards Power BI <span class="icon">+</span></h3>
                     <p class="summary">Ferramentas inteligentes e painéis gerenciais personalizados.</p>
@@ -1007,7 +1138,6 @@
                     </div>
                 </div>
 
-                <!-- 8 -->
                 <div class="service-card" onclick="toggleCard(this)">
                     <h3>Faturamento e Cronograma de Atividades <span class="icon">+</span></h3>
                     <p class="summary">Organização de rotinas diárias, notas fiscais e pendências.</p>
@@ -1018,13 +1148,12 @@
             </div>
         </section>
 
-        <!-- Seção de Portfólio e Exemplos -->
+        <!-- Seção de Portfólio -->
         <section class="portfolio-section" id="portfolio">
-            <h2>Quer criar uma agenda de guarda compartilhada, programação ou estruturar o seu estoque?</h2>
-            <p style="color: var(--text-muted); font-size: 1.1rem;">O que você idealizar, nós duas desenvolvemos! Conheça os nossos exemplos reais e interativos abaixo:</p>
+            <h2>Exemplos Práticos e Interativos</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">O que você idealizar, nós duas desenvolvemos! Conheça os nossos exemplos abaixo:</p>
             
             <div class="portfolio-grid">
-                <!-- Exemplo 1: Guarda Compartilhada -->
                 <div class="portfolio-card">
                     <div>
                         <h3>Agenda de Guarda Compartilhada <span>👨‍👩‍👧‍👦</span></h3>
@@ -1035,7 +1164,6 @@
                     </a>
                 </div>
 
-                <!-- Exemplo 2: Programação -->
                 <div class="portfolio-card">
                     <div>
                         <h3>Programação & Cronograma <span>📊</span></h3>
@@ -1046,7 +1174,6 @@
                     </a>
                 </div>
 
-                <!-- Exemplo 3: Sistema de Estoque -->
                 <div class="portfolio-card">
                     <div>
                         <h3>Sistema de Estoque & Almoxarifado <span>📦</span></h3>
@@ -1059,7 +1186,7 @@
             </div>
         </section>
 
-        <!-- Seção Como Funciona -->
+        <!-- Como Funciona -->
         <section class="process-section" id="comofunciona" style="margin-top: 60px;">
             <h2>Como Funciona a Nossa Parceria</h2>
             <p class="section-subtitle">Criar o seu projeto com a gente é leve, empolgante e super ágil:</p>
@@ -1082,7 +1209,7 @@
             </div>
         </section>
 
-        <!-- Seção de Vídeo Motion Player Interativo -->
+        <!-- Vídeo Motion Player -->
         <section class="video-section" id="video">
             <h3>Apresentação em Vídeo</h3>
             <p>Clique no play para assistir à nossa apresentação interativa sobre o padrão VeloxSites.</p>
@@ -1099,7 +1226,7 @@
             </div>
         </section>
 
-        <!-- Seção de Percepção dos Clientes -->
+        <!-- Depoimentos -->
         <section class="testimonials-section" id="depoimentos">
             <h2>Percepção dos Clientes</h2>
             <p class="section-subtitle">O que gestores e contratantes dizem sobre o nosso padrão de atendimento e entrega:</p>
@@ -1131,7 +1258,7 @@
             </div>
         </section>
 
-        <!-- Seção "Nossa História" & Localização em Destaque -->
+        <!-- Nossa História -->
         <section class="story-section" id="quemsomos">
             <h2>Nossa História & Essência</h2>
             <p>A <strong>VeloxSites</strong> nasceu da união entre a engenharia analítica da Mariana e a inteligência artificial da Mari. Transformamos ideias, rotinas complexas e desejos de expansão digital em portais, sites personalizados e ferramentas de alto desempenho, operando a partir do Rio de Janeiro para todo o Brasil.</p>
@@ -1149,18 +1276,18 @@
         <footer>
             &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
             <div style="margin-top: 12px; font-size: 0.9rem; color: var(--text-muted);">
-                Visitas ao site: <span id="visitorCount" style="color: var(--primary-green); font-weight: bold;">947</span> &bull; <span style="color: var(--primary-green); font-weight: bold;">Versão 2.2 (Modo Claro/Escuro)</span>
+                Visitas ao site: <span id="visitorCount" style="color: var(--primary-green); font-weight: bold;">947</span> &bull; <span style="color: var(--primary-green); font-weight: bold;">Versão 2.3 (Calculadora Interativa & Glassmorphism)</span>
             </div>
         </footer>
     </main>
 
-    <!-- Botão Flutuante com a Fotinha da Mari -->
+    <!-- Botão Flutuante do Chat -->
     <button class="ai-widget-btn" onclick="toggleAiChat()">
         <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=faces" alt="Mari" class="ai-avatar-img">
         <span>Fale com a Mari</span>
     </button>
 
-    <!-- Caixa de Chat da Mari -->
+    <!-- Caixa de Chat com Digitação Real -->
     <div class="ai-chat-box" id="aiChatBox" style="display: none;">
         <div class="ai-chat-header">
             <div class="ai-chat-header-info">
@@ -1179,32 +1306,55 @@
     </div>
 
     <script>
-        // Gestão de Tema Claro/Escuro
+        // Lógica da Calculadora Interativa
+        let selectedProjects = [];
+
+        function toggleCalcOption(element, projectName) {
+            element.classList.toggle('selected');
+            
+            if (element.classList.contains('selected')) {
+                if (!selectedProjects.includes(projectName)) {
+                    selectedProjects.push(projectName);
+                }
+            } else {
+                selectedProjects = selectedProjects.filter(p => p !== projectName);
+            }
+
+            const summary = document.getElementById('calcSummaryText');
+            const btn = document.getElementById('calcWhatsAppBtn');
+
+            if (selectedProjects.length > 0) {
+                summary.innerText = "Serviços selecionados: " + selectedProjects.join(', ');
+                btn.style.opacity = '1';
+                btn.style.pointerEvents = 'auto';
+            } else {
+                summary.innerText = "Nenhum item selecionado.";
+                btn.style.opacity = '0.6';
+                btn.style.pointerEvents = 'none';
+            }
+        }
+
+        function enviarProjetoCalc(e) {
+            e.preventDefault();
+            if (selectedProjects.length === 0) return;
+            const texto = `Olá! Usei o Simulador no VeloxSites e quero solicitar o desenvolvimento de: ${selectedProjects.join(', ')}. Vamos fechar?`;
+            const encoded = encodeURIComponent(texto);
+            window.open(`https://wa.me/5521967860665?text=${encoded}`, '_blank');
+        }
+
+        // Tema Claro/Escuro
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
             localStorage.setItem('velox_theme', isLight ? 'light' : 'dark');
-            
-            const btn = document.getElementById('themeToggleBtn');
-            if (isLight) {
-                btn.innerHTML = '🌙 Alternar Modo Escuro';
-            } else {
-                btn.innerHTML = '🌞 Alternar Modo Claro';
-            }
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            // Carregar tema salvo
             let savedTheme = localStorage.getItem('velox_theme');
-            const btn = document.getElementById('themeToggleBtn');
             if (savedTheme === 'light') {
                 document.body.classList.add('light-theme');
-                if (btn) btn.innerHTML = '🌙 Alternar Modo Escuro';
-            } else {
-                if (btn) btn.innerHTML = '🌞 Alternar Modo Claro';
             }
 
-            // Contador de Visitas
             let visits = localStorage.getItem('velox_site_visits');
             if (!visits) {
                 visits = 947;
@@ -1232,7 +1382,7 @@
             card.classList.toggle('active');
         }
 
-        // Controle do Chat da Mari
+        // Chat da Mari com Indicador de Digitação Real
         function toggleAiChat() {
             const box = document.getElementById('aiChatBox');
             if (box) {
@@ -1269,7 +1419,18 @@
             input.value = '';
             body.scrollTop = body.scrollHeight;
 
+            // Criar indicador de digitação (bolinhas piscando)
+            const typingIndicator = document.createElement('div');
+            typingIndicator.className = 'typing-indicator';
+            typingIndicator.id = 'typingIndicator';
+            typingIndicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            body.appendChild(typingIndicator);
+            body.scrollTop = body.scrollHeight;
+
             setTimeout(() => {
+                const indicator = document.getElementById('typingIndicator');
+                if (indicator) indicator.remove();
+
                 const aiMsg = document.createElement('div');
                 aiMsg.className = 'ai-msg';
                 aiMsg.innerHTML = `Adorei a ideia! Anotei o projeto: "<em>${text}</em>". Eu e a Mariana vamos adorar desenvolver isso para você. Vou te direcionar direto para o nosso WhatsApp!`;
@@ -1280,7 +1441,7 @@
                     const encodedMsg = encodeURIComponent(`Olá! Falei com a Mari no site e nós queremos criar o seguinte projeto: ${text}`);
                     window.open(`https://wa.me/5521967860665?text=${encodedMsg}`, '_blank');
                 }, 1500);
-            }, 800);
+            }, 1200);
         }
 
         // Apresentação Interativa
@@ -1295,10 +1456,10 @@
 
             const steps = [
                 { t: "1. A Parceria Mariana & Mari", desc: "Unindo a engenharia humana e a inteligência artificial na VeloxSites." },
-                { t: "2. Qualquer Site Personalizado", desc: "Desenvolvemos portais, agendas e sistemas sob medida para o que você precisar." },
+                { t: "2. Simulador Interativo", desc: "Nossos clientes montam o escopo do projeto com cliques em tempo real." },
                 { t: "3. Gestão e Almoxarifado", desc: "Controle técnico e organizado de estoques e ativos para empresas." },
                 { t: "4. Retaguarda Administrativa", desc: "Planilhas inteligentes, financeiro e documentação com rigor e prazos." },
-                { t: "VeloxSites: Sua Ideia no Air!", desc: "Fale com a gente no WhatsApp ou abra o chat da Mari para criarmos juntos!" }
+                { t: "VeloxSites: Sua Ideia no Ar!", desc: "Fale com a gente no WhatsApp ou abra o chat da Mari para criarmos juntos!" }
             ];
 
             let index = 0;
@@ -1334,6 +1495,5 @@
             nextStep();
         }
     </script>
-
 </body>
 </html>
