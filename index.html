@@ -20,11 +20,24 @@
             --accent-glow: rgba(0, 255, 136, 0.35);
         }
 
+        /* Tema Claro */
+        body.light-theme {
+            --bg-color: #f1f5f9;
+            --sidebar-bg: #ffffff;
+            --card-bg: #ffffff;
+            --card-hover: #e2e8f0;
+            --text-color: #0f172a;
+            --text-muted: #475569;
+            --border-color: #cbd5e1;
+            --accent-glow: rgba(0, 185, 100, 0.25);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -49,14 +62,14 @@
             top: 0;
             z-index: 1000;
             transition: transform 0.3s ease-in-out;
-            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
         }
 
         .sidebar-brand {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 35px;
+            margin-bottom: 25px;
         }
 
         .custom-logo {
@@ -84,11 +97,34 @@
             text-shadow: 0 0 10px var(--accent-glow);
         }
 
+        /* Botão de Tema no Menu */
+        .theme-toggle-btn {
+            background: var(--card-hover);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 25px;
+            transition: all 0.2s;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--primary-green);
+            background-color: rgba(0, 255, 136, 0.1);
+        }
+
         .sidebar-menu {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
             margin-bottom: 25px;
         }
 
@@ -226,9 +262,7 @@
             font-size: 2.3rem;
             margin-bottom: 10px;
             font-weight: 800;
-            background: linear-gradient(90deg, #ffffff, var(--primary-green));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-color);
         }
 
         .section-subtitle {
@@ -250,7 +284,7 @@
             border-radius: 16px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .service-card:hover {
@@ -283,7 +317,7 @@
 
         .service-card:hover h3 span.icon {
             background: var(--primary-green);
-            color: #000;
+            color: #060913;
         }
 
         .service-card p.summary {
@@ -297,7 +331,7 @@
             overflow: hidden;
             transition: max-height 0.4s ease, opacity 0.3s ease;
             opacity: 0;
-            color: #d1d5db;
+            color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
         }
@@ -322,11 +356,11 @@
 
         /* Seção de Portfólio / Exemplos */
         .portfolio-section {
-            background: linear-gradient(145deg, var(--card-bg), var(--sidebar-bg));
+            background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 45px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .portfolio-section h2 {
@@ -343,7 +377,7 @@
         }
 
         .portfolio-card {
-            background: rgba(12, 16, 33, 0.8);
+            background: var(--bg-color);
             border: 1px solid var(--border-color);
             border-left: 5px solid var(--primary-green);
             padding: 30px;
@@ -358,7 +392,6 @@
             transform: translateY(-6px);
             border-color: var(--primary-green);
             box-shadow: 0 10px 25px var(--accent-glow);
-            background-color: rgba(20, 27, 51, 0.9);
         }
 
         .portfolio-card h3 {
@@ -395,7 +428,6 @@
 
         .btn-portfolio:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 20px var(--primary-green);
         }
 
         /* Seção Como Funciona */
@@ -404,7 +436,7 @@
             border: 1px solid var(--border-color);
             border-radius: 16px;
             padding: 45px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .process-section h2 {
@@ -420,7 +452,7 @@
         }
 
         .process-step {
-            background: rgba(6, 9, 19, 0.7);
+            background: var(--bg-color);
             border: 1px solid var(--border-color);
             padding: 30px;
             border-radius: 12px;
@@ -466,7 +498,7 @@
             border-radius: 16px;
             padding: 45px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .video-section h3 {
@@ -488,7 +520,6 @@
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border-color);
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
         }
 
         .video-screen {
@@ -503,7 +534,7 @@
             justify-content: center;
             padding: 40px;
             text-align: center;
-            background: radial-gradient(circle at center, #141b33 0%, #060913 100%);
+            background: radial-gradient(circle at center, var(--card-bg) 0%, var(--bg-color) 100%);
         }
 
         .video-screen h4 {
@@ -555,7 +586,6 @@
 
         .play-btn-circle:hover {
             transform: scale(1.15);
-            box-shadow: 0 0 50px var(--primary-green);
         }
 
         .video-progress-bar {
@@ -588,7 +618,7 @@
             padding: 30px;
             border-radius: 14px;
             border-left: 4px solid var(--primary-green);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .testimonial-card p {
@@ -621,7 +651,7 @@
             margin-top: 60px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .story-section::before {
@@ -690,7 +720,6 @@
 
         .ai-widget-btn:hover {
             transform: scale(1.08);
-            box-shadow: 0 0 35px var(--primary-green);
         }
 
         .ai-avatar-img {
@@ -710,7 +739,7 @@
             background-color: var(--card-bg);
             border: 1px solid var(--primary-green);
             border-radius: 16px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
             z-index: 100000;
             display: none;
             flex-direction: column;
@@ -758,7 +787,7 @@
         }
 
         .ai-msg {
-            background: rgba(6, 9, 19, 0.8);
+            background: var(--bg-color);
             padding: 12px;
             border-radius: 10px;
             border: 1px solid var(--border-color);
@@ -776,7 +805,7 @@
         .ai-chat-input {
             flex: 1;
             padding: 10px 14px;
-            background-color: #060913;
+            background-color: var(--bg-color);
             border: 1px solid var(--border-color);
             color: var(--text-color);
             border-radius: 8px;
@@ -872,6 +901,11 @@
                 <span class="brand-text">VELOX<span>SITES</span></span>
             </a>
         </div>
+
+        <!-- Botão de Claro / Escuro -->
+        <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeToggleBtn">
+            🌞 Alternar Modo Claro/Escuro
+        </button>
 
         <ul class="sidebar-menu">
             <h4>Navegação</h4>
@@ -984,7 +1018,7 @@
             </div>
         </section>
 
-        <!-- Seção de Projetos e Portfólio -->
+        <!-- Seção de Portfólio e Exemplos -->
         <section class="portfolio-section" id="portfolio">
             <h2>Quer criar uma agenda de guarda compartilhada, programação ou estruturar o seu estoque?</h2>
             <p style="color: var(--text-muted); font-size: 1.1rem;">O que você idealizar, nós duas desenvolvemos! Conheça os nossos exemplos reais e interativos abaixo:</p>
@@ -1115,7 +1149,7 @@
         <footer>
             &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
             <div style="margin-top: 12px; font-size: 0.9rem; color: var(--text-muted);">
-                Visitas ao site: <span id="visitorCount" style="color: var(--primary-green); font-weight: bold;">947</span> &bull; <span style="color: var(--primary-green); font-weight: bold;">Versão 2.1 (Vibrante & Eletrizante)</span>
+                Visitas ao site: <span id="visitorCount" style="color: var(--primary-green); font-weight: bold;">947</span> &bull; <span style="color: var(--primary-green); font-weight: bold;">Versão 2.2 (Modo Claro/Escuro)</span>
             </div>
         </footer>
     </main>
@@ -1145,8 +1179,32 @@
     </div>
 
     <script>
-        // Contador iniciando em 947
+        // Gestão de Tema Claro/Escuro
+        function toggleTheme() {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            localStorage.setItem('velox_theme', isLight ? 'light' : 'dark');
+            
+            const btn = document.getElementById('themeToggleBtn');
+            if (isLight) {
+                btn.innerHTML = '🌙 Alternar Modo Escuro';
+            } else {
+                btn.innerHTML = '🌞 Alternar Modo Claro';
+            }
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
+            // Carregar tema salvo
+            let savedTheme = localStorage.getItem('velox_theme');
+            const btn = document.getElementById('themeToggleBtn');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                if (btn) btn.innerHTML = '🌙 Alternar Modo Escuro';
+            } else {
+                if (btn) btn.innerHTML = '🌞 Alternar Modo Claro';
+            }
+
+            // Contador de Visitas
             let visits = localStorage.getItem('velox_site_visits');
             if (!visits) {
                 visits = 947;
@@ -1240,7 +1298,7 @@
                 { t: "2. Qualquer Site Personalizado", desc: "Desenvolvemos portais, agendas e sistemas sob medida para o que você precisar." },
                 { t: "3. Gestão e Almoxarifado", desc: "Controle técnico e organizado de estoques e ativos para empresas." },
                 { t: "4. Retaguarda Administrativa", desc: "Planilhas inteligentes, financeiro e documentação com rigor e prazos." },
-                { t: "VeloxSites: Sua Ideia no Ar!", desc: "Fale com a gente no WhatsApp ou abra o chat da Mari para criarmos juntos!" }
+                { t: "VeloxSites: Sua Ideia no Air!", desc: "Fale com a gente no WhatsApp ou abra o chat da Mari para criarmos juntos!" }
             ];
 
             let index = 0;
