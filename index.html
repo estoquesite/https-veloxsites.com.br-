@@ -60,7 +60,7 @@
             }
         }
 
-        /* Animação de Pulsação para o Botão */
+        /* Animação de Pulsação para os Botões */
         @keyframes buttonPulse {
             0%, 100% {
                 transform: scale(1);
@@ -126,7 +126,7 @@
             gap: 15px;
         }
 
-        .btn-theme, .btn-wa {
+        .btn-theme {
             background: var(--surface-hover);
             color: var(--text-main);
             border: 1px solid var(--border);
@@ -141,15 +141,28 @@
             gap: 8px;
         }
 
+        /* Botão do WhatsApp no topo AGORA EM ROSA CHOQUE PULSANTE */
         .btn-wa {
-            background: var(--whatsapp);
+            background: var(--pink-hot);
             color: white;
             border: none;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            padding: 9px 18px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px var(--primary-glow);
+            animation: buttonPulse 1.6s ease-in-out infinite;
         }
 
         .btn-wa:hover {
-            opacity: 0.9;
+            animation: none;
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px var(--pink-hot);
         }
 
         /* Container Principal */
@@ -557,7 +570,7 @@
             <p>Unimos a precisão da engenharia com a agilidade da inteligência artificial para entregar portais, sistemas de estoque e rotinas administrativas com um toque único e marcante.</p>
             <div class="hero-cta">
                 <a href="#simulador" class="btn-primary">Criar Meu Projeto Agora ⚡</a>
-                <a href="https://wa.me/5521967860665" target="_blank" class="btn-wa" style="padding: 14px 28px; border-radius: 12px; font-size: 1rem;">Falar no WhatsApp</a>
+                <a href="https://wa.me/5521967860665" target="_blank" class="btn-wa" style="padding: 12px 24px; border-radius: 10px; font-size: 0.95rem;">Falar no WhatsApp ↗</a>
             </div>
         </section>
 
@@ -683,7 +696,7 @@
     <footer>
         &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
         <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.4 (Botão Piscante em Rosa Choque)
+            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.5 (WhatsApp & Botões em Rosa Choque Pulsante)
         </div>
     </footer>
 
@@ -698,20 +711,20 @@
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme_v34', isLight ? 'light' : 'dark');
+            localStorage.setItem('velox_theme_v35', isLight ? 'light' : 'dark');
             document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem('velox_theme_v34') === 'light') {
+            if (localStorage.getItem('velox_theme_v35') === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
 
             // Contador de visitas
-            let visits = localStorage.getItem('velox_visits_v34') || 947;
+            let visits = localStorage.getItem('velox_visits_v35') || 947;
             visits = parseInt(visits) + 1;
-            localStorage.setItem('velox_visits_v34', visits);
+            localStorage.setItem('velox_visits_v35', visits);
             document.getElementById('visitorCount').innerText = visits;
         });
 
