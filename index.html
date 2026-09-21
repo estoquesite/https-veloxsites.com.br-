@@ -15,7 +15,7 @@
             --pink-hot: #ff2a85;       /* Rosa Choque */
             --pink-baby: #ffb6c1;      /* Rosa Bebê */
             --primary: #ff2a85;
-            --primary-glow: rgba(255, 42, 133, 0.5);
+            --primary-glow: rgba(255, 42, 133, 0.6);
             --whatsapp: #25d366;
         }
 
@@ -30,7 +30,7 @@
             --pink-hot: #e11d48;
             --pink-baby: #fda4af;
             --primary: #e11d48;
-            --primary-glow: rgba(225, 29, 72, 0.35);
+            --primary-glow: rgba(225, 29, 72, 0.4);
         }
 
         * {
@@ -57,6 +57,18 @@
             50% {
                 opacity: 0.6;
                 text-shadow: 0 0 8px rgba(255, 42, 133, 0.3);
+            }
+        }
+
+        /* Animação de Pulsação para o Botão */
+        @keyframes buttonPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px var(--primary-glow);
+            }
+            50% {
+                transform: scale(1.04);
+                box-shadow: 0 0 40px var(--pink-hot);
             }
         }
 
@@ -154,7 +166,6 @@
             margin: 0 auto 80px auto;
         }
 
-        /* Badge totalmente em Rosa Choque forte e brilhante */
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -200,23 +211,25 @@
             flex-wrap: wrap;
         }
 
+        /* Botão Principal com Efeito Piscante/Pulsante em Rosa Choque */
         .btn-primary {
             background: var(--pink-hot);
             color: white;
             padding: 14px 28px;
             border-radius: 12px;
-            font-weight: 700;
+            font-weight: 800;
             text-decoration: none;
             box-shadow: 0 8px 25px var(--primary-glow);
-            transition: transform 0.2s, box-shadow 0.2s;
+            animation: buttonPulse 1.6s ease-in-out infinite;
             display: inline-flex;
             align-items: center;
             gap: 10px;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px var(--primary-glow);
+            animation: none;
+            transform: scale(1.06);
+            box-shadow: 0 12px 40px var(--pink-hot);
         }
 
         /* Seções Estilizadas */
@@ -510,10 +523,9 @@
 </head>
 <body>
 
-    <!-- Navbar Superior Flutuante com Novo Logotipo (Força e Feminilidade) -->
+    <!-- Navbar Superior Flutuante -->
     <header class="navbar">
         <a href="#" class="nav-brand">
-            <!-- Novo Logotipo: Escudo Tecnológico com Estrela/Força Feminina em Rosa Choque -->
             <svg width="36" height="36" viewBox="0 0 40 40" fill="none">
                 <rect width="40" height="40" rx="10" fill="#ff2a85" fill-opacity="0.25" stroke="#ff2a85" stroke-width="1.5"/>
                 <path d="M12 28L20 12L28 28H23L20 21L17 28H12Z" fill="#ff2a85"/>
@@ -540,7 +552,6 @@
 
         <!-- Hero Section -->
         <section class="hero">
-            <!-- Badge em Rosa Choque Brilhante -->
             <div class="hero-badge">✨ Mariana & Mari • Força, Tecnologia e Inovação</div>
             <h1>Você imagina, nós fazemos! Criamos <span>qualquer site personalizado</span> para o seu sucesso.</h1>
             <p>Unimos a precisão da engenharia com a agilidade da inteligência artificial para entregar portais, sistemas de estoque e rotinas administrativas com um toque único e marcante.</p>
@@ -672,7 +683,7 @@
     <footer>
         &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
         <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.3 (Power Woman & Rosa Choque Edition)
+            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.4 (Botão Piscante em Rosa Choque)
         </div>
     </footer>
 
@@ -687,20 +698,20 @@
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme_v33', isLight ? 'light' : 'dark');
+            localStorage.setItem('velox_theme_v34', isLight ? 'light' : 'dark');
             document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem('velox_theme_v33') === 'light') {
+            if (localStorage.getItem('velox_theme_v34') === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
 
             // Contador de visitas
-            let visits = localStorage.getItem('velox_visits_v33') || 947;
+            let visits = localStorage.getItem('velox_visits_v34') || 947;
             visits = parseInt(visits) + 1;
-            localStorage.setItem('velox_visits_v33', visits);
+            localStorage.setItem('velox_visits_v34', visits);
             document.getElementById('visitorCount').innerText = visits;
         });
 
