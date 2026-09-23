@@ -155,24 +155,15 @@
             animation: speedTrail 14s ease-in-out infinite;
         }
 
-        /* Avatar do Bonequinho Chibi Idêntico à Foto de Inspiração */
+        /* O arquivo exato que está no GitHub estilizado como Figurinha */
         .runner-avatar {
             width: 120px;
             height: 120px;
             border-radius: 50%;
             border: 4px solid #ffffff;
-            background: radial-gradient(circle, #0f172a 0%, #060913 100%);
+            object-fit: cover;
             box-shadow: 0 0 35px var(--neon-green), 0 10px 25px rgba(0,0,0,0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .runner-avatar svg {
-            width: 110px;
-            height: 110px;
-            filter: drop-shadow(0 0 10px var(--neon-green));
+            background: var(--surface);
         }
 
         .runner-ring-badge {
@@ -226,17 +217,9 @@
             width: 42px;
             height: 42px;
             border-radius: 50%;
+            object-fit: cover;
             border: 2px solid #ffffff;
-            background: radial-gradient(circle, #0f172a 0%, #060913 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             box-shadow: 0 0 12px var(--neon-green);
-        }
-
-        .brand-avatar svg {
-            width: 36px;
-            height: 36px;
         }
 
         .nav-brand span {
@@ -651,20 +634,13 @@
             transform: scale(1.05);
         }
 
-        .ai-fab-icon {
+        .ai-fab img {
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            border: 2px solid var(--neon-green);
-            background: #060913;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ai-fab-icon svg {
-            width: 22px;
-            height: 22px;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 10px var(--neon-green);
         }
 
         /* Responsividade */
@@ -683,79 +659,10 @@
 </head>
 <body>
 
-    <!-- O Bonequinho Chibi Idêntico à Referência da Foto[span_2](start_span)[span_2](end_span) -->
+    <!-- O ficheiro exato do seu GitHub a correr, parar no centro e mostrar o anel -->
     <div class="runner-container">
         <div class="speed-line"></div>
-        <div class="runner-avatar">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Capa Vermelha Esvoaçante Idêntica à Foto[span_3](start_span)[span_3](end_span) -->
-                <path d="M15 42C15 42 10 70 28 92C40 78 45 60 45 60L15 42Z" fill="#b91c1c"/>
-                <path d="M20 45L50 98L80 45C80 72 50 99 50 99C50 99 20 72 20 45Z" fill="#dc2626"/>
-
-                <!-- Pernas e Botas Vermelhas -->
-                <rect x="41" y="68" width="6" height="20" rx="3" fill="#047857"/>
-                <path d="M36 82H46V93C46 95 36 95 36 93V82Z" fill="#dc2626"/>
-                <circle cx="41" cy="85" r="2" fill="#fbbf24"/> <!-- Detalhe dourado na bota[span_4](start_span)[span_4](end_span) -->
-                
-                <rect x="53" y="68" width="6" height="20" rx="3" fill="#047857"/>
-                <path d="M54 82H64V93C64 95 54 95 54 93V82Z" fill="#dc2626"/>
-                <circle cx="59" cy="85" r="2" fill="#fbbf24"/> <!-- Detalhe dourado na bota[span_5](start_span)[span_5](end_span) -->
-
-                <!-- Corpo Verde -->
-                <path d="M35 44H65V72C65 76 35 76 35 72V44Z" fill="#059669"/>
-
-                <!-- Cinto Dourado -->
-                <rect x="35" y="62" width="30" height="5" rx="2.5" fill="#f59e0b"/>
-                <circle cx="50" cy="64.5" r="2.2" fill="#00ff88" stroke="#ffffff" stroke-width="0.7"/>
-
-                <!-- Braço Esquerdo -->
-                <path d="M35 46L24 54V62L32 58" stroke="#047857" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="23" cy="63" r="3.2" fill="#dc2626"/>
-
-                <!-- Braço Direito (Mostrando o Anel com o Símbolo) -->
-                <path d="M65 46L76 39V30" stroke="#047857" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="77" cy="29" r="3.8" fill="#fca5a5"/>
-                <!-- Anel Brilhante -->
-                <circle cx="77" cy="27" r="2.2" fill="#ffffff" stroke="#00ff88" stroke-width="1.6"/>
-
-                <!-- Emblema Concêntrico no Peito (Exatamente como na Referência[span_6](start_span)[span_6](end_span)) -->
-                <circle cx="50" cy="54" r="7" fill="#dc2626"/>
-                <circle cx="50" cy="54" r="5" fill="#f59e0b"/>
-                <circle cx="50" cy="54" r="3" fill="#ffffff"/>
-                <circle cx="50" cy="54" r="1.5" fill="#059669"/>
-
-                <!-- Capacete Arredondado Tecnológico (Estilo Exato da Foto[span_7](start_span)[span_7](end_span)) -->
-                <path d="M20 38C20 10 80 10 80 38C80 46 20 46 20 38Z" fill="#0284c7"/>
-                <path d="M26 24C26 16 74 16 74 24C74 28 26 28 26 24Z" fill="#38bdf8"/>
-                <!-- Pontos de luz / rebites no capacete[span_8](start_span)[span_8](end_span) -->
-                <circle cx="42" cy="18" r="1.2" fill="#ffffff"/>
-                <circle cx="50" cy="17" r="1.2" fill="#ffffff"/>
-                <circle cx="58" cy="18" r="1.2" fill="#ffffff"/>
-
-                <!-- Borda Amarela/Dourada ao redor dos Olhos (Idêntica à Foto[span_9](start_span)[span_9](end_span)) -->
-                <circle cx="40" cy="36" r="10.5" fill="#f59e0b" stroke="#d97706" stroke-width="1.5"/>
-                <circle cx="60" cy="36" r="10.5" fill="#f59e0b" stroke="#d97706" stroke-width="1.5"/>
-
-                <!-- Olhos Enormes Brilhantes (Estilo Chibi / Anime[span_10](start_span)[span_10](end_span)) -->
-                <circle cx="40" cy="36" r="9" fill="#1e1b4b"/>
-                <circle cx="60" cy="36" r="9" fill="#1e1b4b"/>
-                <!-- Brilhos brancos grandes nos olhos -->
-                <circle cx="42.5" cy="33" r="3.5" fill="#ffffff"/>
-                <circle cx="62.5" cy="33" r="3.5" fill="#ffffff"/>
-                <circle cx="37.5" cy="39" r="1.5" fill="#ffffff"/>
-                <circle cx="57.5" cy="39" r="1.5" fill="#ffffff"/>
-
-                <!-- Auscultadores / Protetores de Ouvido Vermelhos e Amarelos[span_11](start_span)[span_11](end_span) -->
-                <rect x="13" y="27" width="8" height="18" rx="4" fill="#dc2626"/>
-                <circle cx="17" cy="36" r="2.5" fill="#f59e0b"/>
-                
-                <rect x="79" y="27" width="8" height="18" rx="4" fill="#dc2626"/>
-                <circle cx="83" cy="36" r="2.5" fill="#f59e0b"/>
-
-                <!-- Sorriso Amigável[span_12](start_span)[span_12](end_span) -->
-                <path d="M44 43C46 45.5 54 45.5 56 43" stroke="#1e1b4b" stroke-width="2.2" stroke-linecap="round"/>
-            </svg>
-        </div>
+        <img src="Screenshot_20260923_052116_Chrome(1).jpg" alt="Velox" class="runner-avatar">
         <div class="runner-ring-badge">
             <svg viewBox="0 0 40 40" fill="none">
                 <path d="M12 28L20 12L28 28H23L20 21L17 28H12Z" fill="#00ff88"/>
@@ -766,13 +673,7 @@
     <!-- Navbar Superior Flutuante -->
     <header class="navbar">
         <a href="#" class="nav-brand">
-            <div class="brand-avatar">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="45" r="22" fill="#0284c7"/>
-                    <circle cx="42" cy="42" r="5" fill="#ffffff"/>
-                    <circle cx="58" cy="42" r="5" fill="#ffffff"/>
-                </svg>
-            </div>
+            <img src="Screenshot_20260923_052116_Chrome(1).jpg" alt="Velox" class="brand-avatar">
             VELOX<span>SITES</span>
         </a>
 
@@ -925,19 +826,13 @@
     <footer>
         &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
         <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-            Visitas: <span id="visitorCount">947</span> &bull; Versão 5.9 (Exact Chibi Masterpiece)
+            Visitas: <span id="visitorCount">947</span> &bull; Versão 6.1 (GitHub Exact File Edition)
         </div>
     </footer>
 
     <!-- Botão de Chat Flutuante -->
     <button class="ai-fab" onclick="alert('Olá! Sou o Velox, o herói do VeloxSites. Clique no botão do WhatsApp no topo para conversarmos!')">
-        <div class="ai-fab-icon">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="45" r="22" fill="#0284c7"/>
-                <circle cx="42" cy="42" r="5" fill="#ffffff"/>
-                <circle cx="58" cy="42" r="5" fill="#ffffff"/>
-            </svg>
-        </div>
+        <img src="Screenshot_20260923_052116_Chrome(1).jpg" alt="Velox">
         <span>Fale com o Velox</span>
     </button>
 
@@ -946,20 +841,20 @@
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme_v59', isLight ? 'light' : 'dark');
+            localStorage.setItem('velox_theme_v61', isLight ? 'light' : 'dark');
             document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem('velox_theme_v59') === 'light') {
+            if (localStorage.getItem('velox_theme_v61') === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
 
             // Contador de visitas
-            let visits = localStorage.getItem('velox_visits_v59') || 947;
+            let visits = localStorage.getItem('velox_visits_v61') || 947;
             visits = parseInt(visits) + 1;
-            localStorage.setItem('velox_visits_v59', visits);
+            localStorage.setItem('velox_visits_v61', visits);
             document.getElementById('visitorCount').innerText = visits;
         });
 
@@ -974,7 +869,7 @@
         // Acordeon FAQ
         function toggleFaq(item) {
             document.querySelectorAll('.faq-item').forEach(i => {
-                if (i !== item) i.issuerList?.remove('active') || i.classList.remove('active');
+                if (i !== item) i.classList.remove('active');
             });
             item.classList.toggle('active');
         }
