@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -92,22 +93,22 @@
             }
         }
 
-        /* Animação Heroica: Corre, Para, Mostra o Anel e Dispara */
+        /* Animação Heroica: Corre, Para no Meio, Mostra o Anel e Dispara */
         @keyframes heroAction {
             0% {
                 left: -100px;
                 transform: scale(0.8) translateY(0);
             }
             25% {
-                left: calc(50vw - 40px);
+                left: calc(50vw - 45px);
                 transform: scale(1) translateY(0);
             }
             32%, 68% {
-                left: calc(50vw - 40px);
+                left: calc(50vw - 45px);
                 transform: scale(1.25) translateY(-15px);
             }
             75% {
-                left: calc(50vw - 40px);
+                left: calc(50vw - 45px);
                 transform: scale(1) translateY(0);
             }
             100% {
@@ -137,10 +138,10 @@
             pointer-events: none;
         }
 
-        /* Avatar desenhado puramente em CSS/SVG */
+        /* Mascote Chibi Estilizado em SVG */
         .runner-avatar {
-            width: 75px;
-            height: 75px;
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
             border: 3px solid var(--neon-green);
             background: linear-gradient(135deg, #0c1021, #060913);
@@ -152,17 +153,17 @@
         }
 
         .runner-avatar svg {
-            width: 45px;
-            height: 45px;
-            filter: drop-shadow(0 0 8px var(--neon-green));
+            width: 70px;
+            height: 70px;
+            filter: drop-shadow(0 0 6px var(--neon-green));
         }
 
         .runner-ring-badge {
             position: absolute;
             bottom: 2px;
             right: 2px;
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             background: #060913;
             border: 2px solid #ffffff;
             border-radius: 50%;
@@ -205,8 +206,8 @@
         }
 
         .brand-avatar {
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             border: 2px solid var(--neon-green);
             background: linear-gradient(135deg, #0c1021, #060913);
@@ -217,8 +218,8 @@
         }
 
         .brand-avatar svg {
-            width: 22px;
-            height: 22px;
+            width: 32px;
+            height: 32px;
         }
 
         .nav-brand span {
@@ -645,8 +646,8 @@
         }
 
         .ai-fab-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
         }
 
         /* Responsividade */
@@ -665,13 +666,32 @@
 </head>
 <body>
 
-    <!-- Velox em Código: Corre, Para no Meio, Mostra o Anel e Dispara -->
+    <!-- Mascote Velox Chibi Animado (Corre, Para, Mostra o Anel e Dispara) -->
     <div class="runner-container">
         <div class="runner-avatar">
-            <svg viewBox="0 0 40 40" fill="none">
-                <circle cx="20" cy="14" r="6" fill="#00ff88"/>
-                <path d="M8 32C8 26 13 22 20 22C27 22 32 26 32 32" stroke="#00ff88" stroke-width="4" stroke-linecap="round"/>
-                <circle cx="20" cy="14" r="3" fill="#ffffff"/>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Capa -->
+                <path d="M20 50L50 90L80 50C80 75 50 95 50 95C50 95 20 75 20 50Z" fill="#ef4444"/>
+                <!-- Corpo / Fato -->
+                <path d="M35 45H65V75C65 80 35 80 35 75V45Z" fill="#0d9488"/>
+                <!-- Emblema no peito -->
+                <circle cx="50" cy="58" r="6" fill="#00ff88"/>
+                <circle cx="50" cy="58" r="3" fill="#ffffff"/>
+                <!-- Cabeça / Capacete Chibi -->
+                <path d="M25 42C25 22 75 22 75 42C75 48 25 48 25 42Z" fill="#0891b2"/>
+                <path d="M30 32C30 25 70 25 70 32C70 35 30 35 30 32Z" fill="#22d3ee"/>
+                <!-- Olhos Enormes Expressivos (Estilo Chibi) -->
+                <circle cx="40" cy="40" r="8" fill="#1e1b4b"/>
+                <circle cx="60" cy="40" r="8" fill="#1e1b4b"/>
+                <circle cx="42" cy="38" r="3" fill="#ffffff"/>
+                <circle cx="62" cy="38" r="3" fill="#ffffff"/>
+                <circle cx="38" cy="42" r="1" fill="#ffffff"/>
+                <circle cx="58" cy="42" r="1" fill="#ffffff"/>
+                <!-- Sorriso -->
+                <path d="M46 47C48 49 52 49 54 47" stroke="#1e1b4b" stroke-width="2" stroke-linecap="round"/>
+                <!-- Auscultadores / Laterais do Capacete -->
+                <rect x="20" y="33" width="7" height="14" rx="3.5" fill="#ef4444"/>
+                <rect x="73" y="33" width="7" height="14" rx="3.5" fill="#ef4444"/>
             </svg>
         </div>
         <div class="runner-ring-badge">
@@ -685,9 +705,12 @@
     <header class="navbar">
         <a href="#" class="nav-brand">
             <div class="brand-avatar">
-                <svg viewBox="0 0 40 40" fill="none">
-                    <circle cx="20" cy="14" r="6" fill="#00ff88"/>
-                    <path d="M8 32C8 26 13 22 20 22C27 22 32 26 32 32" stroke="#00ff88" stroke-width="4" stroke-linecap="round"/>
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="45" r="22" fill="#0891b2"/>
+                    <circle cx="42" cy="42" r="5" fill="#ffffff"/>
+                    <circle cx="58" cy="42" r="5" fill="#ffffff"/>
+                    <circle cx="42" cy="42" r="2" fill="#1e1b4b"/>
+                    <circle cx="58" cy="42" r="2" fill="#1e1b4b"/>
                 </svg>
             </div>
             VELOX<span>SITES</span>
@@ -842,16 +865,17 @@
     <footer>
         &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
         <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-            Visitas: <span id="visitorCount">947</span> &bull; Versão 4.4 (Velox Pure Code Edition)
+            Visitas: <span id="visitorCount">947</span> &bull; Versão 4.6 (Velox Chibi Hero Edition)
         </div>
     </footer>
 
     <!-- Botão de Chat Flutuante -->
-    <button class="ai-fab" onclick="alert('Olá! Sou o Velox, o herói do VeloxSites. Clique no botão do WhatsApp no topo para conversarmos!')">
+    <button class="ai-fab" onclick="alert('Olá! Sou o Velox, o mascote oficial do VeloxSites. Clique no botão do WhatsApp no topo para conversarmos!')">
         <div class="ai-fab-icon">
-            <svg viewBox="0 0 40 40" fill="none">
-                <circle cx="20" cy="14" r="6" fill="#00ff88"/>
-                <path d="M8 32C8 26 13 22 20 22C27 22 32 26 32 32" stroke="#00ff88" stroke-width="4" stroke-linecap="round"/>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="45" r="22" fill="#0891b2"/>
+                <circle cx="42" cy="42" r="5" fill="#ffffff"/>
+                <circle cx="58" cy="42" r="5" fill="#ffffff"/>
             </svg>
         </div>
         <span>Fale com o Velox</span>
@@ -862,20 +886,20 @@
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme_v44', isLight ? 'light' : 'dark');
+            localStorage.setItem('velox_theme_v46', isLight ? 'light' : 'dark');
             document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem('velox_theme_v44') === 'light') {
+            if (localStorage.getItem('velox_theme_v46') === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
 
             // Contador de visitas
-            let visits = localStorage.getItem('velox_visits_v44') || 947;
+            let visits = localStorage.getItem('velox_visits_v46') || 947;
             visits = parseInt(visits) + 1;
-            localStorage.setItem('velox_visits_v44', visits);
+            localStorage.setItem('velox_visits_v46', visits);
             document.getElementById('visitorCount').innerText = visits;
         });
 
