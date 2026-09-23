@@ -94,6 +94,56 @@
             }
         }
 
+        /* Animações do Personagem Correndo */
+        @keyframes runAcross {
+            0% {
+                left: -80px;
+                transform: scaleX(1);
+            }
+            48% {
+                left: calc(100vw + 20px);
+                transform: scaleX(1);
+            }
+            50% {
+                left: calc(100vw + 20px);
+                transform: scaleX(-1);
+            }
+            98% {
+                left: -80px;
+                transform: scaleX(-1);
+            }
+            100% {
+                left: -80px;
+                transform: scaleX(1);
+            }
+        }
+
+        @keyframes bounceStep {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-12px) rotate(-6deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-12px) rotate(6deg); }
+        }
+
+        .runner-container {
+            position: fixed;
+            bottom: 20px;
+            z-index: 9998;
+            animation: runAcross 16s linear infinite;
+            pointer-events: none;
+        }
+
+        .runner-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-green);
+            box-shadow: 0 0 20px var(--neon-green);
+            object-fit: cover;
+            animation: bounceStep 0.5s ease-in-out infinite;
+            background: var(--surface);
+        }
+
         /* Navbar Flutuante Moderna */
         header.navbar {
             position: fixed;
@@ -561,6 +611,11 @@
 </head>
 <body>
 
+    <!-- Personagem Correndo na Tela -->
+    <div class="runner-container">
+        <img src="49826.jpg" alt="Personagem Correndo" class="runner-avatar">
+    </div>
+
     <!-- Navbar Superior Flutuante -->
     <header class="navbar">
         <a href="#" class="nav-brand">
@@ -721,7 +776,7 @@
     <footer>
         &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
         <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.8 (Neon Verde Pulsante Edition)
+            Visitas: <span id="visitorCount">947</span> &bull; Versão 3.9 (Runner Edition)
         </div>
     </footer>
 
@@ -736,20 +791,20 @@
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme_v38', isLight ? 'light' : 'dark');
+            localStorage.setItem('velox_theme_v39', isLight ? 'light' : 'dark');
             document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem('velox_theme_v38') === 'light') {
+            if (localStorage.getItem('velox_theme_v39') === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
 
             // Contador de visitas
-            let visits = localStorage.getItem('velox_visits_v38') || 947;
+            let visits = localStorage.getItem('velox_visits_v39') || 947;
             visits = parseInt(visits) + 1;
-            localStorage.setItem('velox_visits_v38', visits);
+            localStorage.setItem('velox_visits_v39', visits);
             document.getElementById('visitorCount').innerText = visits;
         });
 
