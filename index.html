@@ -155,24 +155,15 @@
             animation: speedTrail 14s ease-in-out infinite;
         }
 
-        /* Estilo Figurinha Chibi Perfeita */
+        /* Sua imagem real como uma Figurinha (Sticker) com borda branca e brilho */
         .runner-avatar {
             width: 110px;
             height: 110px;
             border-radius: 50%;
             border: 4px solid #ffffff;
-            background: radial-gradient(circle, #0f172a 0%, #060913 100%);
-            box-shadow: 0 0 30px var(--neon-green), 0 10px 25px rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .runner-avatar svg {
-            width: 95px;
-            height: 95px;
-            filter: drop-shadow(0 0 8px var(--neon-green));
+            object-fit: cover;
+            box-shadow: 0 0 30px var(--neon-green), 0 10px 25px rgba(0,0,0,0.6);
+            background: var(--surface);
         }
 
         .runner-ring-badge {
@@ -226,17 +217,9 @@
             width: 42px;
             height: 42px;
             border-radius: 50%;
+            object-fit: cover;
             border: 2px solid #ffffff;
-            background: radial-gradient(circle, #0f172a 0%, #060913 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             box-shadow: 0 0 12px var(--neon-green);
-        }
-
-        .brand-avatar svg {
-            width: 36px;
-            height: 36px;
         }
 
         .nav-brand span {
@@ -651,20 +634,13 @@
             transform: scale(1.05);
         }
 
-        .ai-fab-icon {
+        .ai-fab img {
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            border: 2px solid var(--neon-green);
-            background: #060913;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ai-fab-icon svg {
-            width: 22px;
-            height: 22px;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 10px var(--neon-green);
         }
 
         /* Responsividade */
@@ -683,54 +659,10 @@
 </head>
 <body>
 
-    <!-- Mascote Chibi Idêntico à Inspiração: Corre com Vum, Para e Mostra o Anel -->
+    <!-- A sua imagem real a correr, parar no centro e mostrar o anel com o símbolo -->
     <div class="runner-container">
         <div class="speed-line"></div>
-        <div class="runner-avatar">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Capa Vermelha Esvoaçante -->
-                <path d="M22 45L50 97L78 45C78 72 50 98 50 98C50 98 22 72 22 45Z" fill="#dc2626"/>
-                <!-- Pernas e Botas Vermelhas -->
-                <rect x="41" y="68" width="6" height="20" rx="3" fill="#047857"/>
-                <path d="M37 83H47V93C47 95 37 95 37 93V83Z" fill="#ef4444"/>
-                <rect x="53" y="68" width="6" height="20" rx="3" fill="#047857"/>
-                <path d="M51 83H61V93C61 95 51 95 51 93V83Z" fill="#ef4444"/>
-                <!-- Corpo Verde -->
-                <path d="M35 44H65V72C65 76 35 76 35 72V44Z" fill="#059669"/>
-                <!-- Cinto Dourado -->
-                <rect x="35" y="62" width="30" height="5" rx="2.5" fill="#f59e0b"/>
-                <circle cx="50" cy="64.5" r="2.2" fill="#00ff88" stroke="#ffffff" stroke-width="0.7"/>
-                <!-- Braço Esquerdo -->
-                <path d="M35 46L24 54V62L32 58" stroke="#047857" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="23" cy="63" r="3.2" fill="#ef4444"/>
-                <!-- Braço Direito Mostrando o Anel -->
-                <path d="M65 46L76 39V30" stroke="#047857" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="77" cy="29" r="3.8" fill="#fca5a5"/>
-                <circle cx="77" cy="27" r="2.2" fill="#ffffff" stroke="#00ff88" stroke-width="1.6"/>
-                <!-- Emblema no Peito -->
-                <circle cx="50" cy="54" r="6" fill="#00ff88"/>
-                <circle cx="50" cy="54" r="3.5" fill="#ffffff"/>
-                <circle cx="50" cy="54" r="1.5" fill="#047857"/>
-                <!-- Capacete Arredondado com Pontas de Luz -->
-                <path d="M22 38C22 12 78 12 78 38C78 45 22 45 22 38Z" fill="#059669"/>
-                <path d="M28 24C28 16 72 16 72 24C72 28 28 28 28 24Z" fill="#34d399"/>
-                <circle cx="45" cy="18" r="1.2" fill="#ffffff"/>
-                <circle cx="50" cy="17" r="1.2" fill="#ffffff"/>
-                <circle cx="55" cy="18" r="1.2" fill="#ffffff"/>
-                <!-- Auscultadores Vermelhos -->
-                <rect x="15" y="27" width="7" height="16" rx="3.5" fill="#ef4444"/>
-                <rect x="78" y="27" width="7" height="16" rx="3.5" fill="#ef4444"/>
-                <!-- Olhos Enormes Expressivos (Estilo Chibi) -->
-                <circle cx="39" cy="36" r="9" fill="#0f172a"/>
-                <circle cx="61" cy="36" r="9" fill="#0f172a"/>
-                <circle cx="41.5" cy="33" r="3.5" fill="#ffffff"/>
-                <circle cx="63.5" cy="33" r="3.5" fill="#ffffff"/>
-                <circle cx="37" cy="39" r="1.5" fill="#ffffff"/>
-                <circle cx="59" cy="39" r="1.5" fill="#ffffff"/>
-                <!-- Sorriso -->
-                <path d="M45 42C47 44.5 53 44.5 55 42" stroke="#0f172a" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-        </div>
+        <img src="IMG-20260911-WA0004.jpg" alt="Velox" class="runner-avatar">
         <div class="runner-ring-badge">
             <svg viewBox="0 0 40 40" fill="none">
                 <path d="M12 28L20 12L28 28H23L20 21L17 28H12Z" fill="#00ff88"/>
@@ -741,15 +673,7 @@
     <!-- Navbar Superior Flutuante -->
     <header class="navbar">
         <a href="#" class="nav-brand">
-            <div class="brand-avatar">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="45" r="22" fill="#059669"/>
-                    <circle cx="42" cy="42" r="5" fill="#ffffff"/>
-                    <circle cx="58" cy="42" r="5" fill="#ffffff"/>
-                    <circle cx="42" cy="42" r="2" fill="#0f172a"/>
-                    <circle cx="58" cy="42" r="2" fill="#0f172a"/>
-                </svg>
-            </div>
+            <img src="IMG-20260911-WA0004.jpg" alt="Velox" class="brand-avatar">
             VELOX<span>SITES</span>
         </a>
 
@@ -902,19 +826,13 @@
     <footer>
         &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
         <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-            Visitas: <span id="visitorCount">947</span> &bull; Versão 5.6 (Velox Chibi Sticker Edition)
+            Visitas: <span id="visitorCount">947</span> &bull; Versão 5.7 (Velox Image Sticker Edition)
         </div>
     </footer>
 
     <!-- Botão de Chat Flutuante -->
     <button class="ai-fab" onclick="alert('Olá! Sou o Velox, o herói do VeloxSites. Clique no botão do WhatsApp no topo para conversarmos!')">
-        <div class="ai-fab-icon">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="45" r="22" fill="#059669"/>
-                <circle cx="42" cy="42" r="5" fill="#ffffff"/>
-                <circle cx="58" cy="42" r="5" fill="#ffffff"/>
-            </svg>
-        </div>
+        <img src="IMG-20260911-WA0004.jpg" alt="Velox">
         <span>Fale com o Velox</span>
     </button>
 
@@ -923,20 +841,20 @@
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme_v56', isLight ? 'light' : 'dark');
+            localStorage.setItem('velox_theme_v57', isLight ? 'light' : 'dark');
             document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem('velox_theme_v56') === 'light') {
+            if (localStorage.getItem('velox_theme_v57') === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
 
             // Contador de visitas
-            let visits = localStorage.getItem('velox_visits_v56') || 947;
+            let visits = localStorage.getItem('velox_visits_v57') || 947;
             visits = parseInt(visits) + 1;
-            localStorage.setItem('velox_visits_v56', visits);
+            localStorage.setItem('velox_visits_v57', visits);
             document.getElementById('visitorCount').innerText = visits;
         });
 
