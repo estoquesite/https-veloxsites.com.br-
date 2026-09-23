@@ -1,36 +1,36 @@
 <!-- ========================================== -->
-<!--       VELOX SITES - VERSÃO 6.7             -->
-<!--       EDIÇÃO OFICIAL REPO FILE             -->
+<!--       VELOX SITES - VERSÃO 7.0             -->
+<!--       APEX NEON SAAS ELITE EDITION         -->
 <!-- ========================================== -->
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeloxSites - Versão 6.7 (Sites e Sistemas sob Medida)</title>
+    <title>VeloxSites - Sistemas, Portais e Automação de Alta Performance</title>
     <style>
         :root {
-            --bg: #060913;
-            --surface: #0c1021;
-            --surface-hover: #141b33;
-            --border: rgba(255, 255, 255, 0.08);
+            --bg-deep: #030712;
+            --surface: #0f172a;
+            --surface-glass: rgba(15, 23, 42, 0.7);
+            --border-glow: rgba(0, 255, 136, 0.25);
             --text-main: #f8fafc;
-            --text-muted: #a3b1c6;
-            --neon-green: #00ff88;     /* Verde Fluorescente */
-            --neon-glow: rgba(0, 255, 136, 0.8);
-            --whatsapp: #25d366;
+            --text-muted: #94a3b8;
+            --neon-green: #00ff88;
+            --neon-glow: rgba(0, 255, 136, 0.4);
+            --neon-gradient: linear-gradient(135deg, #00ff88 0%, #059669 100%);
         }
 
-        /* Tema Claro */
+        /* Tema Claro Profissional */
         body.light-theme {
-            --bg: #f1f5f9;
+            --bg-deep: #f8fafc;
             --surface: #ffffff;
-            --surface-hover: #e2e8f0;
-            --border: rgba(0, 255, 136, 0.2);
+            --surface-glass: rgba(255, 255, 255, 0.85);
+            --border-glow: rgba(5, 150, 105, 0.3);
             --text-main: #0f172a;
-            --text-muted: #475569;
+            --text-muted: #64748b;
             --neon-green: #059669;
-            --neon-glow: rgba(5, 150, 105, 0.5);
+            --neon-glow: rgba(5, 150, 105, 0.3);
         }
 
         * {
@@ -42,199 +42,71 @@
         }
 
         body {
-            background-color: var(--bg);
+            background-color: var(--bg-deep);
             color: var(--text-main);
-            line-height: 1.7;
+            line-height: 1.6;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 255, 136, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 136, 0.04) 0%, transparent 40%);
         }
 
-        /* Animação de Piscar em Verde Neon */
-        @keyframes greenBlink {
-            0%, 100% {
-                opacity: 1;
-                text-shadow: 0 0 25px var(--neon-glow), 0 0 10px var(--neon-green);
-            }
-            50% {
-                opacity: 0.6;
-                text-shadow: 0 0 8px rgba(0, 255, 136, 0.3);
-            }
+        /* Animações de Impacto */
+        @keyframes neonPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(0, 255, 136, 0.6); }
         }
 
-        /* Animação de Neon Pulsante Intenso para o Badge */
-        @keyframes neonFlash {
-            0%, 100% {
-                border-color: var(--neon-green);
-                box-shadow: 0 0 15px var(--neon-green), inset 0 0 10px var(--neon-green);
-            }
-            50% {
-                border-color: #ffffff;
-                box-shadow: 0 0 35px var(--neon-green), inset 0 0 20px var(--neon-green);
-            }
+        @keyframes floatAnimation {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
-        /* Animação para o Logótipo piscar */
-        @keyframes logoBlink {
-            0%, 100% {
-                filter: drop-shadow(0 0 12px var(--neon-green));
-                opacity: 1;
-            }
-            50% {
-                filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
-                opacity: 0.7;
-            }
-        }
-
-        /* Animação de Pulsação para os Botões */
-        @keyframes buttonPulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 20px var(--neon-glow);
-            }
-            50% {
-                transform: scale(1.04);
-                box-shadow: 0 0 40px var(--neon-green);
-            }
-        }
-
-        /* Cinemática do Herói: Corre, Para no Centro, Mostra o Anel e Dispara */
-        @keyframes heroActionSequence {
-            0% {
-                left: -140px;
-                transform: scaleX(1) translateY(0);
-            }
-            24% {
-                left: calc(50vw - 65px);
-                transform: scaleX(1) translateY(0);
-            }
-            30%, 70% {
-                left: calc(50vw - 65px);
-                transform: scaleX(1) scale(1.35) translateY(-18px); /* Parada heroica no centro */
-            }
-            76% {
-                left: calc(50vw - 65px);
-                transform: scaleX(1) translateY(0);
-            }
-            100% {
-                left: calc(100vw + 140px);
-                transform: scaleX(1) translateY(0);
-            }
-        }
-
-        /* Rastro de velocidade estilo The Flash (Vum!) */
-        @keyframes speedTrail {
-            0%, 25%, 75%, 100% { opacity: 0; filter: blur(6px); }
-            35%, 65% { opacity: 0.95; filter: blur(3px); }
-        }
-
-        /* Animação do Brilho do Anel */
-        @keyframes ringPower {
-            0%, 28%, 72%, 100% {
-                opacity: 0;
-                transform: scale(0.2);
-            }
-            32%, 68% {
-                opacity: 1;
-                transform: scale(1.3) rotate(360deg);
-                box-shadow: 0 0 35px #ffffff, 0 0 70px var(--neon-green);
-            }
-        }
-
-        .runner-container {
-            position: fixed;
-            bottom: 25px;
-            z-index: 9998;
-            animation: heroActionSequence 14s ease-in-out infinite;
-            pointer-events: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .speed-line {
-            position: absolute;
-            right: 100px;
-            width: 160px;
-            height: 6px;
-            background: linear-gradient(90deg, transparent, var(--neon-green), #ffffff);
-            border-radius: 4px;
-            animation: speedTrail 14s ease-in-out infinite;
-        }
-
-        /* Estilização da imagem do repositório como adesivo brilhante */
-        .runner-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid #ffffff;
-            object-fit: cover;
-            box-shadow: 0 0 35px var(--neon-green), 0 10px 25px rgba(0,0,0,0.6);
-            background: var(--surface);
-        }
-
-        .brand-avatar {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #ffffff;
-            box-shadow: 0 0 12px var(--neon-green);
-        }
-
-        .runner-ring-badge {
-            position: absolute;
-            bottom: 8px;
-            left: 2px;
-            width: 36px;
-            height: 36px;
-            background: #060913;
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: ringPower 14s ease-in-out infinite;
-        }
-
-        .runner-ring-badge svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Navbar Flutuante Moderna */
+        /* Navbar Estilo SaaS de Elite */
         header.navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: var(--surface);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
+            background: var(--surface-glass);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glow);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 50px;
+            padding: 18px 60px;
             z-index: 1000;
         }
 
         .nav-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             text-decoration: none;
-            font-weight: 800;
-            font-size: 1.25rem;
+            font-weight: 900;
+            font-size: 1.4rem;
             color: var(--text-main);
-            animation: logoBlink 2s ease-in-out infinite;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--neon-green);
+            box-shadow: 0 0 15px var(--neon-glow);
         }
 
         .nav-brand span {
             color: var(--neon-green);
-            animation: greenBlink 1.8s ease-in-out infinite;
+            text-shadow: 0 0 15px var(--neon-glow);
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 30px;
             list-style: none;
         }
 
@@ -242,7 +114,7 @@
             color: var(--text-muted);
             text-decoration: none;
             font-size: 0.95rem;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .nav-links a:hover {
@@ -255,235 +127,249 @@
             gap: 15px;
         }
 
-        .btn-theme {
-            background: var(--surface-hover);
-            color: var(--text-main);
-            border: 1px solid var(--border);
-            padding: 8px 16px;
-            border-radius: 8px;
+        .btn-theme, .btn-wa {
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 700;
             font-size: 0.9rem;
-            font-weight: 600;
             cursor: pointer;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
+        }
+
+        .btn-theme {
+            background: var(--surface);
+            color: var(--text-main);
+            border: 1px solid var(--border-glow);
         }
 
         .btn-wa {
             background: var(--neon-green);
-            color: #060913;
+            color: #030712;
             border: none;
-            padding: 9px 18px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 800;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
             box-shadow: 0 4px 20px var(--neon-glow);
-            animation: buttonPulse 1.6s ease-in-out infinite;
+            animation: neonPulse 2s infinite;
         }
 
         .btn-wa:hover {
-            animation: none;
             transform: scale(1.05);
-            box-shadow: 0 6px 30px var(--neon-green);
         }
 
-        /* Container Principal */
+        /* Hero Section de Alto Padrão */
         main.container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 140px 25px 80px 25px;
+            padding: 160px 30px 100px 30px;
         }
 
-        /* Hero Section Impactante */
         .hero {
             text-align: center;
-            max-width: 850px;
-            margin: 0 auto 80px auto;
+            max-width: 900px;
+            margin: 0 auto 100px auto;
         }
 
-        /* Badge com Neon Verde a Piscar */
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            border: 2px solid var(--neon-green);
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--neon-green);
             color: var(--neon-green);
-            padding: 8px 22px;
-            border-radius: 50px;
-            font-size: 0.95rem;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
             font-weight: 800;
-            margin-bottom: 25px;
-            animation: neonFlash 1.5s ease-in-out infinite;
-            text-shadow: 0 0 10px var(--neon-green);
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2.8rem, 5.5vw, 4.5rem);
             font-weight: 900;
-            line-height: 1.15;
-            margin-bottom: 25px;
-            letter-spacing: -1px;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -1.5px;
         }
 
         .hero h1 span {
-            color: var(--neon-green);
-            animation: greenBlink 1.8s ease-in-out infinite;
-            display: inline-block;
+            background: var(--neon-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px rgba(0, 255, 136, 0.3);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
-            margin-bottom: 40px;
-            line-height: 1.6;
+            margin-bottom: 45px;
+            line-height: 1.7;
         }
 
         .hero-cta {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
-        .btn-primary {
+        .btn-primary-hero {
             background: var(--neon-green);
-            color: #060913;
-            padding: 14px 28px;
-            border-radius: 12px;
-            font-weight: 800;
+            color: #030712;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-weight: 900;
+            font-size: 1.05rem;
             text-decoration: none;
-            box-shadow: 0 8px 25px var(--neon-glow);
-            animation: buttonPulse 1.6s ease-in-out infinite;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            box-shadow: 0 10px 35px var(--neon-glow);
+            animation: neonPulse 2s infinite;
         }
 
-        .btn-primary:hover {
-            animation: none;
-            transform: scale(1.06);
-            box-shadow: 0 12px 40px var(--neon-green);
+        /* Seção de Métricas de Confiança */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin-bottom: 120px;
         }
 
-        /* Seções Estilizadas */
-        section {
-            margin-bottom: 100px;
+        .metric-card {
+            background: var(--surface);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
+        .metric-card h3 {
+            font-size: 2.2rem;
+            color: var(--neon-green);
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .metric-card p {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Grid de Serviços Estilo Bento Grid */
         .section-header {
             text-align: center;
-            max-width: 650px;
-            margin: 0 auto 50px auto;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 800;
+            font-size: 2.8rem;
+            font-weight: 900;
             margin-bottom: 15px;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
         }
 
         .section-header p {
             color: var(--text-muted);
-            font-size: 1.1rem;
+            font-size: 1.15rem;
         }
 
-        /* Grid de Serviços */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 30px;
+            margin-bottom: 120px;
         }
 
         .service-card {
             background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 35px;
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 40px;
             position: relative;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .service-card:hover {
             border-color: var(--neon-green);
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0, 255, 136, 0.15);
+        }
+
+        .service-icon {
+            width: 54px;
+            height: 54px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--neon-green);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-green);
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
         }
 
         .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
             color: var(--text-main);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .service-card h3 span {
-            color: var(--neon-green);
-            font-size: 1.2rem;
         }
 
         .service-card p {
             color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.6;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
-        .service-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, opacity 0.3s ease;
-            opacity: 0;
-            color: var(--text-muted);
+        .service-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: var(--text-main);
+            font-weight: 600;
             font-size: 0.95rem;
         }
 
-        .service-card.active {
-            border-color: var(--neon-green);
-            background: var(--surface-hover);
+        .service-features li::before {
+            content: "⚡ ";
+            color: var(--neon-green);
         }
 
-        .service-card.active .service-details {
-            max-height: 250px;
-            opacity: 1;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border);
-        }
-
-        /* Simulador / Calculadora de Projetos */
+        /* Simulador Corporativo */
         .calc-box {
             background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 50px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-glow);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            margin-bottom: 120px;
         }
 
         .calc-options {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
         }
 
         .calc-chip {
-            background: var(--bg);
-            border: 2px solid var(--border);
-            padding: 20px;
-            border-radius: 14px;
+            background: var(--bg-deep);
+            border: 2px solid var(--border-glow);
+            padding: 24px;
+            border-radius: 16px;
             text-align: center;
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 1.05rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.3s;
         }
 
         .calc-chip:hover {
@@ -491,9 +377,10 @@
         }
 
         .calc-chip.selected {
-            background: var(--neon-glow);
+            background: rgba(0, 255, 136, 0.15);
             border-color: var(--neon-green);
-            color: #060913;
+            color: var(--neon-green);
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.2);
         }
 
         .calc-footer {
@@ -501,25 +388,26 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
-            background: var(--bg);
-            padding: 25px;
-            border-radius: 16px;
-            border: 1px solid var(--border);
+            gap: 25px;
+            background: var(--bg-deep);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border-glow);
         }
 
-        /* Portfólio de Exemplos */
+        /* Portfólio de Alta Qualidade */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 120px;
         }
 
         .portfolio-item {
             background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 35px;
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -532,138 +420,147 @@
         }
 
         .portfolio-item h3 {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
+            font-weight: 800;
             margin-bottom: 12px;
         }
 
         .portfolio-item p {
             color: var(--text-muted);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
         }
 
         .btn-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             color: var(--neon-green);
-            font-weight: 700;
+            font-weight: 800;
             text-decoration: none;
+            font-size: 1.05rem;
         }
 
         .btn-link:hover {
             text-decoration: underline;
         }
 
-        /* FAQ Moderna */
-        .faq-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 24px 30px;
-            cursor: pointer;
-        }
-
-        .faq-q {
-            font-size: 1.15rem;
-            font-weight: 700;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-q span {
-            color: var(--neon-green);
-        }
-
-        .faq-a {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, opacity 0.3s ease;
-            opacity: 0;
-            color: var(--text-muted);
-            margin-top: 0;
-        }
-
-        .faq-item.active {
-            border-color: var(--neon-green);
-            background: var(--surface-hover);
-        }
-
-        .faq-item.active .faq-a {
-            max-height: 200px;
-            opacity: 1;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid var(--border);
-        }
-
-        /* Rodapé */
+        /* Rodapé de Elite */
         footer {
-            border-top: 1px solid var(--border);
-            padding: 60px 25px;
+            border-top: 1px solid var(--border-glow);
+            padding: 80px 30px;
             text-align: center;
             color: var(--text-muted);
             font-size: 0.95rem;
+            background: var(--surface);
         }
 
-        /* Chat Flutuante */
+        /* Mascote / Botão Flutuante */
+        .runner-container {
+            position: fixed;
+            bottom: 30px;
+            z-index: 9998;
+            animation: heroActionSequence 14s ease-in-out infinite;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .speed-line {
+            position: absolute;
+            right: 100px;
+            width: 180px;
+            height: 6px;
+            background: linear-gradient(90deg, transparent, var(--neon-green), #ffffff);
+            border-radius: 4px;
+            animation: speedTrail 14s ease-in-out infinite;
+        }
+
+        .runner-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid var(--neon-green);
+            object-fit: cover;
+            box-shadow: 0 0 40px var(--neon-green), 0 15px 30px rgba(0,0,0,0.7);
+            background: var(--surface);
+        }
+
+        @keyframes heroActionSequence {
+            0% { left: -150px; transform: scaleX(1) translateY(0); }
+            24% { left: calc(50vw - 65px); transform: scaleX(1) translateY(0); }
+            30%, 70% { left: calc(50vw - 65px); transform: scaleX(1) scale(1.35) translateY(-20px); }
+            76% { left: calc(50vw - 65px); transform: scaleX(1) translateY(0); }
+            100% { left: calc(100vw + 150px); transform: scaleX(1) translateY(0); }
+        }
+
+        @keyframes speedTrail {
+            0%, 25%, 75%, 100% { opacity: 0; filter: blur(8px); }
+            35%, 65% { opacity: 0.95; filter: blur(4px); }
+        }
+
+        @keyframes ringPower {
+            0%, 28%, 72%, 100% { opacity: 0; transform: scale(0.2); }
+            32%, 68% { opacity: 1; transform: scale(1.35) rotate(360deg); box-shadow: 0 0 40px #ffffff, 0 0 80px var(--neon-green); }
+        }
+
+        .runner-ring-badge {
+            position: absolute;
+            bottom: 8px;
+            left: 2px;
+            width: 40px;
+            height: 40px;
+            background: #030712;
+            border: 2px solid var(--neon-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: ringPower 14s ease-in-out infinite;
+        }
+
         .ai-fab {
             position: fixed;
             bottom: 30px;
             right: 30px;
             background: var(--neon-green);
-            color: #060913;
+            color: #030712;
             border: none;
             border-radius: 50px;
-            padding: 12px 24px 12px 14px;
-            font-weight: 800;
+            padding: 14px 28px 14px 16px;
+            font-weight: 900;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             cursor: pointer;
-            box-shadow: 0 10px 30px var(--neon-glow);
+            box-shadow: 0 10px 35px var(--neon-glow);
             z-index: 9999;
             transition: transform 0.2s;
         }
 
         .ai-fab:hover {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
 
         .ai-fab img {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #ffffff;
-            box-shadow: 0 0 10px var(--neon-green);
+            border: 2px solid #030712;
         }
 
-        /* Responsividade */
         @media (max-width: 768px) {
-            header.navbar {
-                padding: 15px 20px;
-            }
-            .nav-links {
-                display: none;
-            }
-            main.container {
-                padding: 110px 15px 50px 15px;
-            }
+            header.navbar { padding: 15px 20px; }
+            .nav-links { display: none; }
+            main.container { padding: 120px 20px 60px 20px; }
+            .calc-box { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- O ficheiro exato 1790156970583.png a correr, parar no centro e mostrar o anel -->
+    <!-- Herói em Movimento -->
     <div class="runner-container">
         <div class="speed-line"></div>
         <img src="1790156970583.png" alt="Velox" class="runner-avatar">
@@ -674,7 +571,7 @@
         </div>
     </div>
 
-    <!-- Navbar Superior Flutuante -->
+    <!-- Navbar de Elite -->
     <header class="navbar">
         <a href="#" class="nav-brand">
             <img src="1790156970583.png" alt="Velox" class="brand-avatar">
@@ -682,10 +579,9 @@
         </a>
 
         <ul class="nav-links">
-            <li><a href="#servicos">Serviços</a></li>
-            <li><a href="#simulador">Simulador</a></li>
+            <li><a href="#servicos">Soluções</a></li>
+            <li><a href="#simulador">Orçamento</a></li>
             <li><a href="#portfolio">Projetos</a></li>
-            <li><a href="#duvidas">Dúvidas</a></li>
         </ul>
 
         <div class="nav-actions">
@@ -699,79 +595,104 @@
 
         <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-badge">✨ Velox • Versão 6.7</div>
-            <h1>Você imagina, nós fazemos! Criamos <span>qualquer site personalizado</span> para o seu sucesso.</h1>
-            <p>Unimos a precisão da engenharia com a agilidade da inteligência artificial para entregar portais, sistemas de estoque e rotinas administrativas com um toque único e marcante.</p>
+            <div class="hero-badge">⚡ Engenharia, Confiabilidade & Alta Performance</div>
+            <h1>Sistemas e Portais que transformam <span>a sua gestão empresarial.</span></h1>
+            <p>Unimos rigor técnico industrial com desenvolvimento ágil de sistemas sob medida para almoxarifados, retaguarda administrativa e portais de alta conversão.</p>
             <div class="hero-cta">
-                <a href="#simulador" class="btn-primary">Criar Meu Projeto Agora ⚡</a>
-                <a href="https://wa.me/5521967860665" target="_blank" class="btn-wa" style="padding: 12px 24px; border-radius: 10px; font-size: 0.95rem;">Falar no WhatsApp ↗</a>
+                <a href="#simulador" class="btn-primary-hero">Iniciar Meu Projeto Agora ⚡</a>
+                <a href="https://wa.me/5521967860665" target="_blank" class="btn-wa" style="padding: 16px 32px; font-size: 1.05rem;">Falar no WhatsApp ↗</a>
             </div>
         </section>
 
-        <!-- Simulador de Projetos -->
+        <!-- Métricas de Impacto -->
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <h3>100%</h3>
+                <p>Personalizado sob medida</p>
+            </div>
+            <div class="metric-card">
+                <h3>Alta</h3>
+                <p>Confiabilidade e Controle</p>
+            </div>
+            <div class="metric-card">
+                <h3>Agilidade</h3>
+                <p>Em Prazos e Entregas</p>
+            </div>
+        </section>
+
+        <!-- Soluções em Bento Grid -->
+        <section id="servicos">
+            <div class="section-header">
+                <h2>Soluções de Elite</h2>
+                <p>Arquitetura de software robusta e design focado em resultados reais para o seu negócio.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Portais e Aplicações Web</h3>
+                    <p>Desenvolvimento completo de ecossistemas web modernos, responsivos e velozes.</p>
+                    <ul class="service-features">
+                        <li>Design exclusivo em Neon e Dark Mode</li>
+                        <li>Foco absoluto em conversão e usabilidade</li>
+                        <li>Integração direta com WhatsApp e APIs</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📦</div>
+                    <h3>Gestão de Estoque & Ativos</h3>
+                    <p>Controle cirúrgico de almoxarifado, entradas, saídas e inventário físico.</p>
+                    <ul class="service-features">
+                        <li>Rastreabilidade total de materiais</li>
+                        <li>Prevenção de perdas e desvios</li>
+                        <li>Indicadores de rotatividade em tempo real</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Retaguarda Administrativa</h3>
+                    <p>Back-office estruturado para organizar o fluxo financeiro e documental.</p>
+                    <ul class="service-features">
+                        <li>Dashboards inteligentes em Power BI</li>
+                        <li>Automação de planilhas e rotinas</li>
+                        <li>Controle rigoroso de cronogramas</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulador Corporativo -->
         <section id="simulador">
             <div class="calc-box">
                 <div class="section-header" style="margin-bottom: 20px;">
                     <h2>⚡ Simulador de Projeto</h2>
-                    <p>Selecione o que você precisa desenvolver com a gente:</p>
+                    <p>Selecione as soluções que deseja implementar na sua empresa:</p>
                 </div>
 
                 <div class="calc-options">
-                    <div class="calc-chip" onclick="toggleChip(this, 'Site Personalizado')">🌐 Site Personalizado</div>
+                    <div class="calc-chip" onclick="toggleChip(this, 'Site Personalizado')">🌐 Portal / Site Exclusivo</div>
                     <div class="calc-chip" onclick="toggleChip(this, 'Sistema de Estoque')">📦 Sistema de Estoque</div>
-                    <div class="calc-chip" onclick="toggleChip(this, 'Agenda & Cronograma')">📅 Agenda ou Cronograma</div>
-                    <div class="calc-chip" onclick="toggleChip(this, 'Planilhas & Back-Office')">📊 Planilhas & Financeiro</div>
+                    <div class="calc-chip" onclick="toggleChip(this, 'Agenda & Cronograma')">📅 Cronograma & Agenda</div>
+                    <div class="calc-chip" onclick="toggleChip(this, 'Planilhas & Back-Office')">📊 Retaguarda & Back-Office</div>
                 </div>
 
                 <div class="calc-footer">
                     <div>
-                        <div id="calcText" style="font-weight: 700; color: var(--neon-green);">Nenhum item selecionado.</div>
-                        <div style="font-size: 0.85rem; color: var(--text-muted);">Velox pronto para iniciar o desenvolvimento.</div>
+                        <div id="calcText" style="font-weight: 700; color: var(--neon-green);">Nenhum módulo selecionado.</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">Velox pronto para estruturar a sua demanda.</div>
                     </div>
-                    <a href="#" id="calcBtn" target="_blank" class="btn-primary" onclick="sendCalc(event)" style="opacity: 0.5; pointer-events: none;">Enviar para o WhatsApp ↗</a>
+                    <a href="#" id="calcBtn" target="_blank" class="btn-primary-hero" onclick="sendCalc(event)" style="opacity: 0.5; pointer-events: none; padding: 12px 24px; font-size: 0.95rem;">Solicitar Orçamento ↗</a>
                 </div>
             </div>
         </section>
 
-        <!-- Seção de Serviços -->
-        <section id="servicos">
-            <div class="section-header">
-                <h2>Nossas Soluções</h2>
-                <p>Clique em qualquer área para ver o escopo completo de atuação:</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card" onclick="toggleService(this)">
-                    <h3>Criação de Sites e Portais <span>+</span></h3>
-                    <p>Desenvolvimento de páginas sob medida para agendas, negócios e landing pages.</p>
-                    <div class="service-details">
-                        Criamos qualquer tipo de site que você precisar, com design moderno, responsivo e focado em conversão e usabilidade impecável.
-                    </div>
-                </div>
-
-                <div class="service-card" onclick="toggleService(this)">
-                    <h3>Gestão de Estoque e Almoxarifado <span>+</span></h3>
-                    <p>Controle técnico de materiais, inventário físico e rotatividade de ativos.</p>
-                    <div class="service-details">
-                        Sistemas inteligentes e planilhas robustas para controle de almoxarifado, entradas, saídas e prevenção de perdas com conceitos de confiabilidade.
-                    </div>
-                </div>
-
-                <div class="service-card" onclick="toggleService(this)">
-                    <h3>Retaguarda Administrativa (Back-Office) <span>+</span></h3>
-                    <p>Organização documental, contas a pagar/receber e conciliação.</p>
-                    <div class="service-details">
-                        Suporte completo em rotinas administrativas, bases de dados corporativas, faturamento e cronogramas diários com rigor nos prazos.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfólio / Exemplos Reais -->
+        <!-- Portfólio de Referência -->
         <section id="portfolio">
             <div class="section-header">
-                <h2>Projetos em Destaque</h2>
-                <p>Conheça alguns dos nossos ambientes interativos em funcionamento:</p>
+                <h2>Ambientes em Funcionamento</h2>
+                <p>Explore algumas das nossas entregas interativas recentes:</p>
             </div>
 
             <div class="portfolio-grid">
@@ -780,7 +701,7 @@
                         <h3>Agenda de Guarda Compartilhada</h3>
                         <p>Portal estruturado para organização parental, datas, feriados e rotinas familiares sem atritos.</p>
                     </div>
-                    <a href="https://estoquesite.github.io/testeguarda/" target="_blank" class="btn-link">Ver Exemplo ↗</a>
+                    <a href="https://estoquesite.github.io/testeguarda/" target="_blank" class="btn-link">Acessar Demonstração ↗</a>
                 </div>
 
                 <div class="portfolio-item">
@@ -788,7 +709,7 @@
                         <h3>Programação & Cronograma</h3>
                         <p>Página interativa dedicada à gestão temporal e acompanhamento sequencial de marcos.</p>
                     </div>
-                    <a href="https://estoquesite.github.io/lista-de-compras-teste/" target="_blank" class="btn-link">Ver Exemplo ↗</a>
+                    <a href="https://estoquesite.github.io/lista-de-compras-teste/" target="_blank" class="btn-link">Acessar Demonstração ↗</a>
                 </div>
 
                 <div class="portfolio-item">
@@ -796,89 +717,46 @@
                         <h3>Sistema de Estoque com Trava Demo</h3>
                         <p>Controle de almoxarifado com restrição de demonstração e conversão direta para o WhatsApp.</p>
                     </div>
-                    <a href="https://estoquesite.github.io/Listateste/" target="_blank" class="btn-link">Ver Exemplo ↗</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- FAQ / Dúvidas -->
-        <section id="duvidas">
-            <div class="section-header">
-                <h2>Perguntas Frequentes</h2>
-                <p>Tire suas principais dúvidas sobre a nossa parceria e entregas:</p>
-            </div>
-
-            <div class="faq-grid">
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-q">Como funciona a criação de um site personalizado? <span>+</span></div>
-                    <div class="faq-a">Desenvolvemos o projeto do zero sob medida para sua necessidade, unindo design de ponta e facilidade de uso.</div>
-                </div>
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-q">Quem atende os projetos? <span>+</span></div>
-                    <div class="faq-a">Contamos com processos automatizados, engenharia de ponta e desenvolvimento ágil focado em máxima eficiência.</div>
-                </div>
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-q">Qual o prazo de entrega? <span>+</span></div>
-                    <div class="faq-a">Trabalhamos com foco total em prazos rigorosos, com entregas extremamente ágeis e pontuais.</div>
+                    <a href="https://estoquesite.github.io/Listateste/" target="_blank" class="btn-link">Acessar Demonstração ↗</a>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Rodapé -->
+    <!-- Rodapé de Elite -->
     <footer>
-        &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
+        &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Excelência em Engenharia e Sistemas.
         <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-            Visitas: <span id="visitorCount">947</span> &bull; Versão 6.7 (GitHub Repo Image Edition)
+            Acessos: <span id="visitorCount">1240</span> &bull; Versão 7.0 (Apex Neon SaaS)
         </div>
     </footer>
 
-    <!-- Botão de Chat Flutuante -->
-    <button class="ai-fab" onclick="alert('Olá! Sou o Velox, o herói do VeloxSites. Clique no botão do WhatsApp no topo para conversarmos!')">
+    <!-- Botão Flutuante -->
+    <button class="ai-fab" onclick="window.open('https://wa.me/5521967860665', '_blank')">
         <img src="1790156970583.png" alt="Velox">
-        <span>Fale com o Velox</span>
+        <span>Fale com a Velox</span>
     </button>
 
     <script>
-        // Tema Claro / Escuro
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme_v67', isLight ? 'light' : 'dark');
+            localStorage.setItem('velox_theme_v70', isLight ? 'light' : 'dark');
             document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem('velox_theme_v67') === 'light') {
+            if (localStorage.getItem('velox_theme_v70') === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
-
-            // Contador de visitas
-            let visits = localStorage.getItem('velox_visits_v67') || 947;
+            let visits = localStorage.getItem('velox_visits_v70') || 1240;
             visits = parseInt(visits) + 1;
-            localStorage.setItem('velox_visits_v67', visits);
+            localStorage.setItem('velox_visits_v70', visits);
             document.getElementById('visitorCount').innerText = visits;
         });
 
-        // Acordeon Serviços
-        function toggleService(card) {
-            document.querySelectorAll('.service-card').forEach(c => {
-                if (c !== card) c.classList.remove('active');
-            });
-            card.classList.toggle('active');
-        }
-
-        // Acordeon FAQ
-        function toggleFaq(item) {
-            document.querySelectorAll('.faq-item').forEach(i => {
-                if (i !== item) i.classList.remove('active');
-            });
-            item.classList.toggle('active');
-        }
-
-        // Simulador
         let selected = [];
         function toggleChip(chip, name) {
             chip.classList.toggle('selected');
@@ -892,11 +770,11 @@
             const btn = document.getElementById('calcBtn');
 
             if (selected.length > 0) {
-                text.innerText = "Selecionado: " + selected.join(', ');
+                text.innerText = "Módulos: " + selected.join(', ');
                 btn.style.opacity = '1';
                 btn.style.pointerEvents = 'auto';
             } else {
-                text.innerText = "Nenhum item selecionado.";
+                text.innerText = "Nenhum módulo selecionado.";
                 btn.style.opacity = '0.5';
                 btn.style.pointerEvents = 'none';
             }
@@ -905,7 +783,7 @@
         function sendCalc(e) {
             e.preventDefault();
             if (selected.length === 0) return;
-            const msg = encodeURIComponent(`Olá! Usei o Simulador no VeloxSites e quero solicitar: ${selected.join(', ')}. Vamos fechar?`);
+            const msg = encodeURIComponent(`Olá! Usei o Simulador no VeloxSites e quero solicitar orçamento para: ${selected.join(', ')}. Vamos fechar?`);
             window.open(`https://wa.me/5521967860665?text=${msg}`, '_blank');
         }
     </script>
