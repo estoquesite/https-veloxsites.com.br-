@@ -61,10 +61,12 @@
             0%, 100% {
                 border-color: var(--neon-green);
                 box-shadow: 0 0 15px var(--neon-green), inset 0 0 10px var(--neon-green);
+                background: rgba(0, 255, 136, 0.15);
             }
             50% {
                 border-color: #ffffff;
                 box-shadow: 0 0 35px var(--neon-green), inset 0 0 20px var(--neon-green);
+                background: rgba(0, 255, 136, 0.35);
             }
         }
 
@@ -92,89 +94,54 @@
             }
         }
 
-        /* Animação Heroica: Corre, Para no Meio, Mostra o Anel e Dispara */
-        @keyframes heroAction {
+        /* Animações do Personagem Velox Correndo */
+        @keyframes runAcross {
             0% {
-                left: -100px;
-                transform: scale(0.8) translateY(0);
+                left: -80px;
+                transform: scaleX(1);
             }
-            25% {
-                left: calc(50vw - 45px);
-                transform: scale(1) translateY(0);
+            48% {
+                left: calc(100vw + 20px);
+                transform: scaleX(1);
             }
-            32%, 68% {
-                left: calc(50vw - 45px);
-                transform: scale(1.25) translateY(-15px);
+            50% {
+                left: calc(100vw + 20px);
+                transform: scaleX(-1);
             }
-            75% {
-                left: calc(50vw - 45px);
-                transform: scale(1) translateY(0);
+            98% {
+                left: -80px;
+                transform: scaleX(-1);
             }
             100% {
-                left: calc(100vw + 100px);
-                transform: scale(1) translateY(0);
+                left: -80px;
+                transform: scaleX(1);
             }
         }
 
-        /* Animação do Brilho do Anel */
-        @keyframes ringFlash {
-            0%, 28%, 72%, 100% {
-                opacity: 0;
-                transform: scale(0.3);
-            }
-            32%, 68% {
-                opacity: 1;
-                transform: scale(1) rotate(360deg);
-                box-shadow: 0 0 25px #ffffff, 0 0 50px var(--neon-green), 0 0 80px var(--neon-green);
-            }
+        @keyframes bounceStep {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-12px) rotate(-6deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(-12px) rotate(6deg); }
         }
 
         .runner-container {
             position: fixed;
-            bottom: 25px;
+            bottom: 20px;
             z-index: 9998;
-            animation: heroAction 12s ease-in-out infinite;
+            animation: runAcross 16s linear infinite;
             pointer-events: none;
         }
 
-        /* Mascote Chibi Estilizado em SVG (Verde e Mostrando o Anel) */
         .runner-avatar {
-            width: 85px;
-            height: 85px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            border: 3px solid var(--neon-green);
-            background: linear-gradient(135deg, #0c1021, #060913);
-            box-shadow: 0 0 25px var(--neon-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .runner-avatar svg {
-            width: 75px;
-            height: 75px;
-            filter: drop-shadow(0 0 6px var(--neon-green));
-        }
-
-        .runner-ring-badge {
-            position: absolute;
-            bottom: 2px;
-            right: 2px;
-            width: 26px;
-            height: 26px;
-            background: #060913;
-            border: 2px solid #ffffff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: ringFlash 12s ease-in-out infinite;
-        }
-
-        .runner-ring-badge svg {
-            width: 14px;
-            height: 14px;
+            border: 2px solid var(--neon-green);
+            box-shadow: 0 0 20px var(--neon-green);
+            object-fit: cover;
+            animation: bounceStep 0.5s ease-in-out infinite;
+            background: var(--surface);
         }
 
         /* Navbar Flutuante Moderna */
@@ -205,20 +172,12 @@
         }
 
         .brand-avatar {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
+            object-fit: cover;
             border: 2px solid var(--neon-green);
-            background: linear-gradient(135deg, #0c1021, #060913);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             box-shadow: 0 0 12px var(--neon-green);
-        }
-
-        .brand-avatar svg {
-            width: 32px;
-            height: 32px;
         }
 
         .nav-brand span {
@@ -633,20 +592,12 @@
             transform: scale(1.05);
         }
 
-        .ai-fab-icon {
+        .ai-fab img {
             width: 36px;
             height: 36px;
             border-radius: 50%;
+            object-fit: cover;
             border: 2px solid var(--neon-green);
-            background: #060913;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .ai-fab-icon svg {
-            width: 22px;
-            height: 22px;
         }
 
         /* Responsividade */
@@ -665,64 +616,15 @@
 </head>
 <body>
 
-    <!-- Mascote Chibi Verde Velox (Corre, Para, Mostra o Anel com Símbolo e Dispara) -->
+    <!-- Personagem Velox Correndo na Tela -->
     <div class="runner-container">
-        <div class="runner-avatar">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Capa vermelha ao fundo -->
-                <path d="M20 50L50 90L80 50C80 75 50 95 50 95C50 95 20 75 20 50Z" fill="#ef4444"/>
-                <!-- Corpo / Fato Verde -->
-                <path d="M35 45H65V75C65 80 35 80 35 75V45Z" fill="#047857"/>
-                <!-- Cinto -->
-                <rect x="35" y="65" width="30" height="6" rx="3" fill="#fbbf24"/>
-                <circle cx="50" cy="68" r="3" fill="#00ff88"/>
-                <!-- Botas e Luvas -->
-                <path d="M33 73H42V83C42 85 33 85 33 83V73Z" fill="#dc2626"/>
-                <path d="M58 73H67V83C67 85 58 85 58 83V73Z" fill="#dc2626"/>
-                <path d="M28 50H35V58H28C26 58 25 55 28 50Z" fill="#dc2626"/>
-                <path d="M72 50H65V58H72C74 58 75 55 72 50Z" fill="#dc2626"/>
-                <!-- Emblema no peito com anel/brilho -->
-                <circle cx="50" cy="55" r="6" fill="#00ff88"/>
-                <circle cx="50" cy="55" r="3" fill="#ffffff"/>
-                <!-- Mão levantada mostrando o anel com o símbolo -->
-                <circle cx="27" cy="53" r="4" fill="#fca5a5"/>
-                <circle cx="26" cy="53" r="2" fill="#ffffff" stroke="#00ff88" stroke-width="1.5"/>
-                <!-- Capacete Estilo Chibi Verde -->
-                <path d="M22 42C22 18 78 18 78 42C78 48 22 48 22 42Z" fill="#059669"/>
-                <path d="M28 30C28 22 72 22 72 30C72 33 28 33 28 30Z" fill="#34d399"/>
-                <!-- Auriculares / Auscultadores nas laterais -->
-                <rect x="17" y="32" width="7" height="16" rx="3.5" fill="#dc2626"/>
-                <rect x="76" y="32" width="7" height="16" rx="3.5" fill="#dc2626"/>
-                <!-- Olhos Enormes Estilo Anime / Chibi -->
-                <circle cx="39" cy="40" r="9" fill="#1e1b4b"/>
-                <circle cx="61" cy="40" r="9" fill="#1e1b4b"/>
-                <circle cx="41" cy="37" r="3.5" fill="#ffffff"/>
-                <circle cx="63" cy="37" r="3.5" fill="#ffffff"/>
-                <circle cx="37" cy="43" r="1.5" fill="#ffffff"/>
-                <circle cx="59" cy="43" r="1.5" fill="#ffffff"/>
-                <!-- Sorriso Amigável -->
-                <path d="M46 47C48 49 52 49 54 47" stroke="#1e1b4b" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-        </div>
-        <div class="runner-ring-badge">
-            <svg viewBox="0 0 40 40" fill="none">
-                <path d="M12 28L20 12L28 28H23L20 21L17 28H12Z" fill="#00ff88"/>
-            </svg>
-        </div>
+        <img src="49826.jpg" alt="Velox" class="runner-avatar">
     </div>
 
     <!-- Navbar Superior Flutuante -->
     <header class="navbar">
         <a href="#" class="nav-brand">
-            <div class="brand-avatar">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="45" r="22" fill="#059669"/>
-                    <circle cx="42" cy="42" r="5" fill="#ffffff"/>
-                    <circle cx="58" cy="42" r="5" fill="#ffffff"/>
-                    <circle cx="42" cy="42" r="2" fill="#1e1b4b"/>
-                    <circle cx="58" cy="42" r="2" fill="#1e1b4b"/>
-                </svg>
-            </div>
+            <img src="49826.jpg" alt="Velox" class="brand-avatar">
             VELOX<span>SITES</span>
         </a>
 
@@ -875,19 +777,13 @@
     <footer>
         &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
         <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-            Visitas: <span id="visitorCount">947</span> &bull; Versão 4.7 (Velox Chibi Green Hero Edition)
+            Visitas: <span id="visitorCount">947</span> &bull; Versão 4.0 (Velox Brand Edition)
         </div>
     </footer>
 
     <!-- Botão de Chat Flutuante -->
-    <button class="ai-fab" onclick="alert('Olá! Sou o Velox, o herói do VeloxSites. Clique no botão do WhatsApp no topo para conversarmos!')">
-        <div class="ai-fab-icon">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="45" r="22" fill="#059669"/>
-                <circle cx="42" cy="42" r="5" fill="#ffffff"/>
-                <circle cx="58" cy="42" r="5" fill="#ffffff"/>
-            </svg>
-        </div>
+    <button class="ai-fab" onclick="alert('Olá! Sou o Velox, o assistente e mascote do VeloxSites. Clique no botão do WhatsApp no topo para conversarmos!')">
+        <img src="49826.jpg" alt="Velox">
         <span>Fale com o Velox</span>
     </button>
 
@@ -896,20 +792,20 @@
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme_v47', isLight ? 'light' : 'dark');
+            localStorage.setItem('velox_theme_v40', isLight ? 'light' : 'dark');
             document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem('velox_theme_v47') === 'light') {
+            if (localStorage.getItem('velox_theme_v40') === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
 
             // Contador de visitas
-            let visits = localStorage.getItem('velox_visits_v47') || 947;
+            let visits = localStorage.getItem('velox_visits_v40') || 947;
             visits = parseInt(visits) + 1;
-            localStorage.setItem('velox_visits_v47', visits);
+            localStorage.setItem('velox_visits_v40', visits);
             document.getElementById('visitorCount').innerText = visits;
         });
 
