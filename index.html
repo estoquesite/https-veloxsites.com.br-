@@ -61,12 +61,10 @@
             0%, 100% {
                 border-color: var(--neon-green);
                 box-shadow: 0 0 15px var(--neon-green), inset 0 0 10px var(--neon-green);
-                background: rgba(0, 255, 136, 0.15);
             }
             50% {
                 border-color: #ffffff;
                 box-shadow: 0 0 35px var(--neon-green), inset 0 0 20px var(--neon-green);
-                background: rgba(0, 255, 136, 0.35);
             }
         }
 
@@ -94,36 +92,40 @@
             }
         }
 
-        /* Efeito de Super-Velocidade do Velox Cruzando a Tela */
-        @keyframes runAcross {
+        /* Animação Heroica: Corre, Para, Mostra o Anel e Dispara */
+        @keyframes heroAction {
             0% {
                 left: -100px;
-                transform: scaleX(1) skewX(-15deg);
+                transform: scale(0.8) translateY(0);
             }
-            48% {
-                left: calc(100vw + 20px);
-                transform: scaleX(1) skewX(-15deg);
+            25% {
+                left: calc(50vw - 40px);
+                transform: scale(1) translateY(0);
             }
-            50% {
-                left: calc(100vw + 20px);
-                transform: scaleX(-1) skewX(-15deg);
+            32%, 68% {
+                left: calc(50vw - 40px);
+                transform: scale(1.25) translateY(-15px); /* Para no meio e faz pose */
             }
-            98% {
-                left: -100px;
-                transform: scaleX(-1) skewX(-15deg);
+            75% {
+                left: calc(50vw - 40px);
+                transform: scale(1) translateY(0);
             }
             100% {
-                left: -100px;
-                transform: scaleX(1) skewX(-15deg);
+                left: calc(100vw + 100px);
+                transform: scale(1) translateY(0);
             }
         }
 
-        @keyframes energyPulse {
-            0%, 100% {
-                box-shadow: 0 0 25px var(--neon-green), 0 0 50px rgba(0,255,136,0.5), inset 0 0 15px var(--neon-green);
+        /* Animação do Brilho do Anel com o Símbolo da Velox */
+        @keyframes ringFlash {
+            0%, 28%, 72%, 100% {
+                opacity: 0;
+                transform: scale(0.3);
             }
-            50% {
-                box-shadow: 0 0 40px var(--neon-green), 0 0 80px rgba(0,255,136,0.8), inset 0 0 25px #ffffff;
+            32%, 68% {
+                opacity: 1;
+                transform: scale(1) rotate(360deg);
+                box-shadow: 0 0 25px #ffffff, 0 0 50px var(--neon-green), 0 0 80px var(--neon-green);
             }
         }
 
@@ -131,18 +133,39 @@
             position: fixed;
             bottom: 25px;
             z-index: 9998;
-            animation: runAcross 14s linear infinite;
+            animation: heroAction 12s ease-in-out infinite;
             pointer-events: none;
         }
 
         .runner-avatar {
-            width: 70px;
-            height: 70px;
+            width: 75px;
+            height: 75px;
             border-radius: 50%;
             border: 3px solid var(--neon-green);
             object-fit: cover;
             background: var(--surface);
-            animation: energyPulse 1s ease-in-out infinite;
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+
+        /* Símbolo da Velox posicionado exatamente sobre a mão/anel do personagem */
+        .runner-ring-badge {
+            position: absolute;
+            bottom: 12px;
+            right: 10px;
+            width: 24px;
+            height: 24px;
+            background: #060913;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: ringFlash 12s ease-in-out infinite;
+        }
+
+        .runner-ring-badge svg {
+            width: 14px;
+            height: 14px;
         }
 
         /* Navbar Flutuante Moderna */
@@ -617,9 +640,14 @@
 </head>
 <body>
 
-    <!-- Velox em Super-Velocidade na Tela -->
+    <!-- Velox Correndo, Parando e Exibindo o Anel com o Símbolo -->
     <div class="runner-container">
         <img src="49826.jpg" alt="Velox" class="runner-avatar">
+        <div class="runner-ring-badge">
+            <svg viewBox="0 0 40 40" fill="none">
+                <path d="M12 28L20 12L28 28H23L20 21L17 28H12Z" fill="#00ff88"/>
+            </svg>
+        </div>
     </div>
 
     <!-- Navbar Superior Flutuante -->
@@ -778,7 +806,7 @@
     <footer>
         &copy; 2026 VeloxSites. Campo Grande, Rio de Janeiro - RJ. Atendimento para todo o Brasil.
         <div style="margin-top: 10px; font-size: 0.85rem; opacity: 0.7;">
-            Visitas: <span id="visitorCount">947</span> &bull; Versão 4.2 (Velox Hyper-Speed Edition)
+            Visitas: <span id="visitorCount">947</span> &bull; Versão 4.3 (Velox Ring Edition)
         </div>
     </footer>
 
@@ -793,20 +821,20 @@
         function toggleTheme() {
             document.body.classList.toggle('light-theme');
             const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('velox_theme_v42', isLight ? 'light' : 'dark');
+            localStorage.setItem('velox_theme_v43', isLight ? 'light' : 'dark');
             document.getElementById('themeBtn').innerText = isLight ? '☀️ Tema' : '🌙 Tema';
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem('velox_theme_v42') === 'light') {
+            if (localStorage.getItem('velox_theme_v43') === 'light') {
                 document.body.classList.add('light-theme');
                 document.getElementById('themeBtn').innerText = '☀️ Tema';
             }
 
             // Contador de visitas
-            let visits = localStorage.getItem('velox_visits_v42') || 947;
+            let visits = localStorage.getItem('velox_visits_v43') || 947;
             visits = parseInt(visits) + 1;
-            localStorage.setItem('velox_visits_v42', visits);
+            localStorage.setItem('velox_visits_v43', visits);
             document.getElementById('visitorCount').innerText = visits;
         });
 
